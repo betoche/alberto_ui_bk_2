@@ -1,0 +1,66 @@
+<div class="m-333 clearfix">
+  <button mat-raised-button class="float-right ml-05 mb-05" color="primary" routerLink="new" id="add-new">
+    {{ 'ADD' | translate }} {{ 'DRUGSTORE_ADMINISTRATOR' | translate }}
+  </button>
+
+  <button
+    mat-raised-button
+    class="mb-05 float-right"
+    color="accent"
+    (click)="exportCSVService.export('users', { scope: 'drugstore_administrators' })"
+    id="export-csv"
+  >
+    {{ 'EXPORT_TO_CSV' | translate }}
+  </button>
+</div>
+
+<mat-card class="p-0" [@animate]="{ value: '*', params: { y: '50px', delay: '300ms' } }">
+  <mat-card-content class="p-0">
+    <ngx-datatable
+      class="material ml-0 mr-0"
+      [rows]="rows"
+      [columnMode]="'force'"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [scrollbarH]="true"
+      [limit]="10"
+      [rowHeight]="50"
+      [messages]="datatableMessages"
+    >
+      <ngx-datatable-column name="ID" [flexGrow]="1" maxWidth="50">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{ row?.id }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="{{ 'EMAIL' | translate }}" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{ row?.email }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="{{ 'FIRST_NAME' | translate }}" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{ row?.first_name }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="{{ 'LAST_NAME' | translate }}" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{ row?.last_name }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="#" [flexGrow]="1" cellClass="text-right-important" headerClass="text-right-important">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <button mat-icon-button mat-sm-button color="primary" class="mr-1 edit-btn" routerLink="{{ row.id }}/edit">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button mat-sm-button color="warn" class="delete-btn" (click)="deleteItem(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </mat-card-content>
+</mat-card>

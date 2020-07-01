@@ -1,0 +1,218 @@
+<div *ngIf="successful" class="mb-24">
+  <app-flash-messsage
+    class="width-300px"
+    type="success"
+    message="{{ 'COMPANY_SUCCESSFULLY_ADDED' | translate }}"
+  ></app-flash-messsage>
+</div>
+<div class="roles-and-permission" translate>ALLIES_TOT</div>
+<div class="height-100 mt-40" animationDuration="0ms">
+  <div class="filter-group mt-36 mb-36">
+    <a class="filter-item" routerLink="/dashboard/companies" routerLinkActive="active" translate>
+      USER_TYPES
+    </a>
+    <a class="filter-item" routerLink="/dashboard/users" routerLinkActive="active" translate>
+      USERS
+    </a>
+  </div>
+
+  <div class="m-333 clearfix">
+    <mat-form-field class="width-500px mat-search" appearance="outline">
+      <input
+        matInput
+        type="search"
+        name="search"
+        placeholder="{{ 'SEARCH_BY_NAME_AND_ROLE' | translate }}"
+        class="mdc-text-field--no-label"
+        searchInput
+        (keyup)="searchAndFilter({ keyword: $event.target.value })"
+      />
+      <mat-icon class="text-grey-B000" matSuffix>search</mat-icon>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      class="float-right add-new ml-05 mb-05"
+      color="primary"
+      [disabled]="selected.length > 0"
+      (click)="openPopUp({}, true)"
+    >
+      + {{ 'ADD' | translate }}
+    </button>
+    <button
+      mat-raised-button
+      class="float-right add-new ml-05 mb-05"
+      color="primary"
+      *ngIf="selected.length > 0"
+      (click)="deleteItems(selected)"
+    >
+      - {{ 'DELETE' | translate }}
+    </button>
+    <button
+      mat-raised-button
+      class="float-right add-new ml-05 mb-05"
+      color="primary"
+      *ngIf="selected.length > 0"
+      (click)="updateMultipleStatuses(selected, 'suspended')"
+    >
+      {{ 'SUSPEND' | translate }}
+    </button>
+
+    <div fxLayoutGap class="mt-24">
+      <div fxFlex="20" fxLayout="column" class="mt-1 pr-1">
+        <mat-label>{{ 'COMPANY_TYPE' | translate }}</mat-label>
+        <mat-form-field appearance="outline">
+          <mat-select
+            [(value)]="entityType"
+            (selectionChange)="searchAndFilter({ entityType: $event.value })"
+            name="entityType"
+          >
+            <mat-option value="ALL">{{ 'ALL' | translate }}</mat-option>
+            <mat-option *ngFor="let type of typeOfcompaniesCollection" [value]="type.value">
+              {{ type.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="20" fxLayout="column" class="mt-1 pr-1">
+        <mat-label>{{ 'COUNTRY' | translate }}</mat-label>
+        <mat-form-field appearance="outline">
+          <mat-select
+            (selectionChange)="searchAndFilter({ countryCode: $event.value })"
+            [(value)]="countryCode"
+            name="countryCode"
+          >
+            <mat-option value="ALL">{{ 'ALL' | translate }}</mat-option>
+           <!--  <mat-option *ngFor="let type of countryList" [value]="type.value">
+              {{ type.label }}
+            </mat-option> -->
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="20" fxLayout="column" class="mt-1 pr-1">
+        <mat-label>{{ 'STATUS' | translate }}</mat-label>
+        <mat-form-field appearance="outline">
+          <mat-select (selectionChange)="searchAndFilter({ status: $event.value })" [(value)]="status" name="status">
+            <mat-option value="ALL">{{ 'ALL' | translate }}</mat-option>
+            <mat-option *ngFor="let type of statusList" [value]="type.value">
+              {{ type.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-card class="p-0 mb-1 mt-50" [@animate]="{ value: '*', params: { y: '50px', delay: '300ms' } }">
+      <mat-card-content class="p-0">
+        <ngx-datatable
+          class="material ml-0 mr-0"
+          [rows]="rows"
+          [columnMode]="'force'"
+          [headerHeight]="50"
+          [footerHeight]="50"
+          [scrollbarH]="true"
+          [limit]="25"
+          [rowHeight]="50"
+          [messages]="datatableMessages"
+          [selected]="selected"
+          [selectionType]="'checkbox'"
+          [selectAllRowsOnPage]="false"
+          (select)="onSelect($event)"
+        >
+          <ngx-datatable-column
+            [width]="50"
+            [sortable]="false"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+          >
+            <ng-template
+              ngx-datatable-header-template
+              let-value="value"
+              let-allRowsSelected="allRowsSelected"
+              let-selectFn="selectFn"
+            >
+              <mat-checkbox
+                color="secondary"
+                [checked]="allRowsSelected"
+                (change)="selectFn(!allRowsSelected)"
+                [(indeterminate)]="allRowsSelected"
+              >
+              </mat-checkbox>
+            </ng-template>
+            <ng-template
+              ngx-datatable-cell-template
+              let-value="value"
+              let-isSelected="isSelected"
+              let-onCheckboxChangeFn="onCheckboxChangeFn"
+            >
+              <mat-checkbox color="secondary" [checked]="isSelected" (change)="onCheckboxChangeFn($event)">
+              </mat-checkbox>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="{{ 'USER' | translate }}" [flexGrow]="1">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <a href="#" class="text-underline">{{ row?.name }}</a>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="{{ 'ROLE' | translate }}" [flexGrow]="1">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row?.roleName() }}
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="{{ 'COMPANY' | translate }}" [flexGrow]="1" maxWidth="250">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row?.company?.name }}
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="{{ 'COMPANY_TYPE' | translate }}" [flexGrow]="1" maxWidth="150">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <span translate>{{ row?.company?.type }}</span>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="{{ 'COUNTRY' | translate }}" [flexGrow]="1" maxWidth="150">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row?.company?.country_name }}
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="{{ 'STATUS' | translate }}" [flexGrow]="1" maxWidth="200">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <div class="status-button {{ row?.status }}">
+                <span translate>{{ row?.status }}</span>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="{{ 'ACTIONS' | translate }}" [flexGrow]="1" width="600">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <a color="primary" class="mr-1 text-underline edit-btn" (click)="openPopUp(row)">
+                <span translate>EDIT</span>
+              </a>
+              <a color="warn" class="mr-1 text-underline">
+                <span
+                    translate
+                    (click)="suspendMultipleStatuses([row], false)"
+                    *ngIf="row.status == 'active'">SUSPEND</span>
+                <span
+                    translate
+                    (click)="activateMultipleStatuses([row], false)"
+                    *ngIf="row.status == 'suspended'" class="reactivate">REACTIVATE</span>
+              </a>
+              <a color="warn" class="mr-1 text-underline">
+                <span translate>RESTORE_PASSWORD</span>
+              </a>
+              <a color="warn" class="mr-1 text-underline delete-btn" (click)="deleteItems([row])">
+                <span translate>DELETE</span>
+              </a>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

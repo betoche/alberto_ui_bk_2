@@ -1,0 +1,38 @@
+.upload-file-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.upload-file-wrapper .input-file {
+  display: none;
+}
+
+.upload-file-wrapper .label-select-file {
+  cursor: pointer;
+}
+
+.upload-file-wrapper .file-box {
+  display: inline-block;
+  width: 100%;
+  border: 1px dashed #00CD00;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 46px;
+  margin-top: 4px;
+  padding: 10px 45px 10px 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border-radius: 2px;
+}
+
+.upload-file-wrapper .file-button {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+
+.upload-file-wrapper .placeholder {
+  color: #8B8B8B;
+}
+/*# sourceMappingURL=data-importing.component.css.map */

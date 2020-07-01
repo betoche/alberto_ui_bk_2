@@ -1,0 +1,165 @@
+<mat-card class="p-0 mt-50 margin-bottom-100" [@animate]="{ value: '*', params: { y: '50px', delay: '300ms' } }">
+  <h1 translate class="products-page-title">
+    PRODUCTS
+  </h1>
+
+  <mat-card-content class="p-0">
+    <div class="clearfix">
+      <mat-form-field class="width-500px" appearance="outline">
+        <input
+          matInput
+          type="search"
+          name="search"
+          id="search-keyword"
+          class="mdc-text-field--no-label"
+          searchInput
+          [(ngModel)]="keyword"
+          (keyup)="searchAndFilter({ keyword: $event.target.value })"
+        />
+        <mat-icon class="text-grey-B000" matSuffix>search</mat-icon>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        class="float-right add-new ml-05 mb-05 tot-default-submit-btn"
+        color="primary"
+        (click)="openPopUp({}, true)"
+      >
+        + {{ 'NEW' | translate }}
+      </button>
+      <button
+        mat-raised-button
+        class="float-right ml-05 mb-05 btn-gray"
+        [disabled]="selected.length == 0"
+        color="primary"
+        (click)="deleteItems(selected)"
+      >
+        - {{ 'DELETE' | translate }}
+      </button>
+    </div>
+
+    <div class="margin-bottom-15">
+      <div fxLayoutGap>
+        <div fxFlex="30" fxLayout="column" class="mt-1 pr-1">
+          <mat-label>{{ 'CATEGORY' | translate }}</mat-label>
+          <mat-form-field appearance="outline">
+            <mat-select
+              [(value)]="medicationCategory"
+              (selectionChange)="searchAndFilter({ medicationCategory: $event.value })"
+              name="medicationCategory"
+            >
+              <mat-option value="ALL">{{ 'ALL' | translate }}</mat-option>
+              <mat-option *ngFor="let category of medicationCategories" [value]="category.id">
+                {{ category.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+
+        <div fxFlex="30" fxLayout="column" class="mt-1 pr-1">
+          <mat-label>{{ 'PHARMACEUTICAL' | translate }}</mat-label>
+          <mat-form-field appearance="outline">
+            <mat-select
+              [(value)]="pharmaceuticalCompany"
+              (selectionChange)="searchAndFilter({ pharmaceuticalCompany: $event.value })"
+              name="pharmaceuticalCompany"
+            >
+              <mat-option value="ALL">{{ 'ALL' | translate }}</mat-option>
+              <mat-option *ngFor="let company of pharmaceuticalCompanies" [value]="company.id">
+                {{ company.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <hr class="mr-b50 green-border">
+
+    <ngx-datatable
+      class="material ml-0 mr-0"
+      [rows]="rows"
+      [columnMode]="'force'"
+      [headerHeight]="'auto'"
+      [footerHeight]="50"
+      [scrollbarH]="true"
+      [limit]="25"
+      [rowHeight]="'auto'"
+      [messages]="datatableMessages"
+      [selected]="selected"
+      [selectionType]="'checkbox'"
+      [selectAllRowsOnPage]="false"
+      (select)="onSelect($event)"
+    >
+      <ngx-datatable-column
+        [width]="50"
+        [sortable]="false"
+        [canAutoResize]="false"
+        [draggable]="false"
+        [resizeable]="false"
+      >
+        <ng-template
+          ngx-datatable-header-template
+          let-value="value"
+          let-allRowsSelected="allRowsSelected"
+          let-selectFn="selectFn"
+        >
+          <mat-checkbox
+            color="secondary"
+            [checked]="allRowsSelected"
+            (change)="selectFn(!allRowsSelected)"
+            [(indeterminate)]="allRowsSelected"
+          >
+          </mat-checkbox>
+        </ng-template>
+        <ng-template
+          ngx-datatable-cell-template
+          let-value="value"
+          let-isSelected="isSelected"
+          let-onCheckboxChangeFn="onCheckboxChangeFn"
+        >
+          <mat-checkbox color="secondary" [checked]="isSelected" (change)="onCheckboxChangeFn($event)">
+          </mat-checkbox>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="{{ 'MEDICATION' | translate }}" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{ row?.name }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="{{ 'CODE' | translate }}" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{ row?.code }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="{{ 'CATEGORY' | translate }}" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{ row?.medication_category_name }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="{{ 'PHARMACEUTICAL' | translate }}" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{ row?.pharmaceutical_company_name }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="{{ 'ACTIONS' | translate }}" [flexGrow]="1" width="600">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <a color="primary" class="mr-1 text-underline edit-btn" (click)="openDetail(row)">
+            <span translate>DETAIL</span>
+          </a>
+          <a color="primary" class="mr-1 text-underline edit-btn" (click)="editMedication(row)">
+            <span translate>EDIT</span>
+          </a>
+          <a color="warn" class="mr-1 text-underline delete-btn" (click)="deleteItems([row])">
+            <span translate>DELETE</span>
+          </a>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </mat-card-content>
+</mat-card>

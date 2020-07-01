@@ -1,0 +1,139 @@
+<div class="medication-details">
+  <div class="medication-details-header border-bt-solid-4">
+    <h3 class="title">
+      {{medication.name}}
+    </h3>
+    <div class="nav border-bt-normal">
+      <a>Mediamentos</a>
+      <span> > </span>
+      <span>{{medication.name}}</span>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="end flex-end" class="mt-12">
+      <a class="mat-color-primary text-underline pl-4" routerLink="/dashboard/medications/{{medication.id}}/edit">{{ 'EDIT' | translate }}</a>
+      <a class="mat-color-primary text-underline pl-4" (click)="deleteItem()">{{ 'DELETE' | translate }}</a>
+    </div>
+  </div>
+  <div class="clearfix" class="medication-details-content mb-70">
+    <div class="image-content">
+      <img class="index-page" [src]="medication.logo_url">
+    </div>
+    <div class="">
+      <div class="profile-section m-0">
+        <div fxLayout="row wrap" fxLayout.lt-sm="column" class="mb-40">
+          <div fxFlex="50" class="ml-8" class="pr-1 mb-24">
+            <span class="profile-field mb-12">{{'PHARMACEUTICAL' | translate}}</span>
+            <div class="profile-info">{{medication.pharmaceutical_company_name}}</div>
+          </div>
+
+          <div fxFlex="50" class="pr-1 mb-24">
+            <span class="profile-field mb-12">{{'PHARMACEUTICAL_ID' | translate}}</span>
+            <div class="profile-info">{{ medication.pharmaceutical_company_id }}</div>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap" fxLayout.lt-sm="column">
+          <div fxFlex="50" class="pr-1 mb-24">
+            <span class="profile-field mb-12">{{'PRODUCT_ID' | translate}}</span>
+            <div class="profile-info">{{ medication.code }}</div>
+          </div>
+
+          <div fxFlex="50" class="pr-1 mb-24">
+            <span class="profile-field mb-12">{{'CATEGORY' | translate}}</span>
+            <div class="profile-info">{{ medication.medication_category_name }}</div>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap" fxLayout.lt-sm="column" *ngFor="let medication_presentation of medication.medication_presentations_attributes">
+          <div fxFlex="50" class="pr-1 mb-24">
+            <span class="profile-field mb-12">{{'PRESENTATION' | translate}}</span>
+            <div class="profile-info">{{ medication_presentation.presentation_type | uppercase | translate }}</div>
+          </div>
+
+          <div fxFlex="50" class="pr-1 mb-24">
+            <span class="profile-field mb-12">{{'AMOUNT_FOR_PRECRIPCION' | translate}}</span>
+            <div class="profile-info">{{ medication_presentation.presentation_content }}</div>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap" fxLayout.lt-sm="column">
+          <div fxFlex="100" class="pr-1 mb-24">
+            <span class="profile-field mb-12">{{'AVERAGE_DOSAGE' | translate}}</span>
+            <div class="profile-info">
+              <div fxFlex="50" class="pr-1 mb-24">
+                {{'ADULT_LABEL' | translate}}
+                <span> {{ medication.adults_dosification_amount }} </span>
+                gotas cada
+                <span> {{ medication.adults_dosification_frequency_measure }} </span>
+                <span> {{ medication.adults_dosification_frequency == 'hours' ? 'horas' : 'Días' }} </span>
+
+              </div>
+              <div fxFlex="50" class="pr-1 mb-24">
+                {{'CHILDREN_LABEL' | translate}}
+                <span> {{ medication.children_dosification_amount }} </span>
+                gotas cada
+                <span> {{ medication.children_dosification_frequency_measure }} </span>
+                <span> {{ medication.children_dosification_frequency == 'hours' ? 'horas' : 'Días' }} </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap" fxLayout.lt-sm="column">
+          <div fxFlex="100" class="pr-1 mb-24">
+            <span class="profile-field mb-12">{{'DESCRIPTION' | translate}}</span>
+            <div class="profile-info">
+              {{ medication.description }}
+            </div>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap" fxLayout.lt-sm="column">
+          <div fxFlex="100" class="pr-1 mb-24">
+            <span class="profile-field mb-12">{{'AVAILABLE_IN' | translate}}</span>
+            <div class="profile-info">
+
+              <ngx-datatable
+                class="material ml-0 mr-0"
+                [rows]="medication.medication_prices_attributes"
+                [columnMode]="'force'"
+                [headerHeight]="'auto'"
+                [footerHeight]="50"
+                [scrollbarH]="true"
+                [limit]="1000"
+                [rowHeight]="'auto'"
+                [messages]="datatableMessages"
+              >
+                <ngx-datatable-column name="{{ 'COUNTRY' | translate }}" [flexGrow]="1">
+                  <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.country_name }}
+                  </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="{{ 'CURRENCY' | translate }}" [flexGrow]="1">
+                  <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.country_code }}
+                  </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="{{ 'SUGGESTED_PRICE' | translate }}" [flexGrow]="1">
+                  <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.price }}
+                  </ng-template>
+                </ngx-datatable-column>
+
+              </ngx-datatable>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="action-row">
+  <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-20 mb-50">
+    <button mat-flat-button class="tot-default-submit-btn outline-btn" routerLink="/dashboard/medications">
+      Volver
+    </button>
+  </div>
+</div>

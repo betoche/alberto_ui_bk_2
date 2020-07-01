@@ -1,0 +1,90 @@
+@import 'custom';
+
+.page-component-container {
+  .page-title {
+    color: #232731;
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+
+  .page-subtitle {
+    font-size: 32px;
+    color: #232731;
+  }
+
+  .form-label {
+    font-size: 16px;
+    color: #232731;
+
+    &.disabled-label {
+      color: #B0B0B0;
+    }
+  }
+  .form-group {
+    padding: 10px 0;
+  }
+
+  .average-dosage {
+    .select-number {
+      max-width: 100%;
+      position: relative;
+      bottom: -4px;
+      margin: 0 auto;
+      width: 80px;
+
+      .mat-form-field-infix {
+        text-align: center;
+      }
+
+      input.mat-input-element {
+        font-size: 18px;
+        font-weight: bold;
+        color: #232731;
+      }
+    }
+  }
+
+  .table-with-input {
+    .mat-form-field.mat-form-field-appearance-outline {
+      .mat-form-field-outline .mat-form-field-outline-start {
+        border-left: 1px solid #232731;
+        border-top: 1px solid #232731;
+        border-bottom: 1px solid #232731;
+      }
+    }
+    .mat-form-field.mat-form-field-appearance-outline {
+      .mat-form-field-outline .mat-form-field-outline-end {
+        border-right: 1px solid #232731;
+        border-top: 1px solid #232731;
+        border-bottom: 1px solid #232731;
+      }
+    }
+
+    .border-style {
+      border-bottom: 1px solid rgba(75, 79, 49, 0.5);
+    }
+  }
+
+  .checkbox-selecting {
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+      background-color: #00CD00;
+    }
+
+    .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
+    .egret-navy .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+      background: #00CD00;
+    }
+  }
+
+  .checkbox-form-box {
+    padding: 8px;
+    margin: 0;
+  }
+
+  .btn-actions {
+    padding: 30px 0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,210 @@
+<div class="mb-24">
+  <flash-messsage-auto-hide [options]="messageOptions"></flash-messsage-auto-hide>
+</div>
+
+<div class="roles-and-permission" translate>ALLIES_TOT</div>
+<div class="height-100 mt-40" animationDuration="0ms">
+  <div class="filter-group mt-36 mb-36">
+    <a class="filter-item" routerLink="/dashboard/companies" routerLinkActive="active" translate>
+      USER_TYPES
+    </a>
+    <a class="filter-item" routerLink="/dashboard/users" routerLinkActive="active" translate>
+      USERS
+    </a>
+  </div>
+
+  <div class="m-333 clearfix">
+    <mat-form-field class="width-500px mat-search" appearance="outline">
+      <input
+        matInput
+        type="search"
+        name="search"
+        placeholder="{{ 'SEARCH_BY_NAME' | translate }}"
+        class="mdc-text-field--no-label"
+        searchInput
+        [(ngModel)]="filterOptions.keyword"
+      />
+      <mat-icon class="text-grey-B000" matSuffix>search</mat-icon>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      class="float-right add-new ml-05 mb-05"
+      color="primary"
+      [disabled]="selected.length > 0"
+      (click)="showNewCompanyForm()"
+    >
+      + {{ 'ADD' | translate }}
+    </button>
+    <button
+      mat-raised-button
+      class="float-right add-new ml-05 mb-05"
+      color="primary"
+      id="delete-multiple"
+      *ngIf="selected.length > 0"
+      (click)="deleteItems(selected)"
+    >
+      - {{ 'DELETE' | translate }}
+    </button>
+    <button
+      mat-raised-button
+      class="float-right add-new ml-05 mb-05"
+      color="primary"
+      *ngIf="selected.length > 0"
+      (click)="updateMultipleStatuses(selected, 'suspended')"
+    >
+      {{ 'SUSPEND' | translate }}
+    </button>
+
+    <div fxLayoutGap class="mt-24">
+      <div fxFlex="20" fxLayout="column" class="mt-1 pr-1">
+        <mat-label>{{ 'COMPANY_TYPE' | translate }}</mat-label>
+        <mat-form-field appearance="outline">
+          <mat-select [(ngModel)]="filterOptions.type">
+            <mat-option value="-">{{ 'ALL' | translate }}</mat-option>
+            <mat-option *ngFor="let type of typeOfcompaniesCollection" [value]="type.value">
+              {{ type.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="20" fxLayout="column" class="mt-1 pr-1">
+        <mat-label>{{ 'COUNTRY' | translate }}</mat-label>
+        <mat-form-field appearance="outline">
+          <mat-select [(ngModel)]="filterOptions.country">
+            <mat-option value="-">{{ 'ALL' | translate }}</mat-option>
+            <mat-option *ngFor="let country of countries" [value]="country.code">
+              {{ country.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="20" fxLayout="column" class="mt-1 pr-1">
+        <mat-label>{{ 'STATUS' | translate }}</mat-label>
+        <mat-form-field appearance="outline">
+          <mat-select [(ngModel)]="filterOptions.status">
+            <mat-option value="-">{{ 'ALL' | translate }}</mat-option>
+            <mat-option *ngFor="let type of statusList" [value]="type.value">
+              {{ type.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <datatable-page-limit [(limit)]="pageLimit"></datatable-page-limit>
+
+    <mat-card class="p-0 mb-1 mt-50" [@animate]="{ value: '*', params: { y: '50px', delay: '300ms' } }">
+      <mat-card-content class="p-0">
+
+
+        <ngx-datatable
+          class="material ml-0 mr-0"
+          [rows]="rows | filerConditions:filterOptions.keyword:'name':{isContain: true}
+                       | filerConditions:filterOptions.country:'country_code'
+                       | filerConditions:filterOptions.status:'status'
+                       | filerConditions:filterOptions.type:'type'"
+          [columnMode]="'force'"
+          [headerHeight]="50"
+          [footerHeight]="50"
+          [scrollbarH]="true"
+          [limit]="pageLimit"
+          [rowHeight]="50"
+          [rowClass]="getRowClass"
+          [messages]="datatableMessages"
+          [selected]="selected"
+          [selectionType]="'checkbox'"
+          [selectAllRowsOnPage]="false"
+          (select)="onSelect($event)"
+        >
+          <!-- HIDE multiple checkboxes -->
+          <ngx-datatable-column
+            [width]="50"
+            [sortable]="false"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            *ngIf="false"
+          >
+            <ng-template
+              ngx-datatable-header-template
+              let-value="value"
+              let-allRowsSelected="allRowsSelected"
+              let-selectFn="selectFn"
+            >
+              <mat-checkbox
+                color="secondary"
+                [checked]="allRowsSelected"
+                (change)="selectFn(!allRowsSelected)"
+                [(indeterminate)]="allRowsSelected"
+              >
+              </mat-checkbox>
+            </ng-template>
+            <ng-template
+              ngx-datatable-cell-template
+              let-value="value"
+              let-isSelected="isSelected"
+              let-onCheckboxChangeFn="onCheckboxChangeFn"
+            >
+              <mat-checkbox color="secondary" [checked]="isSelected" (change)="onCheckboxChangeFn($event)">
+              </mat-checkbox>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="{{ 'COMPANY' | translate }}" [flexGrow]="1">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row?.name }}
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="{{ 'COMPANY_TYPE' | translate }}" [flexGrow]="1" maxWidth="150">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <span translate>{{ row?.type | uppercase }}</span>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="{{ 'COUNTRY' | translate }}" [flexGrow]="1" maxWidth="150">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row?.country_name }}
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="{{ 'STATUS' | translate }}" [flexGrow]="1" maxWidth="200">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <div class="status-button {{ row?.status }}">
+                <span translate>{{ row?.status | uppercase }}</span>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column
+              name="{{ 'ACTIONS' | translate }}"
+              [flexGrow]="1"
+              width="600">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <a color="primary" class="mr-1 text-underline edit-btn" (click)="showEditCompanyForm(row)">
+                <span translate>EDIT</span>
+              </a>
+              <a color="warn" class="mr-1 text-underline update-status">
+                <span
+                    translate
+                    (click)="suspendMultipleStatuses([row], false)"
+                    *ngIf="row.status == 'active'">SUSPEND</span>
+                <span
+                    translate
+                    (click)="activateMultipleStatuses([row], false)"
+                    *ngIf="row.status == 'suspended' || row.status == 'pending'"
+                    class="reactivate">REACTIVATE</span>
+              </a>
+              <a color="warn" class="mr-1 text-underline send-password-btn" (click)="sendResetPassword(row)">
+                <span translate>RESTORE_PASSWORD</span>
+              </a>
+              <a color="warn" class="mr-1 text-underline delete-btn" (click)="deleteItems([row])">
+                <span translate>DELETE</span>
+              </a>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

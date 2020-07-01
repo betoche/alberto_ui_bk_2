@@ -1,0 +1,98 @@
+<div fxLayout="row wrap" fxLayoutAlign="end flex-end" class="mt-12">
+  <mat-icon class="text-grey-B000 close-icon" matSuffix>highlight_off</mat-icon>
+  <a class="mat-color-primary text-underline pl-4" (click)="dialogRef.close(false)">{{ 'CLOSE' | translate }}</a>
+</div>
+
+<div fxLayout="row wrap" class="clearfix">
+  <div fxFlex="grow" class="page-description pd-bt-40 border-bt-solid-4">
+    <h1 class="header-section">Agregar nuevos productos</h1>
+    <h2 class="sub-header-section" translate="">MEDICATION_POPUP_FORM_SUBTITLE</h2>
+  </div>
+
+  <!-- Left Side content -->
+  <div class="pd-tp-40">
+    <div fxFlex="45" fxLayoutAlign="start">
+      <form class="upload-csv-form"
+      [formGroup]="formUploadCsv"
+      (ngSubmit)="submit()">
+        <div fxLayout="row wrap" fxLayout.lt-sm="column">
+          <div class="page-description mb-24" fxFlex="100">
+            {{ 'IMPORT_MEDICATIONS_FROM_CSV' | translate }}
+          </div>
+
+          <div fxFlex="100">
+            <a class="text-underline" translate>EXAMPLE_CSV_FILE</a>
+          </div>
+
+          <div fxFlex="100" class="mt-1">
+            <label>{{'MEDICATIONS_CEV_LABEL' | translate}} *</label>
+            <app-upload-file
+              name="csv_file_url"
+              [control]="formUploadCsv.controls.csv_file_url"
+              [inputId]="'csv-file-url'"
+              acceptType=".csv"
+              placeholder="Seleccione un archivo"
+            >
+            </app-upload-file>
+          </div>
+
+          <div fxFlex="100" class="mt-1 mb-50">
+            <div fxLayout="row wrap" fxLayoutAlign="center center">
+              <button mat-flat-button class="tot-default-submit-btn" color="primary">
+                {{ 'VALIDATE' | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10"><div class="column-gap"></div></div>
+    <!-- Right side content -->
+    <div fxFlex="45" fxLayoutAlign="start center">
+      <form class="medication-form" [formGroup]="form">
+
+        <div class="page-description mb-24">
+          {{ 'ADD_NEW_MEDICATION' | translate }}
+        </div>
+
+        <mat-label>Farmacéutica *</mat-label>
+        <mat-form-field appearance="outline" class="mat-form-filled full-width mb-24">
+          <mat-select formControlName="pharmaceutical_company_id" name="pharmaceutical_company_id">
+            <mat-option *ngFor="let pharmaceuticalCompany of pharmaceuticalCompanies" [value]="pharmaceuticalCompany.id">
+              {{ pharmaceuticalCompany.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-label>{{'PRODUCT_NAME' | translate}} *</mat-label>
+        <mat-form-field appearance="outline" class="mat-form-filled full-width mb-24">
+          <input
+            matInput
+            formControlName="name"
+            name="name"
+            placeholder="{{ 'PRODUCT_NAME' | translate }}"
+          />
+        </mat-form-field>
+
+        <mat-label>Categoría *</mat-label>
+        <mat-form-field appearance="outline" class="mat-form-filled full-width mb-24">
+          <mat-select formControlName="medication_category_id" name="medication_category_id">
+            <mat-option *ngFor="let medicationCategory of medicationCategories" [value]="medicationCategory.id">
+              {{ medicationCategory.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-20 mb-50">
+          <button mat-flat-button class="tot-default-submit-btn" color="primary" (click)="continue()">
+            {{ 'CONTINUE' | translate }}
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>

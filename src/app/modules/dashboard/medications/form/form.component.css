@@ -1,0 +1,170 @@
+:host ::ng-deep .mat-form-field-disabled .mat-form-field-outline {
+  background: #f0f0f0;
+}
+
+:host ::ng-deep .mat-form-field-disabled input {
+  color: #b0b0b0;
+}
+
+:host ::ng-deep .mat-checkbox-checked .mat-checkbox-frame {
+  background-color: rgba(0, 0, 0, 0.54);
+}
+
+:host :host {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+:host .signin-section {
+  padding: 50px;
+}
+
+:host .signin-section .signin-form {
+  padding-left: 35px;
+}
+
+:host .header-section {
+  font-size: 40px;
+  line-height: 51px;
+}
+
+:host .page-description {
+  font-family: sans-serif;
+  font-size: 20px;
+  line-height: 25px;
+  color: #4b4f5a;
+}
+
+:host mat-label {
+  font-family: sans-serif;
+  line-height: 20px;
+  color: #000009;
+}
+
+:host .mat-flat-button {
+  border-radius: 2px;
+  padding: 4px 30px;
+}
+
+:host .mat-flat-button[disabled] {
+  background: #c7c7c7;
+}
+
+:host .mat-flat-button.mat-secondary {
+  background: #e5e5e5;
+  color: #4b4f5a;
+}
+
+:host .mat-flat-button.mat-primary {
+  background: #4b4f5a;
+  color: white;
+}
+
+:host form a {
+  text-decoration: underline;
+}
+
+:host .form-input-wrap {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  color: #4b4f5a;
+}
+
+:host .mat-form-field-wrapper:last-child {
+  padding-bottom: 0;
+}
+
+:host .egret-navy .mat-button {
+  background: #e5e5e5;
+  border-radius: 0;
+}
+
+:host mat-form-field .mat-form-field-wrapper {
+  background-color: #c7c7c7;
+}
+
+:host .column-gap {
+  border: 1px solid #000000;
+  width: 1px;
+  height: 70%;
+}
+
+.header-profile {
+  font-size: 20px;
+  text-align: center;
+  color: #4b4f5a;
+}
+
+.section-1 {
+  font-size: 20px;
+  line-height: 25px;
+  color: #4b4f5a;
+}
+
+.section-1 .circle-number {
+  border: 2px solid #4b4f5a;
+  border-radius: 50%;
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
+.mat-stroked-button {
+  background: #4b4f5a;
+  border-radius: 2px;
+  font-family: sans-serif;
+  padding: 5px 36px;
+}
+
+.mat-stroked-button.mat-primary {
+  color: white !important;
+  font-size: 16px;
+}
+
+.mat-stroked-button[disabled] {
+  background: #c7c7c7;
+}
+
+.app-admin-container.navigation-top .rightside-content-hold {
+  padding-left: 15% !important;
+  padding-right: 15% !important;
+}
+
+.btn-add-first-item {
+  font-size: 16px;
+  line-height: 17px;
+  text-align: center;
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  color: #4B4F5A;
+}
+
+.icon-add-item {
+  vertical-align: bottom;
+  margin-right: 15px;
+}
+
+.text-add-item {
+  text-decoration: underline;
+}
+
+.medication-prices-table {
+  width: 100%;
+  margin-top: 20px;
+  border-spacing: 0;
+  border-collapse: collapse;
+  /* here is the devil */
+}
+
+.medication-prices-table thead th {
+  padding-bottom: 10px;
+}
+
+.medication-prices-table th, .medication-prices-table td {
+  text-align: left !important;
+  padding: 5px;
+  font-size: 16px;
+  line-height: 17px;
+  color: #4B4F5A;
+}
+/*# sourceMappingURL=form.component.css.map */

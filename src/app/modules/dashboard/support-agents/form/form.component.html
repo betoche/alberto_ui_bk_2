@@ -1,0 +1,40 @@
+<h1 class="pl-1 margin-bottom-15">
+  {{ (isNew ? 'ADD' : 'MODIFY') | translate }}
+</h1>
+
+<div class="pl-1">
+  <div class="alert alert-danger" *ngIf="!!errorsMessages">
+    {{ errorsMessages }}
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+      <div fxFlex="100" class="pr-1">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label translate>EMAIL</mat-label>
+          <input matInput formControlName="email" type="email" name="email" placeholder="{{ 'EMAIL' | translate }}" />
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="100" class="pr-1">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label translate>NAME</mat-label>
+          <input matInput formControlName="name" type="text" name="name" placeholder="{{ 'NAME' | translate }}" />
+        </mat-form-field>
+      </div>
+
+      <!-- ############################## -->
+      <div fxFlex="10" class="mt-1 mr-1">
+        <button mat-button color="warn" type="button" (click)="buildItemForm(user)">
+          {{ 'RESET' | translate }}
+        </button>
+      </div>
+
+      <div fxFlex="10" class="mt-1 mr-1">
+        <button mat-raised-button color="primary" [disabled]="form.invalid" id="submit-btn">
+          {{ 'SAVE' | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

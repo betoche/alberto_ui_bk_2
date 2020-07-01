@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "button-loading.component.scss"
+    ],
+    "names": [],
+    "file": "button-loading.component.css"
+}

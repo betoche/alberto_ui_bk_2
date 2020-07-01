@@ -1,0 +1,90 @@
+<div class="roles-and-permission" translate>ROLES_AND_PERMISSION</div>
+<div class="sub-description" translate>MANAGE_ROLES_AND_PERMISSION</div>
+
+<div class="filter-group mt-36 mb-36">
+  <span class="filter-item" [class.active]="role === ''" (click)="setRole('')" translate>ALL</span>
+
+  <span
+    *ngFor="let type of administratorRoleList"
+    class="filter-item"
+    [class.active]="role === type.value"
+    (click)="setRole(type.value)"
+    translate
+    >{{ type.label }}</span
+  >
+</div>
+
+<div class="m-333 clearfix">
+  <mat-form-field class="width-500px mat-search" appearance="outline">
+    <input
+      matInput
+      type="search"
+      name="keyword"
+      placeholder="{{ 'SEARCH_WITH_EMAIL_OR_NAME' | translate }}"
+      class="mdc-text-field--no-label"
+      (keyup)="searchUser($event.target.value)"
+    />
+    <mat-icon class="text-grey-B000" matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <button mat-raised-button class="float-right add-new ml-05 mb-05" id="add-new" (click)="openPopUp({}, true)">
+    + {{ 'ADD' | translate }} {{ 'USER' | translate | lowercase }}
+  </button>
+</div>
+
+<mat-card class="p-0" [@animate]="{ value: '*', params: { y: '50px', delay: '300ms' } }">
+  <mat-card-content class="p-0">
+    <ngx-datatable
+      class="material ml-0 mr-0"
+      [rows]="rows"
+      [columnMode]="'force'"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [scrollbarH]="true"
+      [limit]="25"
+      [rowHeight]="50"
+      [messages]="datatableMessages"
+    >
+      <ngx-datatable-column sort-active name="{{ 'USER' | translate | titlecase }}" [flexGrow]="1" width="150">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{ row?.name }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="{{ 'EMAIL' | translate }}" [flexGrow]="1" width="350">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{ row?.email }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="{{ 'LAST_SESSION' | translate }}" [flexGrow]="1" width="150">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{ row?.current_sign_in_at | date: 'dd/MM/yyyy' }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column sort-active name="{{ 'ROLE' | translate }}" [flexGrow]="1" width="150">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <span translate>{{ row?.role | uppercase }}</span>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="{{ 'ACTIONS' | translate }}" [flexGrow]="1" width="600">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <a color="primary" class="mr-1 text-underline edit-btn" (click)="openPopUp(row)">
+            <span translate>EDIT</span>
+          </a>
+          <a color="warn" class="mr-1 text-underline">
+            <span translate>RESTORE_PASSWORD</span>
+          </a>
+          <a color="warn" class="mr-1 text-underline">
+            <span translate>MODIFY_PERMISSION</span>
+          </a>
+          <a color="warn" class="mr-1 text-underline delete-btn" (click)="deleteItem(row)">
+            <span translate>DELETE</span>
+          </a>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,47 @@
+:host .mat-card {
+  position: relative;
+  overflow: initial;
+  padding: 40px 90px;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+:host .mat-card .flash-icon {
+  padding: 7px 32px 0px 32px;
+  position: absolute;
+  margin-left: -20px;
+  left: 0;
+  top: 50%;
+  margin-top: -25px;
+}
+
+:host .mat-card .flash-icon .mat-icon {
+  font-size: 36px;
+  width: 36px;
+  height: 36px;
+}
+
+:host .mat-card.flash-danger {
+  background: #e94948;
+  border-radius: 2px;
+  position: relative;
+  color: white;
+}
+
+:host .mat-card.flash-danger .flash-icon {
+  background: #b00020;
+  color: white;
+}
+
+:host .mat-card.flash-success {
+  background: #63ff4c;
+  border-radius: 2px;
+  position: relative;
+  color: #000009;
+}
+
+:host .mat-card.flash-success .flash-icon {
+  background: #00cd00;
+  color: white;
+}
+/*# sourceMappingURL=flash-messsage.component.css.map */

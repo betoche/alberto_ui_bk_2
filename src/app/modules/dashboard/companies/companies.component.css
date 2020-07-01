@@ -1,0 +1,69 @@
+#add-new {
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+  background: #4b4f5a;
+  padding: 3px 22px;
+  border-radius: 0px;
+}
+
+.disabled-button {
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+  padding: 3px 22px;
+  border-radius: 0px;
+}
+
+mat-card {
+  background: #ffffff;
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15) !important;
+          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 2px;
+  overflow: initial;
+}
+
+.status-button {
+  background: #e5e5e5;
+  text-align: center;
+  cursor: pointer;
+}
+
+.status-button.active {
+  background: #e6faff;
+}
+
+.mat-card {
+  font-family: sans-serif;
+}
+
+.roles-and-permission {
+  font-size: 40px;
+  line-height: 51px;
+  color: #000009;
+}
+
+.sub-description {
+  font-size: 20px;
+  line-height: 25px;
+  padding-top: 12px;
+  color: #4b4f5a;
+}
+
+.role-filter {
+  font-size: 20px;
+  line-height: 25px;
+  color: #4b4f5a;
+  margin-right: 40px;
+  cursor: pointer;
+}
+
+.role-filter.active {
+  border-bottom: 3px solid #c4c4c4;
+}
+
+.filter-roles {
+  margin-top: 36px;
+  margin-bottom: 36px;
+}
+/*# sourceMappingURL=companies.component.css.map */

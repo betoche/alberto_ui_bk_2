@@ -1,0 +1,167 @@
+/* You can add global styles to this file, and also import other style files */
+
+.alert {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-primary {
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+
+.alert-secondary {
+  color: #383d41;
+  background-color: #e2e3e5;
+  border-color: #d6d8db;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.alert-info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+.alert-light {
+  color: #818182;
+  background-color: #fefefe;
+  border-color: #fdfdfe;
+}
+
+.alert-dark {
+  color: #1b1e21;
+  background-color: #d6d8d9;
+  border-color: #c6c8ca;
+}
+
+.content-container {
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  border-bottom: 4px solid #00CD00;
+  padding: 40px;
+  margin-bottom: 80px;
+
+  .page-title {
+    border-bottom: 1px solid rgba(0, 205, 0, 0.5);
+
+    h1 {
+      font-weight: bold;
+      font-size: 40px;
+    }
+
+    p {
+      font-weight: normal;
+      font-size: 18px;
+    }
+  }
+
+  .page-body {
+    padding-top: 40px
+  }
+
+  .form-wrapper {
+    .mat-form-field-infix {
+      border-top: 0;
+    }
+
+    .form-body {
+      padding: 20px 80px;
+      .form-group {
+        margin-bottom: 15px;
+      }
+    }
+
+    .checkbox-style {
+      .mat-radio-outer-circle {
+        border-radius: 2px;
+      }
+
+      .mat-radio-button.mat-accent.mat-radio-checked {
+        .mat-radio-outer-circle {
+          background-color: #666666;
+          border-color: #666666;
+        }
+
+        .mat-radio-inner-circle {
+          border-radius: unset;
+          background-color: unset;
+          -ms-transform: rotate(45deg); /* IE 9 */
+          -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+          transform: rotate(45deg);
+        }
+
+        .mat-radio-inner-circle:before {
+          content: '';
+          position: absolute;
+          width: 3px;
+          height: 12px;
+          background-color: #fff;
+          left: 11px;
+          top: 3px;
+        }
+
+        .mat-radio-inner-circle:after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 3px;
+          background-color: #fff;
+          left: 6px;
+          top: 12px;
+        }
+      }
+    }
+  }
+}
+
+.egret-navy {
+  .mat-radio-outer-circle {
+    border-color: #00CD00;
+  }
+
+  .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle, {
+    border-color: #00CD00;
+  }
+
+  .mat-radio-button.mat-accent .mat-radio-inner-circle,
+  .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
+  .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+  .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+    background-color: #00CD00;
+  }
+}
+
+.align-self-center {
+  align-self: center !important;
+}
+
+.input-file-box .file-box {
+  border: 1px dashed #00CD00 !important;
+}
+
+.app-admin-container {
+  background-color: #ffffff !important;
+}

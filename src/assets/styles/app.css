@@ -1,0 +1,156 @@
+.top-message-form {
+  margin-bottom: 15px;
+}
+
+.form-info-msg {
+  color: #1100ff;
+}
+
+.icon-menu.mb-1.ng-star-inserted {
+  text-align: center;
+}
+
+.text-right-important {
+  text-align: right !important;
+}
+
+.xs-column {
+  width: 45px !important;
+}
+
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}
+
+.display-none {
+  display: none !important;
+}
+
+.half-width {
+  width: 50% !important;
+}
+
+.pd-bt-40 {
+  padding-bottom: 40px !important;
+}
+
+.pd-tp-40 {
+  padding-top: 40px !important;
+}
+
+.border-bt-normal {
+  border-bottom: 1px solid #00CD00;
+}
+
+.border-bt-solid-4 {
+  border-bottom: 4px solid #00CD00;
+}
+
+.tot-default-submit-btn {
+  font-style: normal;
+  font-size: 18px !important;
+  line-height: 22px !important;
+  text-align: center !important;
+  color: #232731 !important;
+  background: linear-gradient(282.9deg, #00CD00 40.4%, #7AF003 96.06%) !important;
+  border-radius: 2px;
+  font-weight: normal !important;
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25) !important;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25) !important;
+  min-width: 170px !important;
+  padding: 18px 35px !important;
+}
+
+.tot-default-submit-btn.outline-btn {
+  color: rgba(35, 39, 49, 0.8) !important;
+  background: #FFFFFF !important;
+  border: 1px solid #4B4F5A !important;
+  -webkit-box-sizing: border-box !important;
+          box-sizing: border-box !important;
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25) !important;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25) !important;
+}
+
+.page-component-container .page-title {
+  color: #232731;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.page-component-container .page-subtitle {
+  font-size: 32px;
+  color: #232731;
+}
+
+.page-component-container .form-label {
+  font-size: 16px;
+  color: #232731;
+}
+
+.page-component-container .form-label.disabled-label {
+  color: #B0B0B0;
+}
+
+.page-component-container .form-group {
+  padding: 10px 0;
+}
+
+.page-component-container .average-dosage .select-number {
+  max-width: 100%;
+  position: relative;
+  bottom: -4px;
+  margin: 0 auto;
+  width: 80px;
+}
+
+.page-component-container .average-dosage .select-number .mat-form-field-infix {
+  text-align: center;
+}
+
+.page-component-container .average-dosage .select-number input.mat-input-element {
+  font-size: 18px;
+  font-weight: bold;
+  color: #232731;
+}
+
+.page-component-container .table-with-input .mat-form-field.mat-form-field-appearance-outline .mat-form-field-outline .mat-form-field-outline-start {
+  border-left: 1px solid #232731;
+  border-top: 1px solid #232731;
+  border-bottom: 1px solid #232731;
+}
+
+.page-component-container .table-with-input .mat-form-field.mat-form-field-appearance-outline .mat-form-field-outline .mat-form-field-outline-end {
+  border-right: 1px solid #232731;
+  border-top: 1px solid #232731;
+  border-bottom: 1px solid #232731;
+}
+
+.page-component-container .table-with-input .border-style {
+  border-bottom: 1px solid rgba(75, 79, 49, 0.5);
+}
+
+.page-component-container .checkbox-selecting .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #00CD00;
+}
+
+.page-component-container .checkbox-selecting .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
+.page-component-container .checkbox-selecting .egret-navy .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+  background: #00CD00;
+}
+
+.page-component-container .checkbox-form-box {
+  padding: 8px;
+  margin: 0;
+}
+
+.page-component-container .btn-actions {
+  padding: 30px 0;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*# sourceMappingURL=app.css.map */

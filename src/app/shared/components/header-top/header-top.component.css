@@ -1,0 +1,65 @@
+:host .topbar-button-right {
+  padding-right: 1rem;
+  margin: 1.5rem 0.5rem !important;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+:host .topbar-button-right:not(:last-child) {
+  border-right: 1px solid #c7c7c7;
+}
+
+:host .topbar-button-right {
+  margin: 0 0.5rem !important;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+:host .subtopbar-button-right {
+  margin: 0 0.5rem !important;
+  font-size: 20px;
+  cursor: pointer;
+  color: #4b4f5a;
+}
+
+:host .subtopbar-branding {
+  font-size: 20px;
+  cursor: pointer;
+  color: #000000;
+}
+
+:host .subtopbar-icon-right {
+  padding-top: 10px;
+  cursor: pointer;
+  color: #4b4f5a;
+  vertical-align: sub;
+}
+
+:host .subheader-topnav {
+  font-size: 20px;
+  background: #c7c7c7;
+}
+
+:host .subheader-topnav .mat-menu-item {
+  font-size: 20px !important;
+  color: #4b4f5a;
+}
+
+:host .subheader-topnav .topnav ul.menu > li a {
+  border-bottom: 0px;
+}
+
+:host .subheader-topnav .topnav ul.menu > li div.open {
+  border-bottom: 6px solid #4b4f5a;
+  height: 42px;
+}
+
+:host .subheader-topnav .topnav a .mat-icon {
+  font-size: 24px;
+  margin-right: 8px;
+}
+
+:host .ml-8 {
+  margin-left: 8px;
+}
+/*# sourceMappingURL=header-top.component.css.map */
