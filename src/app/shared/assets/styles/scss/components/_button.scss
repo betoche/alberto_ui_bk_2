@@ -29,18 +29,18 @@
 }
 
 .mat-flat-button {
-  font-family: sans-serif;
-  font-size: 16px;
-  font-weight: 500;
+  @include font-lato;
+  font-size: $font-size-md;
 
   &.mat-primary {
-    color: white;
     border-radius: 2px;
-    padding: 4px 30px;
-    background: $primary;
+    padding: 15px 26px;
+    @include degrade-primary;
 
     &[disabled] {
-      background: #c7c7c7;
+      color: $disabled-button-color;
+      background-image: none;
+      background-color: $disabled-button-background;
     }
   }
 
@@ -54,12 +54,22 @@
 
 .mat-raised-button {
   &.add-new {
-    font-size: 16px;
+    font-size: $font-size-sm;
     text-align: center;
-    color: #ffffff;
+    color: white;
     background: $primary;
     padding: 3px 22px;
     border-radius: 0px;
+  }
+}
+
+.btn-no-bg.mat-button,
+.mat-raised-button{
+  @include font-lato;
+  font-size: $font-size-md;
+  .mat-button-wrapper{
+    display: block;
+    padding: 12px 10px;
   }
 }
 

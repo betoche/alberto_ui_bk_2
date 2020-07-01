@@ -1,76 +1,71 @@
-<div [perfectScrollbar]="{}" class="height-100vh signup4-wrap" fxLayout="row wrap" fxLayoutAlign="center center">
+<div [perfectScrollbar]="{}" class="height-100" fxLayout="row wrap" fxLayoutAlign="center center">
   <div
-    class="signup4-container mat-elevation-z4 white"
+    class="height-100"
     fxLayout="row wrap"
-    fxLayout.xs="column"
     fxLayoutAlign="start stretch"
-    fxFlex.gt-md="60"
-    fxFlex.lg="80"
-    fxFlex.gt-sm="80"
-    fxFlex.gt-xs="90"
-    [@animate]="{ value: '*', params: { y: '40px', opacity: '0', delay: '100ms', duration: '400ms' } }"
+    fxFlex="100"
   >
     <!-- Left Side content -->
-    <div fxLayout="column" fxLayoutAlign="center center" class="signup4-header grey-100" fxFlex="50">
-      <div class="" fxLayout="row wrap" fxLayoutAlign="center center">
-        <img width="200px" src="assets/images/illustrations/lighthouse.svg" alt="" />
-      </div>
+    <div class="login-background">
     </div>
 
     <!-- Right side content -->
-    <div fxFlex="50" fxLayout="row wrap" fxLayoutAlign="start center" class="signin-section">
-      <div fxLayout="row wrap" fxLayoutAlign="end flex-start" class="mt-12">
-        <a class="mat-color-primary text-underline" translate>LEARN_MORE_TOT</a>
+    <div class="login-form">
+      <div class="top-links">
+        <a class="text-underline " translate>LEARN_MORE_TOT</a>
       </div>
-      <div fxLayout="column wrap" class="mt-48">
-        <div class="page-description">
-          <img src="assets/images/logo.svg" alt="" />
+      <div class="login-form-container">
+        <div>
+          <img src="assets/images/logo-tot.svg" alt="logo-tot" class="logo-tot"/>
         </div>
-        <div class="page-description mt-70">
-          <h1 class="header-section" translate>SIGN_IN_PAGE</h1>
+        <div class="row-container">
+          <h1 class="login-header" translate>SIGN_IN_PAGE</h1>
         </div>
-        <div class="page-description mt-24 mb-24">
-          {{ 'SIGN_IN_DESC' | translate }}
+        <div class="row-container">
+          <p class="login-description">
+            {{ 'SIGN_IN_DESC' | translate }}
+          </p>
         </div>
+        <form [formGroup]="signinForm" class="login-form-content white-form" (ngSubmit)="onSubmit()">
+          <div *ngIf="!!responseErrorMessage" class="form-error-msg top-message-form">
+            <small>{{ responseErrorMessage }}</small>
+          </div>
+  
+          <mat-label translate>EMAIL</mat-label>
+          <mat-form-field class="full-width" appearance="outline">
+            <input matInput formControlName="email" type="email" name="email" placeholder="Ingrese un correo electrónico"/>
+            <mat-icon *ngIf="signinForm.get('email').errors?.serverError" class="text-grey-B000" matSuffix>info</mat-icon>
+            <mat-error class="form-mat-error" *ngIf="signinForm.get('email').errors?.serverError">
+              {{ signinForm.get('email').errors?.serverError }}
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-label translate>PASSWORD</mat-label>
+          <app-password-input
+            name="password"
+            [objectField]="signinForm.get('password')"
+            placeholder="Asigne una contraseña"
+          ></app-password-input>
+  
+          <div class="forgot-password">
+            <a (click)="openForgotPasswordPopUp()">
+              {{ 'FORGOT_PASSWORD' | translate }}
+            </a>
+          </div>
+  
+          <div class="remember-password">
+            <mat-checkbox value="true">
+              {{ 'REMEMBER_PASSWORD' | translate }}
+            </mat-checkbox>
+          </div>
+  
+          <div class="button-bottom">
+            <button mat-flat-button color="primary" [disabled]="signinForm.invalid" id="submit">
+              {{ 'SIGN_IN' | translate }}
+            </button>
+          </div>
+        </form>
       </div>
-      <form [formGroup]="signinForm" class="signin-form" (ngSubmit)="onSubmit()">
-        <div *ngIf="!!responseErrorMessage" class="form-error-msg top-message-form">
-          <small>{{ responseErrorMessage }}</small>
-        </div>
-
-        <mat-label translate>EMAIL</mat-label>
-        <mat-form-field class="full-width" appearance="outline">
-          <input matInput formControlName="email" type="email" name="email" />
-          <mat-icon *ngIf="signinForm.get('email').errors?.serverError" class="text-grey-B000" matSuffix>info</mat-icon>
-          <mat-error class="form-mat-error" *ngIf="signinForm.get('email').errors?.serverError">
-            {{ signinForm.get('email').errors?.serverError }}
-          </mat-error>
-        </mat-form-field>
-
-        <mat-label translate>PASSWORD</mat-label>
-        <app-password-input
-          name="password"
-          [objectField]="signinForm.get('password')"
-        ></app-password-input>
-
-        <div fxLayout="row wrap" fxLayoutAlign="end flex-end">
-          <a class="mat-color-primary text-underline pl-5" (click)="openForgotPasswordPopUp()">
-            {{ 'FORGOT_PASSWORD' | translate }}
-          </a>
-        </div>
-
-        <div class="form-input-wrap">
-          <mat-checkbox value="true">
-            {{ 'REMEMBER_PASSWORD' | translate }}
-          </mat-checkbox>
-        </div>
-
-        <div fxLayout="row wrap" fxLayoutAlign="end center" class="mt-40p mb-50">
-          <button mat-flat-button color="primary" [disabled]="signinForm.invalid" id="submit">
-            {{ 'SIGN_IN' | translate }}
-          </button>
-        </div>
-      </form>
     </div>
   </div>
 </div>

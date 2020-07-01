@@ -1,11 +1,16 @@
 /*
- *
+ * Custom definitions
+ */
+
+@import 'tot/definitions';
+
+
+/*
  *   EGRET - Angular Material Design Admin Template
- *
- *
 */
 
-// // Third pirty style files
+// // Third party style files
+
 // // Sidebar Scroll
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
 // // Flag icon
@@ -35,7 +40,8 @@
 // // @import '~highlight.js/styles/github.css';
 @import '~highlight.js/styles/github-gist.css';
 
-// Main Variables File
+// // Egret style files
+
 @import 'scss/variables';
 
 @import 'scss/mixins/mixins';
@@ -58,4 +64,16 @@
 // Open _views.scss and remove unnecessary view related files
 @import 'scss/views/views';
 
-@import 'custom';
+
+/*
+ *   Custom styles for Tot Project
+*/
+
+// Base styles
+@import 'tot/styles';
+
+// Specific components
+@import 'tot/buttons';
+@import 'tot/forms';
+@import 'tot/navigation';
+@import 'tot/tables';

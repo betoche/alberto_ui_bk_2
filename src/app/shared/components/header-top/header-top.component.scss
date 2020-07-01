@@ -1,50 +1,45 @@
+@import '../../assets/styles/tot/definitions';
+
 :host {
+
+  // Main Top Bar
+
+  .topbar-branding {
+    padding-top: 14px;
+    img {
+      max-height: 40px;
+    }
+  }
+
   .topbar-button-right {
     padding-right: 1rem;
-    margin: 1.5rem 0.5rem !important;
-    font-size: 20px;
-    cursor: pointer;
-    &:not(:last-child) {
-      border-right: 1px solid #c7c7c7;
-    }
-  }
-
-  .topbar-button-right {
     margin: 0 0.5rem !important;
-    font-size: 20px;
+    font-size: $topbar-font-size;
+    font-weight: $topbar-links-font-weight;
     cursor: pointer;
-  }
-  .subtopbar-button-right {
-    margin: 0 0.5rem !important;
-    font-size: 20px;
-    cursor: pointer;
-    color: #4b4f5a;
   }
 
-  .subtopbar-branding {
-    font-size: 20px;
-    cursor: pointer;
-    color: #000000;
-  }
+  .secondary-topnav {
+    font-size: $topbar-font-size;
+    background: $secondary-topbar-background-color;
 
-  .subtopbar-icon-right {
-    padding-top: 10px;
-    cursor: pointer;
-    color: #4b4f5a;
-    vertical-align: sub;
-  }
-
-  .subheader-topnav {
-    font-size: 20px;
-    background: #c7c7c7;
     .mat-menu-item {
-      font-size: 20px !important;
-      color: #4b4f5a;
+      font-size: $topbar-font-size !important;
+      font-weight: $topbar-links-font-weight;
+      color: $secondary-topbar-font-color;
+
+      &:last-child {
+        padding-right: 0px;
+      }
+
+      mat-icon {
+        color: $secondary-topbar-icons-color;
+      }
     }
+
     .topnav {
       ul.menu > li {
         &:not(:last-child) div {
-          // border-right: 1px solid #000000;
         }
         a {
           border-bottom: 0px;
@@ -63,7 +58,24 @@
     }
   }
 
-  .ml-8 {
-    margin-left: 8px;
+  // Secondary Top Bar
+
+  .secondary-topbar-button-right {
+    margin: 0 0.5rem !important;
+    font-size: $topbar-font-size;
+    cursor: pointer;
+    color: #4b4f5a;
+  }
+
+  .secondary-topbar-branding {
+    font-size: $topbar-font-size;
+    color: $secondary-topbar-font-color;
+  }
+
+  .secondary-topbar-icon-right {
+    padding-top: 10px;
+    cursor: pointer;
+    color: #4b4f5a;
+    vertical-align: sub;
   }
 }

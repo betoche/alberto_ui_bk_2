@@ -17,8 +17,8 @@ export class HeaderTopComponent extends ApplicationBaseComponent implements OnIn
   layoutConf: any;
   menuItems: any;
   menuItemSub: Subscription;
-  topMenuItems: any;
-  topMenuItemSub: Subscription;
+  topbarLinks: any;
+  topbarLinksub: Subscription;
 
   egretThemes: any[] = [];
   currentLang = 'es';
@@ -54,14 +54,14 @@ export class HeaderTopComponent extends ApplicationBaseComponent implements OnIn
       this.menuItems = mainItems;
     });
 
-    this.topMenuItemSub = this.navService.menuItems$.subscribe((res) => {
-      res = res.filter((item) => item.type === 'top-menu');
-      this.topMenuItems = res;
+    this.topbarLinksub = this.navService.menuItems$.subscribe((res) => {
+      res = res.filter((item) => item.type === 'topbar-links');
+      this.topbarLinks = res;
     });
   }
   ngOnDestroy() {
     this.menuItemSub.unsubscribe();
-    this.topMenuItemSub.unsubscribe();
+    this.topbarLinksub.unsubscribe();
   }
   signOut() {
     UserSession.removeCurrentUser();
