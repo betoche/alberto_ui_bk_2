@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,oBAAoB,CAAC;EACnB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,IAAI;EAEjB,KAAK,EAAE,OAAO;CAOf;;AAXD,AAKE,oBALkB,CAKlB,cAAc,CAAC;EACb,MAAM,EAAE,iBAAiB;EACzB,aAAa,EAAE,GAAG;EAClB,OAAO,EAAE,QAAQ;EACjB,YAAY,EAAE,IAAI;CACnB",
-    "sources": [
-        "drugstore-form.component.scss"
-    ],
-    "names": [],
-    "file": "drugstore-form.component.css"
-}

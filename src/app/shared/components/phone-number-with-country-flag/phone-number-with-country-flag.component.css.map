@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "phone-number-with-country-flag.component.scss"
-    ],
-    "names": [],
-    "file": "phone-number-with-country-flag.component.css"
-}
