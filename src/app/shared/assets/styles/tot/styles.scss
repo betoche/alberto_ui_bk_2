@@ -214,7 +214,7 @@ app-flash-messsage{
   // container
   position: relative;
   padding: 20px !important;
-  margin: 0 auto $row-card-margin-bottom;
+  margin: 0 auto 32px;
   @include radius-box-card;
   &:last-child{
     margin-bottom: 0;
@@ -254,13 +254,13 @@ app-flash-messsage{
     margin-bottom: 32px;
   }
   .row-card{
-    margin-bottom: $row-card-margin-bottom;
+    margin-bottom: 32px;
     &:last-child{
       margin-bottom: 0;
     }
     @include md{
-      width: 80%;
-      margin: 0 auto;
+      width: 85%;
+      margin: 0 auto $row-card-margin-bottom auto;
     }
   }
 }
