@@ -57,3 +57,55 @@
     }
   }
 }
+
+// page limit
+.pagelimit-container{
+  font-size: $font-size-xs;
+  color: $body-text-color;
+  font-weight: 300;
+  text-align: right;
+  padding: 15px 0;
+  border-top: 1px solid $primary-color;
+  border-bottom: 1px solid $primary-color;
+  datatable-page-limit{
+    position: relative;
+    z-index: 2;
+  }
+  // label
+  mat-label{
+    font-size: $font-size-xs;
+    color: $body-text-color;
+    font-weight: 300;
+    display: inline-block;
+    vertical-align: middle
+  }
+  // select
+  .mat-form-field{
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle
+  }
+  .mat-form-field.mat-form-field-appearance-outline .mat-form-field-infix{
+    padding: 5px 0;
+  }
+  .mat-form-field-infix{
+    width: 40px;
+  }
+  // select text
+  .mat-select-value-text{
+    font-size: $font-size-xs;
+  }
+  // arrow
+  .mat-form-field-appearance-outline .mat-select-arrow-wrapper{
+    transform: none;
+  }
+  .mat-form-field-appearance-outline .mat-form-field-wrapper,
+  .mat-form-field-appearance-outline .mat-form-field-flex{
+    margin: 0
+  }
+  .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper{
+    padding: 0;
+    height: 0;
+    margin: 0;
+  }
+}

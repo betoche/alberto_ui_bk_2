@@ -1,3 +1,5 @@
+<div class="container-layout">
+  <div class="card-table">
 <div *ngIf="successful" class="mb-24">
   <app-flash-messsage
     class="width-300px"
@@ -6,7 +8,7 @@
   ></app-flash-messsage>
 </div>
 <div class="roles-and-permission" translate>ALLIES_TOT</div>
-<div class="height-100 mt-40" animationDuration="0ms">
+<div class="height-100 mt-40 row-card" animationDuration="0ms">
   <div class="filter-group mt-36 mb-36">
     <a class="filter-item" routerLink="/dashboard/companies" routerLinkActive="active" translate>
       USER_TYPES
@@ -16,7 +18,7 @@
     </a>
   </div>
 
-  <div class="m-333 clearfix">
+  <div class="m-333 clearfix row-card">
     <mat-form-field class="width-500px mat-search" appearance="outline">
       <input
         matInput
@@ -31,7 +33,7 @@
     </mat-form-field>
     <button
       mat-raised-button
-      class="float-right add-new ml-05 mb-05"
+      class="float-right add-new ml-05 mb-05  green-button"
       color="primary"
       [disabled]="selected.length > 0"
       (click)="openPopUp({}, true)"
@@ -214,5 +216,7 @@
         </ngx-datatable>
       </mat-card-content>
     </mat-card>
+  </div>
+</div>
   </div>
 </div>

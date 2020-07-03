@@ -22,49 +22,59 @@
       </div>
 
       <div class="row-card" animationDuration="0ms">
-        <mat-form-field class="width-500px mat-search" appearance="outline">
-          <input
-            matInput
-            type="search"
-            name="search"
-            placeholder="{{ 'SEARCH_BY_NAME' | translate }}"
-            class="mdc-text-field--no-label"
-            searchInput
-            [(ngModel)]="filterOptions.keyword"
-          />
-          <mat-icon class="text-grey-B000" matSuffix>search</mat-icon>
-        </mat-form-field>
-        <button
-          mat-raised-button
-          class="float-right add-new ml-05 mb-05 green-button"
-          color="primary"
-          [disabled]="selected.length > 0"
-          (click)="showNewCompanyForm()"
-        >
-          + {{ 'ADD' | translate }}
-        </button>
-        <button
-          mat-raised-button
-          class="float-right add-new ml-05 mb-05"
-          color="primary"
-          id="delete-multiple"
-          *ngIf="selected.length > 0"
-          (click)="deleteItems(selected)"
-        >
-          - {{ 'DELETE' | translate }}
-        </button>
-        <button
-          mat-raised-button
-          class="float-right add-new ml-05 mb-05"
-          color="primary"
-          *ngIf="selected.length > 0"
-          (click)="updateMultipleStatuses(selected, 'suspended')"
-        >
-          {{ 'SUSPEND' | translate }}
-        </button>
+        <div fxLayout="row wrap" >
+          <div fxFlex="auto">
+            <mat-form-field class="width-500px mat-search" appearance="outline">
+              <input
+                matInput
+                type="search"
+                name="search"
+                placeholder="{{ 'SEARCH_BY_NAME' | translate }}"
+                class="mdc-text-field--no-label"
+                searchInput
+                [(ngModel)]="filterOptions.keyword"
+              />
+              <mat-icon class="text-grey-B000" matSuffix>search</mat-icon>
+            </mat-form-field>
+          </div>
+          <div fxFlex="nogrow">
+            <button
+              mat-raised-button
+              class="float-right add-new ml-05 mb-05 green-button"
+              color="primary"
+              [disabled]="selected.length > 0"
+              (click)="showNewCompanyForm()"
+            >
+              + {{ 'ADD' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row-card">
+        <div>
+          <button
+            mat-raised-button
+            class="float-right add-new ml-05 mb-05"
+            color="primary"
+            id="delete-multiple"
+            *ngIf="selected.length > 0"
+            (click)="deleteItems(selected)"
+          >
+            - {{ 'DELETE' | translate }}
+          </button>
+          <button
+            mat-raised-button
+            class="float-right add-new ml-05 mb-05"
+            color="primary"
+            *ngIf="selected.length > 0"
+            (click)="updateMultipleStatuses(selected, 'suspended')"
+          >
+            {{ 'SUSPEND' | translate }}
+          </button>
+        </div>
 
-        <div fxLayoutGap class="mt-24">
-          <div fxFlex="20" fxLayout="column" class="mt-1 pr-1">
+        <div fxLayout="row" fxLayoutWrap fxLayoutGap="22px">
+          <div fxFlex fxLayout="column">
             <mat-label>{{ 'COMPANY_TYPE' | translate }}</mat-label>
             <mat-form-field appearance="outline">
               <mat-select [(ngModel)]="filterOptions.type">
@@ -75,7 +85,7 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div fxFlex="20" fxLayout="column" class="mt-1 pr-1">
+          <div fxFlex fxLayout="column">
             <mat-label>{{ 'COUNTRY' | translate }}</mat-label>
             <mat-form-field appearance="outline">
               <mat-select [(ngModel)]="filterOptions.country">
@@ -86,7 +96,7 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div fxFlex="20" fxLayout="column" class="mt-1 pr-1">
+          <div fxFlex fxLayout="column">
             <mat-label>{{ 'STATUS' | translate }}</mat-label>
             <mat-form-field appearance="outline">
               <mat-select [(ngModel)]="filterOptions.status">
@@ -98,8 +108,11 @@
             </mat-form-field>
           </div>
         </div>
-
-        <datatable-page-limit [(limit)]="pageLimit"></datatable-page-limit>
+      </div>
+      <div class="row-card">
+        <div class="row pagelimit-container">
+          <datatable-page-limit [(limit)]="pageLimit"></datatable-page-limit>
+        </div>
       </div>
     </div>
 
