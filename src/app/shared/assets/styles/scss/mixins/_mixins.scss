@@ -31,14 +31,6 @@ $screen-xl: 1200px;
     @content;
   }
 }
-@mixin flex-content-row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: stretch;
-}
 @mixin radius-box-card{
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -81,12 +73,20 @@ $screen-xl: 1200px;
 
 // flexbox
 @mixin flex-content {
-    display: flex;
+  display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
 	justify-content: flex-start;
 	align-items: stretch;
 	align-content: stretch;
+}
+@mixin flex-content-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
 }
 
 // animations
