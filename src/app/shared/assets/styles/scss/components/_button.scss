@@ -51,9 +51,8 @@
     color: $primary;
   }
 }
-
 .mat-raised-button {
-  &.add-new {
+  &.add-new{
     font-size: $font-size-sm;
     text-align: center;
     color: white;
@@ -62,7 +61,6 @@
     border-radius: 0px;
   }
 }
-
 .btn-no-bg.mat-button,
 .mat-raised-button{
   @include font-lato;
@@ -72,6 +70,16 @@
     padding: 12px 10px;
   }
 }
+// buttons
+.green-button,
+.add-new.green-button {
+  display: block;
+  font-size: $default-font-size;
+  @include degrade-primary;
+  color: $body-text-color;
+  padding: 22px 15px;
+  min-width: 165px !important;
+}
 
 .egret-navy {
   .mat-flat-button,
@@ -79,6 +87,10 @@
     &.mat-primary {
       background-color: $primary;
       color: white;
+    }
+    &.add-new.green-button{
+      padding: 3px 22px;
+      color: black;
     }
   }
 }
