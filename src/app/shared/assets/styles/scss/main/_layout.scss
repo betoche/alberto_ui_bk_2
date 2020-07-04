@@ -192,8 +192,10 @@
     }
   }
 }
+
+
 // Container Layout
-.container-layout{
+.base-container{
   max-width: 1156px;
   margin: 0 auto;
 }
@@ -232,6 +234,155 @@
       }
       &:last-child:after{
         content: none;
+      }
+    }
+  }
+}
+
+// box detail
+.box-detail,
+.box-detail.profile-section{
+  @include font-lato;
+  // shadow
+  -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+  // container
+  position: relative;
+  margin: 0 auto 32px;
+  padding: 20px !important;
+  @include md{
+    padding: 32px 47px !important;
+  }
+  @include radius-box-card;
+  &:last-child{
+    margin-bottom: 0;
+  }
+  // decoration
+  &:before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $primary-color;
+    height: 3px;
+    width: 100%;
+  }
+
+  // labels
+  .label-field,
+  .profile-field{
+    color: $primary;
+    font-size: $default-font-size;
+  }
+  // names
+  .label-info,
+  .profile-info{
+    color: $disabled-color;
+    font-size: $font-size-md;
+    min-height: 22px;
+  }
+  // headline section
+  .section-header{
+    font-weight: bold;
+    font-size: $font-size-lg;
+    color: $primary;
+    margin-bottom: 32px;
+  }
+  .row-detail{
+    margin-bottom: 32px;
+    &:last-child{
+      margin-bottom: 0;
+    }
+    @include md{
+      width: 85%;
+      margin: 0 auto $row-detail-margin-bottom auto;
+    }
+  }
+}
+
+
+// Card Tables Layout
+.box-detail.table-layout{  
+  padding: 0 !important;
+  // wrap
+  .table-layout-wrap {
+    padding: 32px;
+    // nav header
+    .header-container{
+      margin-bottom: 32px;
+    }
+    // rows
+    .row-detail{
+      width: 100%;
+      margin-bottom: 32px;
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
+    // headline
+    .headline{
+      font-size: 40px !important;
+    }
+    // page limit
+    .pagelimit-container{
+      text-align: center;
+      padding-bottom: 50px;
+      @include lg{
+        text-align: right;
+        padding-bottom: 15px;
+      }
+      .mat-form-field.mat-form-field-appearance-outline .mat-form-field-infix {
+        padding: 5px 0;
+      }
+    }
+    // select
+    mat-label{
+      color: $body-text-color;
+    }
+    .mat-form-field.mat-form-field-appearance-outline .mat-form-field-infix{
+      padding-top: 11px;
+      padding-bottom: 11px;
+    }
+  }
+  // data table
+  .table-container{
+    margin-top: -22px;
+    padding: 0 32px 32px;
+    .mat-card{
+      margin: 0;
+      box-shadow: none !important;
+    }
+    mat-card.mat-card{
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    // header
+    .datatable-header{
+      border-bottom: 0 !important;
+      position: relative;
+      overflow: initial !important;
+      &:before{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: -32px;
+        background-color: $primary-color;
+        height: 3px;
+        width: calc(100% + 64px);
+      }
+      .datatable-header-inner{
+        overflow: hidden;
+        width: 100% !important;
+      }
+    }
+    // pagination
+    .ngx-datatable.material .datatable-footer{
+      bottom: calc(100% + 15px);
+      top: auto;
+      margin-top: 0;
+      datatable-pager{
+        text-align: center;
       }
     }
   }

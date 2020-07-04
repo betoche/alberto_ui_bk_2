@@ -1,16 +1,16 @@
-<div class="container-layout">
-  <div class="card-table">
+<div class="base-container">
+  <div class="box-detail table-layout">
     <div class="mb-24">
       <flash-messsage-auto-hide [options]="messageOptions"></flash-messsage-auto-hide>
     </div>
-    <div class="card-table-wrap">
+    <div class="table-layout-wrap">
       <div class="header-container">
         <div class="header-nav">
           <h1 class="headline" translate>ALLIES_TOT</h1>
         </div>
       </div>
 
-      <div class="row-card">
+      <div class="row-detail" animationDuration="0ms">
         <div class="filter-group">
           <a class="filter-item" routerLink="/dashboard/companies" routerLinkActive="active" translate>
             USER_TYPES
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <div class="row-card" animationDuration="0ms">
+      <div class="row-detail" animationDuration="0ms">
         <div fxLayout="row wrap" >
           <div fxFlex="auto">
             <mat-form-field class="width-500px mat-search" appearance="outline">
@@ -47,32 +47,30 @@
             >
               + {{ 'ADD' | translate }}
             </button>
+            <button
+              mat-raised-button
+              class="float-right add-new ml-05 mb-05"
+              color="primary"
+              id="delete-multiple"
+              *ngIf="selected.length > 0"
+              (click)="deleteItems(selected)"
+            >
+              - {{ 'DELETE' | translate }}
+            </button>
+            <button
+              mat-raised-button
+              class="float-right add-new ml-05 mb-05"
+              color="primary"
+              *ngIf="selected.length > 0"
+              (click)="updateMultipleStatuses(selected, 'suspended')"
+            >
+              {{ 'SUSPEND' | translate }}
+            </button>
           </div>
         </div>
       </div>
-      <div class="row-card">
-        <div>
-          <button
-            mat-raised-button
-            class="float-right add-new ml-05 mb-05"
-            color="primary"
-            id="delete-multiple"
-            *ngIf="selected.length > 0"
-            (click)="deleteItems(selected)"
-          >
-            - {{ 'DELETE' | translate }}
-          </button>
-          <button
-            mat-raised-button
-            class="float-right add-new ml-05 mb-05"
-            color="primary"
-            *ngIf="selected.length > 0"
-            (click)="updateMultipleStatuses(selected, 'suspended')"
-          >
-            {{ 'SUSPEND' | translate }}
-          </button>
-        </div>
 
+      <div class="row-detail">
         <div fxLayout="row" fxLayoutWrap fxLayoutGap="22px">
           <div fxFlex fxLayout="column">
             <mat-label>{{ 'COMPANY_TYPE' | translate }}</mat-label>
@@ -109,7 +107,8 @@
           </div>
         </div>
       </div>
-      <div class="row-card">
+
+      <div class="row-detail">
         <div class="row pagelimit-container">
           <datatable-page-limit [(limit)]="pageLimit"></datatable-page-limit>
         </div>
@@ -133,7 +132,7 @@
               [footerHeight]="50"
               [scrollbarH]="true"
               [limit]="pageLimit"
-              [rowHeight]="50"
+              [rowHeight]="55"
               [rowClass]="getRowClass"
               [messages]="datatableMessages"
               [selected]="selected"
