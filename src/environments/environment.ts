@@ -5,7 +5,6 @@
 
 export const environment = {
   production: false,
-  //apiURL: 'http://localhost:3001/api/v1',
-  apiURL: 'https://dashboards-api.tot.glslabs.com/api/v1',
+  apiURL: 'http://localhost:3001/api/v1',
   appRole: '0',
 };

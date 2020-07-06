@@ -86,6 +86,16 @@ export class MedicationFormComponent extends Many(ApplicationBaseComponent, Form
     }
   }
 
+  public priceWithIVA(item) {
+    if (item.price.value == "" || item.iva_tax_percentage.value == "") {
+      return 0
+    } else {
+      let price = parseFloat(item.price.value)
+      let tax = parseFloat(item.iva_tax_percentage.value)
+      return price * ((tax / 100) + 1 )
+    }
+  }
+
   public getSelectedCountries() {
     return _.filter(this.allMedicationPrices, { _destroy: false })
   }

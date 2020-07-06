@@ -149,8 +149,8 @@
                   <mat-radio-group
                   name="adults_dosification_frequency"
                   formControlName="adults_dosification_frequency">
-                    <mat-radio-button value="hours" class="mr-1">{{'hours' | translate}}</mat-radio-button>
-                    <mat-radio-button value="days">{{'days' | translate}}</mat-radio-button>
+                    <mat-radio-button value="hours" class="mr-1">{{'HOURS' | translate}}</mat-radio-button>
+                    <mat-radio-button value="days">{{'DAYS' | translate}}</mat-radio-button>
                   </mat-radio-group>
                 </div>
               </div>
@@ -203,8 +203,8 @@
                   <mat-radio-group
                   name="children_dosification_frequency"
                   formControlName="children_dosification_frequency">
-                    <mat-radio-button value="hours" class="mr-1">{{'hours' | translate}}</mat-radio-button>
-                    <mat-radio-button value="days">{{'days' | translate}}</mat-radio-button>
+                    <mat-radio-button value="hours" class="mr-1">{{'HOURS' | translate}}</mat-radio-button>
+                    <mat-radio-button value="days">{{'DAYS' | translate}}</mat-radio-button>
                   </mat-radio-group>
                 </div>
               </div>
@@ -284,6 +284,11 @@
                     />
                   </mat-form-field>
                 </td>
+
+                <td formArrayName="{{i}}" *ngIf="!medication_price['controls']['_destroy']['value']">
+                  {{ priceWithIVA(medication_price['controls']) }}
+                </td>
+
                 <td formArrayName="{{i}}" *ngIf="!medication_price['controls']['_destroy']['value']"></td>
               </tr>
             </tbody>
@@ -345,7 +350,7 @@
             <button mat-raised-button color="primary"
             [disabled]="form.invalid" id="submit-btn"
             class="btn-no-border-radius tot-default-submit-btn">
-              {{ 'SAVE' | translate }}
+              {{ 'FINISH' | translate }}
             </button>
           </div>
         </div>

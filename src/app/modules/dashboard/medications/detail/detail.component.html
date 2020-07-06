@@ -4,7 +4,7 @@
       {{medication.name}}
     </h3>
     <div class="nav border-bt-normal">
-      <a>Mediamentos</a>
+      <a routerLink="/dashboard/medications">{{ 'MEDICATIONS' | translate }}</a>
       <span> > </span>
       <span>{{medication.name}}</span>
     </div>
@@ -14,6 +14,9 @@
     </div>
   </div>
   <div class="clearfix" class="medication-details-content mb-70">
+    <div class="page-description mb-24">
+      {{ 'PRODUCT_INFORMATION' | translate }}
+    </div>
     <div class="image-content">
       <img class="index-page" [src]="medication.logo_url">
     </div>
@@ -59,20 +62,25 @@
           <div fxFlex="100" class="pr-1 mb-24">
             <span class="profile-field mb-12">{{'AVERAGE_DOSAGE' | translate}}</span>
             <div class="profile-info">
-              <div fxFlex="50" class="pr-1 mb-24">
-                {{'ADULT_LABEL' | translate}}
-                <span> {{ medication.adults_dosification_amount }} </span>
-                gotas cada
-                <span> {{ medication.adults_dosification_frequency_measure }} </span>
-                <span> {{ medication.adults_dosification_frequency == 'hours' ? 'horas' : 'Días' }} </span>
+              <div fxLayout="row wrap" fxLayout.lt-sm="column">
+                <div fxFlex="100" class="pr-1 mb-24">
+                  {{'ADULT_LABEL' | translate}}
+                  <span> {{ medication.adults_dosification_amount }} </span>
+                  gotas cada
+                  <span> {{ medication.adults_dosification_frequency_measure }} </span>
+                  <span> {{ medication.adults_dosification_frequency == 'hours' ? 'horas' : 'Días' }} </span>
 
+                </div>
               </div>
-              <div fxFlex="50" class="pr-1 mb-24">
-                {{'CHILDREN_LABEL' | translate}}
-                <span> {{ medication.children_dosification_amount }} </span>
-                gotas cada
-                <span> {{ medication.children_dosification_frequency_measure }} </span>
-                <span> {{ medication.children_dosification_frequency == 'hours' ? 'horas' : 'Días' }} </span>
+
+              <div fxLayout="row wrap" fxLayout.lt-sm="column">
+                <div fxFlex="100" class="pr-1 mb-24">
+                  {{'CHILDREN_LABEL' | translate}}
+                  <span> {{ medication.children_dosification_amount }} </span>
+                  gotas cada
+                  <span> {{ medication.children_dosification_frequency_measure }} </span>
+                  <span> {{ medication.children_dosification_frequency == 'hours' ? 'horas' : 'Días' }} </span>
+                </div>
               </div>
             </div>
           </div>

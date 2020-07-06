@@ -228,6 +228,8 @@
   "IVA": "IVA",
   "IVA_PRICE": "Precio IVA",
   "PHARMACEUTICAL": "Farmacéutica",
+  "HOURS": "Horas",
+  "DAYS": "Días",
 
   "MEDICATION_FORM_TITLE": "Formulario de registro",
   "MEDICATION_IMAGE_UPLOAD": "Imagen del producto",
@@ -246,6 +248,8 @@
   "AVAILABLE_IN": "Disponible en",
   "TERMS_AND_CONDITIONS": "Términos y condiciones",
   "T_AND_C": "T&C",
+  "SEARCH_BY_PRODUCT_NAME": "Buscar por nombre de producto",
+  "PRODUCT_INFORMATION": "Información del producto",
   "MEDICATION_IMAGE_HINT": "Utilice una imagen cuadrada 200 x 200 píxeles",
   "IMAGE_100x100_HINT": "Utilice una imagen cuadrada, de máximo 100 x 100 píxeles",
   "ADDED_COMPANY": "¡El nuevo aliado se ha agregado satisfactoriamente!",

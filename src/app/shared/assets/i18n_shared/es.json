@@ -174,5 +174,10 @@
 
   "VALIDATION_FAILED": "Se detectaron errores durante la validación del archivo. Por favor verifique que tenga el formato correcto.",
   "NO_ERROR_FOUND": "No se ha encontrado ningún error",
-  "T_AND_C": "T&C"
+  "T_AND_C": "T&C",
+
+  "NAVIGATION": {
+    "T&C": "T&C",
+    "DASHBOARD": "Panel de control"
+  }
 }

@@ -62,13 +62,13 @@ export class NavigationService {
     },
     {
       name: 'PRODUCTS',
-      type: 'top-menu',
+      type: 'topbar-links',
       tooltip: 'PRODUCTS',
       state: 'dashboard/medications'
     },
     {
       name: 'ALLIES_TOT',
-      type: 'top-menu',
+      type: 'topbar-links',
       tooltip: 'ALLIES_TOT',
       state: 'dashboard/companies'
     }

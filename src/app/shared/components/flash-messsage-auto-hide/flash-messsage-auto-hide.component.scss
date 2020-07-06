@@ -2,45 +2,53 @@
   .mat-card {
     position: relative;
     overflow: initial;
-    padding: 40px 90px;
-    font-size: 20px;
+    font-size: 18px;
     font-family: sans-serif;
-    margin-top: 10px;
+    align-items: center;
+    color: #000009;
+    display: flex;
+    padding: 0;
+    margin: 35px 0;
+    padding-left: 0 !important;
+
     .msg-content{
-      padding-left: 95px;
+      padding-left: 20px;
+      flex-basis: 95%;
     }
     .flash-icon {
-      padding: 7px 32px 0px 32px;
-      position: absolute;
-      margin-left: -20px;
-      left: 0;
-      top: 50%;
-      margin-top: -25px;
+      padding: 0;
+      flex-basis: 5%;
       .mat-icon {
         font-size: 36px;
         width: 36px;
         height: 36px;
+        padding: 10px ;
       }
     }
     &.flash-danger {
-      background: #e94948;
-      border-radius: 2px;
+      background: #fff;
+      border-radius: 0;
       position: relative;
-      color: white;
+
       .flash-icon {
         background: #b00020;
         color: white;
+        display: flex;
+        justify-content: center; /* align horizontal */
+        align-items: center;
       }
     }
 
     &.flash-success {
-      background: #63ff4c;
-      border-radius: 2px;
+      background: #fff;
       position: relative;
       color: #000009;
       .flash-icon {
-        background: #00cd00;
+        background: #00CD00;
         color: white;
+        display: flex;
+        justify-content: center; /* align horizontal */
+        align-items: center;
       }
     }
   }

@@ -13,6 +13,7 @@
           id="search-keyword"
           class="mdc-text-field--no-label"
           searchInput
+          placeholder="{{ 'SEARCH_BY_PRODUCT_NAME' | translate }}"
           [(ngModel)]="keyword"
           (keyup)="searchAndFilter({ keyword: $event.target.value })"
         />
@@ -40,6 +41,20 @@
     <div class="margin-bottom-15">
       <div fxLayoutGap>
         <div fxFlex="30" fxLayout="column" class="mt-1 pr-1">
+          <mat-label>{{ 'PHARMACEUTICAL' | translate }}</mat-label>
+          <mat-form-field appearance="outline">
+            <mat-select [(value)]="pharmaceuticalCompany"
+              (selectionChange)="searchAndFilter({ pharmaceuticalCompany: $event.value, medicationCategory: medicationCategory })"
+              name="pharmaceuticalCompany">
+              <mat-option value="ALL">{{ 'ALL' | translate }}</mat-option>
+              <mat-option *ngFor="let company of pharmaceuticalCompanies" [value]="company.id">
+                {{ company.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div fxFlex="30" fxLayout="column" class="mt-1 pr-1">
           <mat-label>{{ 'CATEGORY' | translate }}</mat-label>
           <mat-form-field appearance="outline">
             <mat-select
@@ -50,23 +65,6 @@
               <mat-option value="ALL">{{ 'ALL' | translate }}</mat-option>
               <mat-option *ngFor="let category of medicationCategories" [value]="category.id">
                 {{ category.name }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-
-
-        <div fxFlex="30" fxLayout="column" class="mt-1 pr-1">
-          <mat-label>{{ 'PHARMACEUTICAL' | translate }}</mat-label>
-          <mat-form-field appearance="outline">
-            <mat-select
-              [(value)]="pharmaceuticalCompany"
-              (selectionChange)="searchAndFilter({ pharmaceuticalCompany: $event.value })"
-              name="pharmaceuticalCompany"
-            >
-              <mat-option value="ALL">{{ 'ALL' | translate }}</mat-option>
-              <mat-option *ngFor="let company of pharmaceuticalCompanies" [value]="company.id">
-                {{ company.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -98,60 +96,36 @@
         [draggable]="false"
         [resizeable]="false"
       >
-        <ng-template
-          ngx-datatable-header-template
-          let-value="value"
-          let-allRowsSelected="allRowsSelected"
-          let-selectFn="selectFn"
-        >
-          <mat-checkbox
-            color="secondary"
-            [checked]="allRowsSelected"
-            (change)="selectFn(!allRowsSelected)"
-            [(indeterminate)]="allRowsSelected"
-          >
-          </mat-checkbox>
-        </ng-template>
-        <ng-template
-          ngx-datatable-cell-template
-          let-value="value"
-          let-isSelected="isSelected"
-          let-onCheckboxChangeFn="onCheckboxChangeFn"
-        >
-          <mat-checkbox color="secondary" [checked]="isSelected" (change)="onCheckboxChangeFn($event)">
-          </mat-checkbox>
-        </ng-template>
       </ngx-datatable-column>
 
-      <ngx-datatable-column name="{{ 'MEDICATION' | translate }}" [flexGrow]="1">
+      <ngx-datatable-column sort-active name="{{ 'MEDICATION' | translate }}" [flexGrow]="1">
         <ng-template let-row="row" ngx-datatable-cell-template>
-          {{ row?.name }}
+          <a color="primary" class="mr-1 text-underline edit-btn" (click)="openDetail(row)">
+            {{ row?.name }}
+          </a>
         </ng-template>
       </ngx-datatable-column>
 
-      <ngx-datatable-column name="{{ 'CODE' | translate }}" [flexGrow]="1">
+      <ngx-datatable-column sort-active name="{{ 'CODE' | translate }}" [flexGrow]="1">
         <ng-template let-row="row" ngx-datatable-cell-template>
           {{ row?.code }}
         </ng-template>
       </ngx-datatable-column>
 
-      <ngx-datatable-column name="{{ 'CATEGORY' | translate }}" [flexGrow]="1">
+      <ngx-datatable-column sort-active name="{{ 'CATEGORY' | translate }}" [flexGrow]="1">
         <ng-template let-row="row" ngx-datatable-cell-template>
           {{ row?.medication_category_name }}
         </ng-template>
       </ngx-datatable-column>
 
-      <ngx-datatable-column name="{{ 'PHARMACEUTICAL' | translate }}" [flexGrow]="1">
+      <ngx-datatable-column sort-active name="{{ 'PHARMACEUTICAL' | translate }}" [flexGrow]="1">
         <ng-template let-row="row" ngx-datatable-cell-template>
           {{ row?.pharmaceutical_company_name }}
         </ng-template>
       </ngx-datatable-column>
 
-      <ngx-datatable-column name="{{ 'ACTIONS' | translate }}" [flexGrow]="1" width="600">
+      <ngx-datatable-column sort-active name="{{ 'ACTIONS' | translate }}" [flexGrow]="1" width="600">
         <ng-template let-row="row" ngx-datatable-cell-template>
-          <a color="primary" class="mr-1 text-underline edit-btn" (click)="openDetail(row)">
-            <span translate>DETAIL</span>
-          </a>
           <a color="primary" class="mr-1 text-underline edit-btn" (click)="editMedication(row)">
             <span translate>EDIT</span>
           </a>

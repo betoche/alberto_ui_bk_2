@@ -3,3 +3,7 @@ h1.products-page-title {
   padding-top: 40px;
   color: #232731;
 }
+
+::ng-deep .datatable-header-cell-label {
+  font-weight: bold !important;
+}
