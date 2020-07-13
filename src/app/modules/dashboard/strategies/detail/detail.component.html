@@ -1,0 +1,159 @@
+<div fxLayout="row wrap" fxLayoutAlign="end flex-end" class="mt-12">
+  <mat-icon class="text-grey-B000 close-icon" matSuffix>highlight_off</mat-icon>
+  <a class="mat-color-primary text-underline pl-4" (click)="dialogRef.close(false)">{{ 'CLOSE' | translate }}</a>
+</div>
+
+<div fxLayout="row wrap" fxLayout.lt-sm="column">
+
+  <div fxFlex="50" class="form-summary" class="strategy-details">
+    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+      <div class="image-content">
+        <img class="index-page" [src]="strategy.logo_url">
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayout.lt-sm="column" class="strategy-information">
+      <div class="page-description mb-24" fxFlex="100">
+        {{ 'Patrocinador' }}
+      </div>
+
+      <div class="input-info mb-20" fxFlex="100">
+        {{ strategy.description }}
+      </div>
+
+      <div class="page-description mb-24" fxFlex="100">
+        {{ 'STRATEGY_VALID_IN' | translate }}
+      </div>
+
+      <div class="input-info mb-20" fxFlex="100">
+        {{ 'Pending to fix' }}
+      </div>
+
+      <div class="page-description mb-24" fxFlex="100">
+        {{ 'COUPON_VALID_UNTIL' | translate }}
+      </div>
+
+      <div class="input-info mb-20" fxFlex="100">
+        {{ strategy.end_date | date: 'fullDate' }}
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="center center">
+      <qr-code-scanner-for-browser></qr-code-scanner-for-browser>
+      <div class="page-description strategy-code mb-24" fxFlex="100">
+        {{ strategy.code }}
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+      <p class="regulation-url">
+        <a href="{{strategy.terms_and_conditions_url}}" target="_blank">
+          {{ 'SEE_TERMS_AND_CONDITIONS' | translate }}
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <div fxFlex="10" class="form-summary">
+  </div>
+
+  <div fxFlex="40" class="form-summary">
+    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+      <div class="page-description mb-20" fxFlex="100">
+        <h2 class="bold-text">{{ 'SUMMARY' | translate }}</h2>
+      </div>
+    </div>
+    <br>
+
+    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+      <div class="page-description mb-24" fxFlex="100">
+        {{ 'MARKET_SIZE_DEFINED' | translate }}
+      </div>
+
+      <div fxFlex="80">
+        <mat-progress-bar mode="determinate"
+          [value]="percentageOfCustomersTargeted"
+          class="market-percentage" color="black">
+        </mat-progress-bar>
+      </div>
+
+      <div class="completed-step" fxFlex="20">
+        {{ percentageOfCustomersTargeted }}%
+      </div>
+
+      <mat-label class="form-label">{{ 'NUMBER_OF_USERS' | translate }}</mat-label>
+    </div>
+    <br>
+
+    <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
+      <div class="page-description mb-24" fxFlex="100">
+        {{ 'PROFILING' | translate }}
+      </div>
+
+      <div id="client-status" class="input-info mb-20" fxFlex="100">
+        {{ 'STATUS' | translate }}: {{ strategy.client_status | uppercase | translate }}
+      </div>
+
+      <div class="input-info mb-20" fxFlex="100">
+        {{ 'AGE_RANGE' | translate }}: {{ strategy.age_min_limit }} - {{ strategy.age_max_limit }}
+      </div>
+
+      <div id="gender" class="input-info mb-20" fxFlex="100">
+        {{ 'SELECTED_GENRE' | translate }}: {{ strategy.gender_of_target_market | translate }}
+      </div>
+    </div>
+    <br>
+
+    <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
+      <div class="page-description mb-24" fxFlex="100">
+        {{ 'GEOGRAPHICAL_SCOPE' | translate }}
+      </div>
+
+      <div class="input-info mb-20" fxFlex="100" *ngFor="let item of strategy.address_attributes">
+        {{ item.province_name }}
+      </div>
+    </div>
+    <br>
+
+    <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
+      <div class="page-description mb-24" fxFlex="100">
+        {{ 'SPONSOR' | translate }}
+      </div>
+    </div>
+    <br>
+
+    <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
+      <div class="page-description mb-24" fxFlex="100">
+        {{ 'STRATEGY' | translate }}
+      </div>
+
+      <div id="name" class="input-info mb-20" fxFlex="100">
+        {{ strategy.name }}
+      </div>
+
+      <div id="strategy-type" class="input-info mb-20" fxFlex="100">
+        {{ strategy.strategy_type_name }}
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
+      <div class="page-description mb-24" fxFlex="100">
+        {{ 'CONDITIONS' | translate }}
+      </div>
+
+      <div class="input-info mb-20" fxFlex="100">
+        {{ strategy.can_be_exchanged | uppercase | translate }}
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
+      <div class="page-description mb-24" fxFlex="100">
+        {{ 'APLICATION' | translate }}
+      </div>
+
+      <div class="input-info mb-20" fxFlex="100">
+        {{ strategy.initial_date | date: 'dd/MM/yyyy' }} - {{ strategy.end_date | date: 'dd/MM/yyyy' }}
+      </div>
+    </div>
+  </div>
+</div>

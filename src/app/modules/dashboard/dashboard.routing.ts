@@ -25,6 +25,9 @@ import { TotAllyUsersComponent } from './tot-ally-users/tot-ally-users.component
 
 import { SupportAgentsComponent } from './support-agents/support-agents.component';
 import { SupportAgentsFormComponent } from './support-agents/form/form.component';
+import { StrategiesComponent } from './strategies/strategies.component';
+import { StrategyFormComponent } from './strategies/form/form.component';
+import { StrategyDetailComponent } from './strategies/detail/detail.component';
 
 import { DashboardIndexComponent } from './app-index/app-index.component';
 import { EditProfileComponent } from 'app/shared/modules/dashboard/edit-profile/edit-profile.component';
@@ -124,6 +127,34 @@ export const DashboardRoutes: Routes = [
             path: ':id/details',
             data: { title: 'MODIFY', breadcrumb: 'MODIFY' },
             component: MedicationDetailComponent,
+          },
+        ],
+      },
+      {
+        path: 'strategies',
+        data: {
+          title: 'STRATEGY',
+          breadcrumb: 'STRATEGY',
+        },
+        children: [
+          {
+            path: '',
+            component: StrategiesComponent,
+          },
+          {
+            path: 'new',
+            data: { title: 'ADD', breadcrumb: 'ADD' },
+            component: StrategyFormComponent,
+          },
+          {
+            path: ':id/edit',
+            data: { title: 'MODIFY', breadcrumb: 'MODIFY' },
+            component: StrategyFormComponent,
+          },
+          {
+            path: ':id/detail',
+            data: { title: 'MODIFY', breadcrumb: 'MODIFY' },
+            component: StrategyDetailComponent,
           },
         ],
       },

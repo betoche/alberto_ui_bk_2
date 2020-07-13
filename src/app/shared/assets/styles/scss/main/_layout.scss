@@ -220,10 +220,9 @@
   }
   // Container Breadcrumb Layout
   .breadcrumb{
-    a{
+    span,a{
       color: $body-text-color;
       font-size: $font-size-md;
-      text-decoration: underline;
       &:after{
         content: ">";
         display: inline-block;
@@ -235,6 +234,9 @@
       &:last-child:after{
         content: none;
       }
+    }
+    a{
+      text-decoration: underline;
     }
   }
 }
@@ -268,7 +270,6 @@
     height: 3px;
     width: 100%;
   }
-
   // labels
   .label-field,
   .profile-field{
@@ -282,13 +283,6 @@
     font-size: $font-size-md;
     min-height: 22px;
   }
-  // headline section
-  .section-header{
-    font-weight: bold;
-    font-size: $font-size-lg;
-    color: $primary;
-    margin-bottom: 32px;
-  }
   .row-detail{
     margin-bottom: 32px;
     &:last-child{
@@ -297,15 +291,19 @@
     @include md{
       width: 85%;
       margin: 0 auto $row-detail-margin-bottom auto;
+      &.full-width{
+      width: 100%;
+      }
     }
   }
 }
 
 
 // Card Tables Layout
-.box-detail.table-layout{  
+.box-detail.table-layout{
   padding: 0 !important;
   // wrap
+  .section-info,
   .table-layout-wrap {
     padding: 32px;
     // nav header
@@ -328,6 +326,9 @@
     .pagelimit-container{
       text-align: center;
       padding-bottom: 50px;
+      .pager{
+        padding-top: 0;
+      }
       @include lg{
         text-align: right;
         padding-bottom: 15px;
@@ -336,15 +337,38 @@
         padding: 5px 0;
       }
     }
+    .pagelimit-container.border-top-0,
+    .header-container + .row-detail + .row-detail .pagelimit-container{
+      border-top: 0;
+      padding-top: 0;
+    }
     // select
     mat-label{
       color: $body-text-color;
     }
-    .mat-form-field.mat-form-field-appearance-outline .mat-form-field-infix{
-      padding-top: 11px;
-      padding-bottom: 11px;
+    // form field
+    .mat-form-field{
+      &.mat-form-field-appearance-outline .mat-form-field-infix{
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+      }
+      &.mat-select-tot-style .mat-form-field-infix,
+      &.mat-form-field-type-mat-input .mat-form-field-infix{
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+      }
+      &.mat-form-field-appearance-outline.form-field-default .mat-form-field-infix{
+        padding: 20px 0 !important
+      }
+      // icon
+      .mat-icon-button{
+        width: 24px;
+        height: 24px;
+        top: 2px;
+      }
     }
   }
+
   // data table
   .table-container{
     margin-top: -22px;
@@ -386,4 +410,26 @@
       }
     }
   }
+}
+
+// wrap
+.section-info{
+  border-top: 3px solid $primary-color;
+  padding: 32px;
+}
+
+// headline section
+.section-header{
+  font-weight: bold;
+  font-size: $font-size-lg;
+  color: $primary;
+  margin-bottom: 32px;
+}
+
+
+// split
+.split{
+  height: 1px;
+  margin: 42px 0;
+  background-color: $disabled-button-background;
 }

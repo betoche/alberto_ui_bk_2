@@ -178,6 +178,28 @@
   "SUPPORT_AGENTS": "Agentes de soporte",
   "SUPPORT_AGENT": "Agente de soporte",
 
+  "STRATEGY":  "Estrategia",
+  "STRATEGIES": "Estrategias",
+  "STRATEGY_NAME": "Nombre de la estrategia",
+  "STRATEGY_FORM_TITLE": "Crear una nueva estrategia",
+  "STEPS_TO_CREATE_STRATEGY": "Pasos para crear estrategia",
+  "MARKET": "Mercado",
+  "MARKET_SELECTION": "Selección de Mercado",
+  "PROFILING": "Perfilado",
+  "GEOPOLITICAL_SCOPE": "Alcances geopolíticos",
+  "GEOGRAPHICAL_SCOPE": "Alcance geográfico",
+  "STRATEGY_MATRIX": "Matriz de la estrategia",
+  "ABOUT_STRATEGY": "Acerca de la estrategia",
+  "CONDITIONS": "Condiciones",
+  "STRATEGY_APLICATION": "Aplicación de la estrategia",
+  "SUMMARY": "Resumen",
+
+
+  "SPONSOR": "Patrocinador",
+  "TYPE": "Tipo",
+  "LAUNCHING_DATE": "Lanzamiento",
+  "EXPIRATION_DATE": "Vencimiento",
+
   "QR_CODE_NO_MEDIA": "No hemos encontrado una cámara en este dispositivo para escanear el código",
   "COMPANY_SUCCESSFULLY_ADDED": "¡El nuevo aliado se ha agregado satisfactoriamente!",
   "USER_INFORMATION": "Información del usuario",
@@ -248,6 +270,7 @@
   "AVAILABLE_IN": "Disponible en",
   "TERMS_AND_CONDITIONS": "Términos y condiciones",
   "T_AND_C": "T&C",
+  "YEARS_OLD": "Años",
   "SEARCH_BY_PRODUCT_NAME": "Buscar por nombre de producto",
   "PRODUCT_INFORMATION": "Información del producto",
   "MEDICATION_IMAGE_HINT": "Utilice una imagen cuadrada 200 x 200 píxeles",
@@ -256,8 +279,46 @@
   "UPDATED_COMPANY": "¡El nuevo aliado se ha actualizada satisfactoriamente!",
   "PROCESS_FORM": "Proceso por medio de formulario",
   "CHOOSE_PROCESS_ADD_USER": "Escoja el proceso mediante el cual agregar usuarios.",
-  "CHOOSE_PROCESS_ADD_COMPANY": "Escoja el proceso mediante el cual agregar aliados.",
+  "CHOOSE_PROCESS_ADD_COMPANY": "Escoja el proceso mediante el cual agregar aliado.",
   "SELECT_FILE": "Seleccione un archivo",
-  "LOGO_COMPANY": "Logo de la aliado",
-  "ADDRESS_NOTE": "Otras señas"
+  "LOGO_COMPANY": "Logo del aliado",
+  "ADDRESS_NOTE": "Otras señas",
+  "SEARCH_NAME_OR_SPONSOR": "Buscar por nombre de estrategia o patrocinador",
+  "SEARCH_BY_GEOPOLITICAL_REFERENCE": "Buscar por referencia geopolítica",
+  "MARKET_SIZE_DEFINED": "Tamaño del mercado definido",
+  "DELIMIT_BY_CLIENT_STATUS": "Delimitar por estatus del cliente",
+  "NUMBER_OF_USERS": "Número de usuarios",
+  "AGE_RANGE": "Rango de edades",
+  "male": "Masculino",
+  "female": "Femenino",
+  "other": "Otro",
+  "unset": "No indica",
+  "SELECTED_GENRE": "Género seleccinado",
+  "SAVE_PROFILE": "Guardar perfil",
+  "PROFILE_NAME": "Nombre del perfil",
+  "SET_PROFILE_NAME": "Indique el nombre  con que se guardará el perfil",
+  "CONDITIONS": "Condiciones",
+  "APLICATION": "Aplicación",
+  "DOES_NOT_APPLY": "No aplica",
+  "AMOUNT_DEFINED": "Establecer cantidad",
+  "UPLOAD_TERMS_AND_CONDITIONS": "Subir términos y condiciones",
+  "SEE_TERMS_AND_CONDITIONS": "Ver Términos & Condiciones",
+  "COUPON_VALID_UNTIL": "Canje válido hasta",
+  "STRATEGY_VALID_IN": "Esta promoción es válida en",
+  "PROFILE_CREATED": "El perfil se ha guardado exitosamente",
+  "LOCATIONS_DESCRIPTION": "La estrategia se aplicará a aquellos clientes que estén suscritos a los planes salud que se seleccionen.",
+  "DELIMIT_BY_LOCATION": "Delimitar el mercado meta por sucursales del patrocinador",
+
+  "COMPANY_TYPE_TRANSLATIONS": {
+    "Drugstore": "farmacia",
+    "PharmaceuticalCompany": "farmacéutica",
+    "BenefitsProviderCommerce": "patrocinador"
+  },
+
+  "PAGES": {
+    "COMPANIES": {
+      "NAME_OF": "Nombre de la",
+      "COMPANY_CODE": "Id de"
+    }
+  }
 }

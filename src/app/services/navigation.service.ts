@@ -54,6 +54,12 @@ export class NavigationService {
       state: 'dashboard/profile',
     },
     {
+      name: 'STRATEGIES',
+      type: 'topbar-links',
+      tooltip: 'STRATEGIES',
+      state: 'dashboard/strategies'
+    },
+    {
       name: 'ROLES_AND_PERMISSION',
       type: 'link',
       tooltip: 'ROLES_AND_PERMISSION',

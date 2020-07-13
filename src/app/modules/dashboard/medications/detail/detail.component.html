@@ -68,7 +68,7 @@
                   <span> {{ medication.adults_dosification_amount }} </span>
                   gotas cada
                   <span> {{ medication.adults_dosification_frequency_measure }} </span>
-                  <span> {{ medication.adults_dosification_frequency == 'hours' ? 'horas' : 'Días' }} </span>
+                  <span> {{ (medication.adults_dosification_frequency == 'hours' ? 'HOURS' : 'DAYS') | translate }} </span>
 
                 </div>
               </div>
@@ -79,7 +79,7 @@
                   <span> {{ medication.children_dosification_amount }} </span>
                   gotas cada
                   <span> {{ medication.children_dosification_frequency_measure }} </span>
-                  <span> {{ medication.children_dosification_frequency == 'hours' ? 'horas' : 'Días' }} </span>
+                  <span> {{ (medication.children_dosification_frequency == 'hours' ? 'HOURS' : 'DAYS') | translate }} </span>
                 </div>
               </div>
             </div>

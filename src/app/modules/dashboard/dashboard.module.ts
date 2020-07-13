@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import {
   MatListModule,
   MatIconModule,
@@ -55,6 +56,11 @@ import { TotAllyUserFormComponent } from './tot-ally-users/form/form.component';
 
 import { SupportAgentsComponent } from './support-agents/support-agents.component';
 import { SupportAgentsFormComponent } from './support-agents/form/form.component';
+import { StrategiesComponent } from './strategies/strategies.component';
+import { StrategyFormComponent } from './strategies/form/form.component';
+import { StrategyDetailComponent } from './strategies/detail/detail.component';
+import { ProfilePopupFormComponent } from './strategies/create-profile/form.component';
+
 
 import { DashboardIndexComponent } from './app-index/app-index.component';
 import { EditProfileComponent } from './../../shared/modules/dashboard/edit-profile/edit-profile.component';
@@ -120,12 +126,24 @@ import { CompanyAdministratorsFormComponent } from './company-administrators/for
     EditProfileComponent,
     SupportAgentsComponent,
     SupportAgentsFormComponent,
+    StrategiesComponent,
+    StrategyFormComponent,
+    StrategyDetailComponent,
+    ProfilePopupFormComponent,
     BenefitsProvidersComponent,
     BenefitsProviderFormComponent,
     CompanyAdministratorsComponent,
     CompanyAdministratorsFormComponent
   ],
-  entryComponents: [CompaniesFormComponent, TotAllyUserFormComponent, EditCompanyComponent, MedicationPopupFormComponent, MedicationDetailComponent],
+  entryComponents: [
+    CompaniesFormComponent,
+    TotAllyUserFormComponent,
+    EditCompanyComponent,
+    MedicationPopupFormComponent,
+    MedicationDetailComponent,
+    ProfilePopupFormComponent,
+    StrategyDetailComponent
+  ],
   exports: [ReactiveFormsModule],
   providers: [DialogService],
 })

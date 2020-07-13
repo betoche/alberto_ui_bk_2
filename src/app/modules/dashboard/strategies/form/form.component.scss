@@ -1,0 +1,112 @@
+ul, #multiline_checkbox {
+  list-style-type: none;
+}
+
+#multiline_checkbox {
+  margin: 0;
+  padding: 0;
+}
+
+.caret {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.caret-down::before {
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.steps-to-create-strategy {
+  padding-left: 0px;
+}
+
+.input-60-percent-width {
+  display: grid !important;
+  width: 60% !important;
+}
+
+.select-all-ages-input {
+  margin-top: 40px;
+}
+
+.cancel-btn {
+  background-color: #373b47 !important;
+  color: #ffffff !important;
+}
+
+.steps-to-create-strategy .mat-icon {
+  font-size: 18px;
+  color: #C4C4C4;
+}
+
+.child-elements li {
+  list-style-type: initial !important;
+  color: #C4C4C4;
+}
+
+.completed-step {
+  color: #00CD00 !important;
+}
+
+.incompleted-step {
+  color: #009A00 !important;
+}
+
+#description-input {
+  height: 70px;
+}
+
+.mat-progress-bar {
+  height: 19px;
+
+  ::ng-deep .mat-progress-bar-background {
+    display: none;
+  }
+
+  ::ng-deep .mat-progress-bar-primary::after {
+    background-color: #00CD00 !important;
+  }
+
+  ::ng-deep .mat-progress-bar-buffer {
+    background-color: rgba(0, 205, 11, 0.2);
+  }
+}
+
+.form-summary {
+  .input-fields-summary .page-description {
+    font-weight: bold;
+  }
+}
+
+.strategy-submit-btn {
+  font-style: normal;
+  font-size: 18px !important;
+  line-height: 22px !important;
+  text-align: center !important;
+  color: #232731 !important;
+  background: linear-gradient(282.9deg, #00CD00 40.4%, #7AF003 96.06%) !important;
+  border-radius: 2px; font-weight: normal !important;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25) !important;
+  min-width: 170px !important;
+  padding: 18px 35px !important;
+}

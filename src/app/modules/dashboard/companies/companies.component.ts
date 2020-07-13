@@ -204,21 +204,24 @@ export class CompaniesComponent extends DatatableBaseComponent implements OnInit
   private showDeletedMessage(){
     this.messageOptions = {
       type: 'success',
-      message: 'DELETED_COMPANIES'
+      message: 'DELETED_COMPANIES',
+      scrollToTop: true
     }
   }
 
   private showAddedMessage(){
     this.messageOptions = {
       type: 'success',
-      message: 'ADDED_COMPANY'
+      message: 'ADDED_COMPANY',
+      scrollToTop: true
     }
   }
 
   private showUpdatedMessage(){
     this.messageOptions = {
       type: 'success',
-      message: 'UPDATED_COMPANY'
+      message: 'UPDATED_COMPANY',
+      scrollToTop: true
     }
   }
 

@@ -1,0 +1,586 @@
+<div class="page-component-container">
+  <div class="content-container margin-bottom-100 border-bt-solid-4">
+    <h2 class="page-subtitle" translate>
+      {{'STRATEGY_FORM_TITLE' | translate}}
+    </h2>
+
+    <div class="form-wrapper page-body">
+      <div class="alert alert-danger" *ngIf="!!errorsMessages">
+        {{ errorsMessages }}
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-body">
+
+          <!-- Status of form advance -->
+          <div fxLayout="row wrap" fxLayout.lt-sm="column">
+          <div fxFlex="20">
+            <div fxLayout="row wrap" fxLayout.lt-sm="column">
+              <div class="page-description mb-24" fxFlex="100">
+                <h2 class="bold-text">{{ 'STEPS_TO_CREATE_STRATEGY' | translate }}</h2>
+              </div>
+            </div>
+
+            <div fxLayout="row wrap" fxLayout.lt-sm="column">
+              <ul class="steps-to-create-strategy">
+                <li>
+                  <mat-icon matSuffix class="mat-icon notranslate material-icons mat-icon-no-color {{getClassForStep(2)}}">
+                    check_circle
+                  </mat-icon>
+                  <span>{{ 'MARKET_SELECTION' | translate }}</span>
+                  <ul class="child-elements">
+                    <li [class]="getClassForStep(1)">
+                      {{ 'PROFILING' | translate }}
+                    </li>
+                    <li [class]="getClassForStep(2)">
+                      {{ 'GEOPOLITICAL_SCOPE' | translate }}
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <mat-icon matSuffix class="mat-icon notranslate material-icons mat-icon-no-color {{getClassForStep(3)}}">
+                    check_circle
+                  </mat-icon>
+                  <span>{{ 'SPONSOR' | translate }}</span>
+                </li>
+                <li>
+                  <mat-icon matSuffix class="mat-icon notranslate material-icons mat-icon-no-color {{getClassForStep(4)}}">
+                    check_circle
+                  </mat-icon>
+                  <span>{{ 'STRATEGY_MATRIX' | translate }}</span>
+                  <ul class="child-elements">
+                    <li [class]="getClassForStep(4)">{{ 'ABOUT_STRATEGY' | translate }}</li>
+                    <li [class]="getClassForStep(5)">{{ 'CONDITIONS' | translate }}</li>
+                  </ul>
+                </li>
+                <li>
+                  <mat-icon matSuffix class="mat-icon notranslate material-icons mat-icon-no-color {{getClassForStep(6)}}">
+                    check_circle
+                  </mat-icon>
+                  <span>{{ 'STRATEGY_APLICATION' | translate }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div fxFlex="60">
+            <!-- Form Step 1 -->
+            <div class="step-1" fxLayout="row wrap" fxLayout.lt-sm="column" *ngIf="doesShowStepForm(1)">
+              <div class="page-description mb-24" fxFlex="100">
+                <h2 class="bold-text">Perfilado del mercado</h2>
+              </div>
+
+              <div class="page-description mb-24" fxFlex="100">
+                Seleccione aquellos criterios que le ayudarán a definir el mercado meta para la estrategia
+              </div>
+
+              <div fxFlex="100" class="align-self-center">
+                <div fxFlex="40" class="form-group">
+                  <div class="checkbox-form-box">
+                    <mat-checkbox
+                        (change)="useSavedProfile($event)"
+                        [checked]="!!strategy.strategy_profile_id">
+                      Utilizar un perfil guardado
+                    </mat-checkbox>
+                  </div>
+                </div>
+              </div>
+
+              <div fxFlex="100" class="align-self-center">
+                <div fxFlex="40" class="form-group">
+                  <mat-form-field appearance="outline" class="mat-form-filled full-width mb-24" *ngIf="isSelectedSavedProfile">
+                    <mat-select formControlName="strategy_profile_id" name="strategy_profile_id" (selectionChange)="setProfileAttributes($event)">
+                      <mat-option value=""></mat-option>
+                      <mat-option *ngFor="let profile of profiles" [value]="profile.id">
+                        {{ profile.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="100" class="align-self-center">
+                <mat-label class="form-label">{{ 'DELIMIT_BY_CLIENT_STATUS' | translate }}</mat-label>
+                <div class="radio-buttons-container">
+                  <mat-radio-group name="client_status" formControlName="client_status">
+                    <mat-radio-button value="active" class="mr-1">
+                      <label>{{ 'ACTIVE' | translate }}</label>
+                    </mat-radio-button>
+                    <mat-radio-button value="inactive">
+                      <label>{{ 'INACTIVE' | translate }}</label>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <mat-label class="form-label margin-top-20">Delimitar por edad el mercado meta</mat-label>
+
+              <div fxFlex="100" fxLayout="row wrap" fxLayout.lt-lg="column" class="align-self-center">
+                <div fxFlex="35" class="form-group">
+                  <mat-label class="form-label">{{'Mayores de'}}</mat-label>
+                  <mat-form-field appearance="outline" class="mat-form-filled full-width input-60-percent-width">
+                    <input matInput
+                      type="number"
+                      formControlName="age_min_limit"
+                      name="age_min_limit"
+                      id="age-min-limit-input"
+                      placeholder="{{ 'YEARS_OLD' | translate }}"
+                      (change)="setAgeRange()"
+                    />
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex="5"></div>
+
+                <div fxFlex="35" class="form-group">
+                  <mat-label class="form-label">{{'Menores de'}}</mat-label>
+                  <mat-form-field appearance="outline" class="mat-form-filled full-width input-60-percent-width">
+                    <input matInput
+                      type="number"
+                      formControlName="age_max_limit"
+                      name="age_max_limit"
+                      id="age-max-limit-input"
+                      placeholder="{{ 'YEARS_OLD' | translate }}"
+                      (change)="setAgeRange()"
+                    />
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex="5"></div>
+
+                <div fxFlex="20" class="checkbox-form-box select-all-ages-input">
+                  <mat-checkbox
+                  (change)="selectAllAges($event)"
+                  formControlName="all_ages_selected"
+                  name="all_ages_selected"
+                  id="all-ages-selected-input"
+                  >
+                    {{ 'ALL' | translate }}
+                  </mat-checkbox>
+                </div>
+              </div>
+
+              <div fxFlex="100" class="align-self-center">
+                <mat-label class="form-label">Delimitar por género del mercado meta</mat-label>
+                <div class="radio-buttons-container">
+                  <mat-radio-group name="gender_of_target_market" formControlName="gender_of_target_market">
+                    <div fxFlex="100" fxLayout="row wrap" fxLayout.lt-md="column" class="align-self-center">
+                      <div fxFlex="25">
+                        <mat-radio-button value="male">
+                          <label>{{ 'male' | translate }}</label>
+                        </mat-radio-button>
+                      </div>
+                      <div fxFlex="25">
+                        <mat-radio-button value="female">
+                          <label>{{ 'female' | translate }}</label>
+                        </mat-radio-button>
+                      </div>
+                      <div fxFlex="25">
+                        <mat-radio-button value="other">
+                          <label>{{ 'other' | translate }}</label>
+                        </mat-radio-button>
+                      </div>
+                      <div fxFlex="25">
+                        <mat-radio-button value="unset">
+                          <label>{{ 'unset' | translate }}</label>
+                        </mat-radio-button>
+                      </div>
+                    </div>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Step 2 -->
+            <div class="step-2" fxLayout="row wrap" fxLayout.lt-sm="column" *ngIf="doesShowStepForm(2)">
+              <div class="page-description mb-24" fxFlex="100">
+                <h2 class="bold-text">Perfilado del mercado</h2>
+              </div>
+
+              <div class="page-description mb-24" fxFlex="100">
+                Seleccione aquellos criterios que le ayudarán a definir el mercado meta para la estrategia
+              </div>
+
+              <div fxFlex="100" class="align-self-center">
+                <div fxFlex="60" class="form-group">
+                  <mat-label class="disabled-label form-label">{{'Delimitar geográficamente el mercado meta'}}</mat-label>
+                  <mat-form-field appearance="outline" class="mat-form-filled full-width">
+                    <input matInput id="search-geographically-target-market-input"
+                    placeholder="{{ 'SEARCH_BY_GEOPOLITICAL_REFERENCE' | translate }}"
+                    (input)="searchNodes($event)"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="100" class="align-self-center">
+                <div id='tree-parent'>
+                  <ejs-treeview
+                    #listTreeObj
+                    id='tree-element'
+                    [fields]='field'
+                    [showCheckBox]='showCheckBox'
+                    (nodeChecked)='locationNodeChecked($event)'>
+                  </ejs-treeview>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Step 3 -->
+            <div class="step-3" fxLayout="row wrap" fxLayout.lt-sm="column" *ngIf="doesShowStepForm(3)">
+              <div class="page-description mb-24" fxFlex="100">
+                <h2 class="bold-text">{{ 'SPONSOR' | translate }}</h2>
+              </div>
+
+              <div class="page-description mb-24" fxFlex="100">
+                Seleccione aquellos criterios que le ayudarán a definir el mercado meta para la estrategia
+              </div>
+
+              <div fxFlex="100" class="align-self-center">
+                <div fxFlex="70" class="form-group">
+                  <mat-label class="disabled-label form-label">{{'SPONSOR' | translate}} *</mat-label>
+                  <mat-form-field appearance="outline" class="mat-form-filled full-width mb-24">
+                    <mat-select formControlName="benefits_provider_commerce_id"
+                      name="benefits_provider_commerce_id"
+                      (selectionChange)="setSponsorName($event)">
+                      <mat-option *ngFor="let sponsor of sponsors" [value]="sponsor.id">
+                        {{ sponsor.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="bold-text page-description mb-24" fxFlex="100">
+                {{ 'DELIMIT_BY_LOCATION' | translate }}
+              </div>
+              <div class="page-description mb-24" fxFlex="100">
+                {{ 'LOCATIONS_DESCRIPTION' | translate }}
+              </div>
+
+              <div fxFlex="100" class="align-self-center">
+                <!-- This is temporary data, while is being documented this feature -->
+                <div id='locations'>
+                  <ejs-treeview
+                    #locationnListTreeObj
+                    id='locations-tree-element'
+                    [fields]='location_fields'
+                    [showCheckBox]='showCheckBox'>
+                  </ejs-treeview>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Step 4 -->
+            <div class="step-4" fxLayout="row wrap" fxLayout.lt-sm="column" *ngIf="doesShowStepForm(4)">
+              <div class="page-description mb-24" fxFlex="100">
+                <h2 class="bold-text">Acerca de la estrategia</h2>
+              </div>
+
+              <div class="page-description mb-24" fxFlex="100">
+                Los espacios con (*) son requeridos para poder añadir la estrategia
+              </div>
+              <div fxFlex="100" class="align-self-center">
+                <div fxFlex="70" class="form-group">
+                  <mat-label class="form-label">Nombre de la estrategia *</mat-label>
+                  <mat-form-field appearance="outline" class="mat-form-filled full-width">
+                    <input matInput formControlName="name" name="name" id="name-input" />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="100" class="align-self-center">
+                <div fxFlex="70" class="form-group">
+                  <mat-label class="form-label">Descripción</mat-label>
+                  <mat-form-field appearance="outline" class="mat-form-filled full-width">
+                    <input matInput formControlName="description" name="description" id="description-input" />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="100" class="align-self-center">
+                <div fxFlex="70" class="form-group">
+                  <mat-label class="form-label">Tipo de estrategia *</mat-label>
+                  <mat-form-field appearance="outline" class="mat-form-filled full-width mb-24">
+                    <mat-select formControlName="strategy_type_id" name="strategy_type_id">
+                      <mat-option *ngFor="let strategyType of strategyTypes" [value]="strategyType.id">
+                        {{ strategyType.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Form Step 5 -->
+            <div class="step-5" fxLayout="row wrap" fxLayout.lt-sm="column" *ngIf="doesShowStepForm(5)">
+              <div class="page-description mb-24" fxFlex="100">
+                <h2 class="bold-text">Condiciones para la estrategia</h2>
+              </div>
+
+              <div class="page-description mb-24" fxFlex="100">
+                Los espacios con (*) son requeridos para poder añadir la estrategia
+              </div>
+
+              <div fxFlex="60" class="mt-1">
+                <label>{{'UPLOAD_TERMS_AND_CONDITIONS' | translate}} *</label>
+                <app-upload-file
+                  name="terms_and_conditions_url"
+                  [control]="form.controls.terms_and_conditions_url"
+                  [inputId]="'terms-and-conditions-url'"
+                  placeholder="Seleccione un archivo">
+                </app-upload-file>
+              </div>
+
+              <div fxFlex="100" class="align-self-center">
+                <mat-label class="form-label">¿Cuantas veces se puede canjear? *</mat-label>
+                <div class="radio-buttons-container">
+                  <mat-radio-group name="can_be_exchanged" formControlName="can_be_exchanged">
+                    <mat-radio-button value="does_not_apply" class="mr-1" (change)="showAmountOfTimesInput($event)">
+                      <label>{{ 'DOES_NOT_APPLY' | translate }}</label>
+                    </mat-radio-button>
+                    <mat-radio-button value="amount_defined" (change)="showAmountOfTimesInput($event)">
+                      <label>{{ 'AMOUNT_DEFINED' | translate }}</label>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <div fxFlex="60" class="form-group">
+                <mat-form-field
+                  appearance="outline"
+                  class="mat-form-filled full-width"
+                  *ngIf="amountOfTimesInputEnabled || strategy.can_be_exchanged == 'amount_defined'">
+                  <input matInput
+                    formControlName="amount_of_times_can_be_exchanged"
+                    name="amount_of_times_can_be_exchanged"
+                    type="number"
+                    id="amount-of-times-can-be-exchanged-input" />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- Form Step 6 -->
+            <div class="step-6" fxLayout="row wrap" fxLayout.lt-sm="column" *ngIf="doesShowStepForm(6)">
+              <div class="page-description mb-24" fxFlex="100">
+                <h2 class="bold-text">Aplicación de la estrategia</h2>
+              </div>
+
+              <div class="page-description mb-24" fxFlex="100">
+                Los espacios con (*) son requeridos para poder añadir la estrategia
+              </div>
+
+              <div fxFlex="60" class="form-group">
+                <mat-label class="form-label">Seleccione la imagen publicitaria para esta estrategia *</mat-label>
+                <app-upload-file
+                  name="logo_url"
+                  [control]="form.controls.logo_url"
+                  [inputId]="'logo_url-input'"
+                  [fileName]="''"
+                  placeholder="+ Agregar imagen publicitaria">
+                </app-upload-file>
+              </div>
+
+              <div fxFlex="100" class="align-self-center">
+                <div fxFlex="50" class="form-group">
+                  <mat-label class="form-label">Seleccione la fecha de inicio para la estrategia *</mat-label>
+                  <mat-form-field appearance="outline" class="mat-form-filled full-width">
+                    <input matInput
+                      formControlName="initial_date"
+                      name="initial_date"
+                      id="initial-date-input"
+                      placeholder="DD / MM / YY"
+                      type="date"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="100" class="align-self-center">
+                <mat-label class="form-label">Seleccione la fecha de vencimiento para la estrategia *</mat-label>
+                <div class="radio-buttons-container">
+                  <mat-radio-group name="expiration_option" formControlName="expiration_option">
+                    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+                      <mat-radio-button value="defined" class="mr-1" (change)="showEndDateInput($event)">
+                        <label>Establecer fecha de vencimiento</label>
+                      </mat-radio-button>
+                    </div>
+
+                    <div fxLayout="row wrap"
+                      fxLayout.lt-sm="column"
+                      *ngIf="endDateInputEnabled || strategy.expiration_option == 'defined'">
+                      <div fxFlex="50" class="form-group">
+                        <mat-form-field appearance="outline" class="mat-form-filled full-width">
+                          <input matInput
+                            formControlName="end_date"
+                            name="end_date"
+                            id="end-date-input"
+                            placeholder="DD / MM / YY"
+                            type="date"
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+                      <mat-radio-button value="undefined" (change)="showEndDateInput($event)">
+                        <label>Sin definir</label>
+                      </mat-radio-button>
+                    </div>
+
+                    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+                      <mat-radio-button value="while_supplies" (change)="showEndDateInput($event)">
+                        <label>Hasta agotar existencias</label>
+                      </mat-radio-button>
+                    </div>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center btn-actions" fxLayout="row wrap">
+              <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-20 mb-50">
+                <button mat-flat-button type="button"
+                  class="outline-btn btn-no-border-radius mr-1 btn-no-bg tot-default-submit-btn cancel-btn"
+                  routerLink="/dashboard/strategies">
+                  {{ 'CANCEL' | translate }}
+                </button>
+              </div>
+
+              <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-20 mb-50">
+                <button mat-flat-button type="button"
+                  class="tot-default-submit-btn"
+                  color="primary"
+                  (click)="continue()"
+                  [disabled]="doesEnableContinueButton(currentFormStep)"
+                  *ngIf="!doesShowStepForm(6)">
+                  {{ 'CONTINUE' | translate }}
+                </button>
+
+                <button mat-flat-button color="primary" class="btn-no-border-radius tot-default-submit-btn" id="submit-btn"
+                  *ngIf="doesShowStepForm(6)">
+                  {{ 'SAVE' | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div fxFlex="20" class="form-summary">
+            <div fxLayout="row wrap" fxLayout.lt-sm="column">
+              <div class="page-description mb-20" fxFlex="100">
+                <h2 class="bold-text">{{ 'SUMMARY' | translate }}</h2>
+              </div>
+            </div>
+            <br>
+
+            <div fxLayout="row wrap" fxLayout.lt-sm="column">
+              <div class="page-description mb-24" fxFlex="100">
+                {{ 'MARKET_SIZE_DEFINED' | translate }}
+              </div>
+
+              <div fxFlex="80">
+                <mat-progress-bar mode="determinate"
+                  [value]="percentageOfCustomersTargeted"
+                  class="market-percentage" color="black">
+                </mat-progress-bar>
+              </div>
+
+              <div class="completed-step" fxFlex="20">
+                {{ percentageOfCustomersTargeted }}%
+              </div>
+
+              <mat-label class="form-label">{{ 'NUMBER_OF_USERS' | translate }}</mat-label>
+            </div>
+            <br>
+
+            <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
+              <div class="page-description mb-24" fxFlex="100">
+                {{ 'PROFILING' | translate }}
+              </div>
+
+              <div class="input-label mb-20" fxFlex="70">
+                {{ 'STATUS' | translate }}:
+              </div>
+
+              <div class="input-info mb-20" fxFlex="30">
+                {{ this.form.controls.client_status.value | uppercase | translate }}
+              </div>
+
+              <div class="input-label mb-20" fxFlex="70">
+                {{ 'AGE_RANGE' | translate }}:
+              </div>
+
+              <div class="input-info mb-20" fxFlex="30">
+                {{ ageRangeLabel }}
+              </div>
+
+              <div class="input-label mb-20" fxFlex="70">
+                {{ 'SELECTED_GENRE' | translate }}:
+              </div>
+
+              <div class="input-info mb-20" fxFlex="30">
+                {{ this.form.controls.gender_of_target_market.value | translate }}
+              </div>
+            </div>
+            <br>
+
+            <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
+              <div class="page-description mb-24" fxFlex="100">
+                {{ 'GEOGRAPHICAL_SCOPE' | translate }}
+              </div>
+
+              <div class="input-info mb-20" fxFlex="100" *ngFor="let item of selectedGeographicalLocations">
+                {{ item.name }}
+              </div>
+            </div>
+            <br>
+
+            <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
+              <a class="text-underline completed-step" (click)="openProfilePopUp()">
+                {{ 'SAVE_PROFILE' | translate }}
+              </a>
+            </div>
+
+            <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
+              <div class="page-description mb-24" fxFlex="100">
+                {{ 'SPONSOR' | translate }}
+              </div>
+
+              <div class="input-info mb-20" fxFlex="100">
+                {{ sponsorName }}
+              </div>
+            </div>
+            <br>
+
+            <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
+              <div class="page-description mb-24" fxFlex="100">
+                {{ 'STRATEGY' | translate }}
+              </div>
+
+              <div class="input-info mb-20" fxFlex="100">
+                {{ this.form.controls.name.value }}
+              </div>
+
+              <div class="input-info mb-20" fxFlex="30">
+                {{ this.form.controls.description.value }}
+              </div>
+            </div>
+
+            <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
+              <div class="page-description mb-24" fxFlex="100">
+                {{ 'CONDITIONS' | translate }}
+              </div>
+
+              <div class="input-info mb-20" fxFlex="100">
+                {{ this.form.controls.can_be_exchanged.value | uppercase | translate }}
+              </div>
+            </div>
+          </div>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

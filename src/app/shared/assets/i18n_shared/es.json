@@ -49,10 +49,12 @@
 
   "COMPANY_NAME": "Nombre de empresa",
   "PHONE": "Teléfono",
+  "TELEPHONE_1": "Teléfono principal",
+  "TELEPHONE_2": "Teléfono (opcional)",
   "ACTIVE": "Activo",
   "GOVERNMENT_ID": "Número de cédula",
   "GOVERNMENT_ID_TYPE": "Tipo de Identificación",
-  "ADDRESS": "Habla a",
+  "ADDRESS": "Dirección",
   "DISTRICT_CODE": "Distrito",
   "CANTON_CODE": "Cantón",
   "PROVINCE_CODE": "Provincia",
@@ -166,11 +168,20 @@
   "province_name": "Provincia",
   "suburb_name": "Barrio",
   "detailed_address": "Dirección exacta",
+  "LOCATION_NAME": "Nombre de la sucursal",
+  "LOCATION_ID": "Id de la sucursal",
+  "PHARMACEUTICAL_NAME": "Nombre de la farmacéutica",
+  "PHARMACEUTICAL_ID": "Id de farmacéutica",
+  "COUNTRY": "País",
+  "PROVINCE": "Provincia",
+  "CANTON": "Cantón",
+  "DISTRICT": "Distrito",
+  "QUARTER": "Barrio",
   "ERRORS":{
     "PHONE_INVALID": "Formato incorrecto de número telefónico"
   },
-  "DELETED_COMPANIES": "Los aliados han sido eliminados satisfactoriamente.",
-  "SUSPEND_COMPANIES": "Los aliados han sido suspendidos satisfactoriamente.",
+  "DELETED_COMPANIES": "El aliado ha sido eliminado satisfactoriamente.",
+  "SUSPEND_COMPANIES": "El aliado ha sido suspendido satisfactoriamente.",
 
   "VALIDATION_FAILED": "Se detectaron errores durante la validación del archivo. Por favor verifique que tenga el formato correcto.",
   "NO_ERROR_FOUND": "No se ha encontrado ningún error",
@@ -179,5 +190,7 @@
   "NAVIGATION": {
     "T&C": "T&C",
     "DASHBOARD": "Panel de control"
-  }
+  },
+
+  "UPDATED_PROFILE_MESSAGE": "La información del perfil se ha actualizado correctamente."
 }
