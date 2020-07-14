@@ -1,4 +1,16 @@
-.mat-dialog-container {
-  background-color: white !important;
-  padding: 20px 40px !important;
+mat-dialog-container.mat-dialog-container {
+    background-color: white !important;
+    padding: 0;
+
+    .box-detail{
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        padding: 32px !important;
+    }
+
+    // headline
+    .header-container:last-child{
+        margin-bottom: 0
+    }
 }

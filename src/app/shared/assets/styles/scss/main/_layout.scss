@@ -215,7 +215,7 @@
     font-size: 30px !important;
     font-weight: bold !important;
     display: block !important;
-    color: $dark-color !important;
+    color: $body-text-color !important;
     line-height: 1 !important;
   }
   // Container Breadcrumb Layout
@@ -253,10 +253,10 @@
   position: relative;
   margin: 0 auto 32px;
   padding: 20px !important;
+  @include radius-box-card;
   @include md{
     padding: 32px 47px !important;
   }
-  @include radius-box-card;
   &:last-child{
     margin-bottom: 0;
   }
@@ -354,8 +354,8 @@
       }
       &.mat-select-tot-style .mat-form-field-infix,
       &.mat-form-field-type-mat-input .mat-form-field-infix{
-        padding-top: 10px !important;
-        padding-bottom: 10px !important;
+        padding-top: 11px !important;
+        padding-bottom: 11px !important;
       }
       &.mat-form-field-appearance-outline.form-field-default .mat-form-field-infix{
         padding: 20px 0 !important
@@ -394,6 +394,7 @@
         background-color: $primary-color;
         height: 3px;
         width: calc(100% + 64px);
+        z-index: 2;
       }
       .datatable-header-inner{
         overflow: hidden;
