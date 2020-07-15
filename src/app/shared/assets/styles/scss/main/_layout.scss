@@ -429,8 +429,24 @@
 
 
 // split
+.split-primary,
 .split{
   height: 1px;
   margin: 42px 0;
   background-color: $disabled-button-background;
+}
+.split-primary{
+  background-color: $primary-color;
+}
+
+// split
+.vertical-split-primary,
+.vertical-split{
+  width: 1px;
+  margin: 0 30px;
+  height: 100%;
+  background-color: $disabled-button-background;
+}
+.vertical-split-primary{
+  background-color: $primary-color;
 }
