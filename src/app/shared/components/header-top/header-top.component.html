@@ -10,7 +10,7 @@
       <span fxFlex></span>
       <!-- End Navigation -->
 
-      <div [style.overflow]="'visible'" class="topbar-button-right">
+      <div [style.overflow]="'visible'" class="topbar-button-right active">
         {{ 'NAVIGATION.DASHBOARD' | translate }}
       </div>
 
@@ -67,10 +67,10 @@
                 {{ item.name | translate }}
               </label>
 
-              <a matRipple>
+              <a matRipple>Hi
                 <mat-icon>{{ item.icon }}</mat-icon>
                 {{ item.name | translate }}
-              </a>
+              Bye</a>
 
               <input type="checkbox" id="drop-{{ i }}" />
               <ul>

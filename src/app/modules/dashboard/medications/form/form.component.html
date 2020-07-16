@@ -1,14 +1,18 @@
-<div class="page-component-container">
-  <div class="page-title">
-    {{name}}
+<div class="base-container">
+  <div class="header-container">
+    <div class="header-nav">
+      <h1 class="headline">{{name}}</h1>
+    </div>
   </div>
 
-  <div class="content-container margin-bottom-100 border-bt-solid-4">
-    <h2 class="page-subtitle" translate>
-      {{'MEDICATION_FORM_TITLE' | translate}}
-    </h2>
+  <div class="box-detail">
+    <div class="header-container">
+      <div class="header-nav">
+        <h1 class="headline">{{'MEDICATION_FORM_TITLE' | translate}}</h1>
+      </div>
+    </div>
 
-    <div class="form-wrapper page-body">
+    <div class="row-detail">
       <div class="alert alert-danger" *ngIf="!!errorsMessages">
         {{ errorsMessages }}
       </div>
@@ -17,7 +21,7 @@
         <div class="form-body">
           <div fxLayout="row wrap" fxLayout.lt-sm="column">
 
-            <div fxFlex="46" class="form-group">
+            <div fxFlex="50" class="form-group">
               <mat-label class="form-label">{{'PHARMACEUTICAL' | translate}} *</mat-label>
               <mat-form-field appearance="outline" class="mat-form-filled full-width">
                 <mat-select formControlName="pharmaceutical_company_id" name="pharmaceutical_company_id">
@@ -28,9 +32,7 @@
               </mat-form-field>
             </div>
 
-            <div fxFlex="8"></div>
-
-            <div fxFlex="46" class="form-group">
+            <div fxFlex="50" class="form-group">
               <mat-label class="disabled-label form-label">{{'PHARMACEUTICAL_ID' | translate}} *</mat-label>
               <mat-form-field appearance="outline" class="mat-form-filled full-width">
                 <input matInput
@@ -42,7 +44,7 @@
               </mat-form-field>
             </div>
 
-            <div fxFlex="46" class="form-group">
+            <div fxFlex="50" class="form-group">
               <mat-label class="form-label">{{'PRODUCT_ID' | translate}} *</mat-label>
               <mat-form-field appearance="outline" class="mat-form-filled full-width">
                 <input matInput
@@ -53,9 +55,7 @@
               </mat-form-field>
             </div>
 
-            <div fxFlex="8"></div>
-
-            <div fxFlex="46" class="form-group">
+            <div fxFlex="50" class="form-group">
               <mat-label class="form-label">{{'CATEGORY' | translate}} *</mat-label>
               <mat-form-field appearance="outline" class="mat-form-filled full-width">
                 <mat-select formControlName="medication_category_id" name="medication_category_id">
