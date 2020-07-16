@@ -154,6 +154,7 @@
   margin-top: 20px;
   border-spacing: 0;
   border-collapse: collapse; /* here is the devil */
+  min-width: max-content;
 
   thead {
     th {
@@ -171,6 +172,9 @@
 }
 
 
-.base-container > .header-container .headline{
-  font-size: $font-size-xl !important;
+.base-container > .header-container{
+  margin-bottom: 42px;
+  .headline{
+    font-size: $font-size-xl !important;
+  }
 }

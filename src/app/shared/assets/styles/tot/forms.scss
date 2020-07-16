@@ -77,8 +77,8 @@ mat-form-field.phone-number{
     }
   }
   // aling middle
-  &.aling-middle{
-    margin-top: 0.66666667em;
+  &.no-subscript .mat-form-field-subscript-wrapper{
+    display: none;
   }
 }
 
@@ -149,17 +149,5 @@ mat-form-field.phone-number{
       margin: auto;
       height: 24px;
     }
-  }
-}
-
-// radio button
-.mat-radio-button{
-  @include font-lato;
-  .mat-radio-label-content{
-    font-size: $font-size-sm;
-  }
-  margin-right: 32px;
-  &:last-child{
-    margin-right: 0;
   }
 }
