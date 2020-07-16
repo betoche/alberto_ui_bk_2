@@ -16,346 +16,348 @@
       <div class="alert alert-danger" *ngIf="!!errorsMessages">
         {{ errorsMessages }}
       </div>
-
-      <form [formGroup]="form" (ngSubmit)="submit()">
-        <div class="form-body">
-          <div fxLayout="row wrap" fxLayout.lt-sm="column">
-
-            <div fxFlex="50" class="form-group">
-              <mat-label class="form-label">{{'PHARMACEUTICAL' | translate}} *</mat-label>
-              <mat-form-field appearance="outline" class="mat-form-filled full-width">
-                <mat-select formControlName="pharmaceutical_company_id" name="pharmaceutical_company_id">
-                  <mat-option *ngFor="let pharmaceuticalCompany of pharmaceuticalCompanies" [value]="pharmaceuticalCompany.id">
-                    {{ pharmaceuticalCompany.name }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-
-            <div fxFlex="50" class="form-group">
-              <mat-label class="disabled-label form-label">{{'PHARMACEUTICAL_ID' | translate}} *</mat-label>
-              <mat-form-field appearance="outline" class="mat-form-filled full-width">
-                <input matInput
-                  formControlName="pharmaceutical_company_id_disabled"
-                  name="pharmaceutical_company_id_disabled"
-                  id="pharmaceutical-company-id-input"
-                />
-                <mat-icon class="text-grey-B000" matSuffix>lock</mat-icon>
-              </mat-form-field>
-            </div>
-
-            <div fxFlex="50" class="form-group">
-              <mat-label class="form-label">{{'PRODUCT_ID' | translate}} *</mat-label>
-              <mat-form-field appearance="outline" class="mat-form-filled full-width">
-                <input matInput
-                  formControlName="code"
-                  name="code"
-                  id="code-input"
-                />
-              </mat-form-field>
-            </div>
-
-            <div fxFlex="50" class="form-group">
-              <mat-label class="form-label">{{'CATEGORY' | translate}} *</mat-label>
-              <mat-form-field appearance="outline" class="mat-form-filled full-width">
-                <mat-select formControlName="medication_category_id" name="medication_category_id">
-                  <mat-option *ngFor="let medicationCategory of medicationCategories" [value]="medicationCategory.id">
-                    {{ medicationCategory.name }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-
-            <div formArrayName="medication_presentations_attributes" fxFlex="100">
-              <div *ngFor="let medication_presentation of form.controls.medication_presentations_attributes['controls']; let i = index" fxLayout="row wrap" fxLayout.lt-sm="column">
-                <div fxFlex="100" formArrayName="{{i}}">
-
-                  <div fxFlex="46" class="form-group">
-                    <mat-label class="form-label">{{'PRESENTATION' | translate}} *</mat-label>
-                    <mat-form-field appearance="outline" class="mat-form-filled full-width">
-                      <mat-select name="presentation_type" formControlName="presentation_type">
-                        <mat-option *ngFor="let type of medicationPresentationTypes" [value]="type.value">
-                          {{ type.label }}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                  </div>
-
-                  <div fxFlex="8"></div>
-
-                  <div fxFlex="46" class="form-group">
-                    <mat-label class="form-label">{{'AMOUNT_FOR_PRECRIPCION' | translate}} *</mat-label>
-                    <mat-form-field appearance="outline" class="mat-form-filled full-width">
-                      <input matInput
-                        formControlName="presentation_content"
-                        name="presentation_content"
-                        id="presentation-content-input"
-                      />
-                    </mat-form-field>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="average-dosage" fxLayout="row wrap" fxLayout.lt-sm="column" fxFlex="100">
-              <div fxFlex="100">
-                <mat-label class="form-label">{{'AVERAGE_DOSAGE' | translate}} *</mat-label>
-              </div>
-
-              <div fxFlex="10" class="mr-1 align-self-center">
-                <mat-label class="form-label">{{'ADULT_LABEL' | translate}}</mat-label>
-              </div>
-
-              <div fxFlex="30" class="mr-1">
-                <div fxFlex="25" class="mr-1 align-self-center">
-                  <mat-label class="form-label">{{'QUANTITY' | translate}}</mat-label>
-                </div>
-                <div fxFlex="40" class="mr-1">
-                  <mat-form-field appearance="outline" class="mat-form-filled select-number">
-                    <input matInput
-                      formControlName="adults_dosification_amount"
-                      name="adults_dosification_amount"
-                      min="0"
-                      id="adults-dosification-amount-input"
-                      type="number"
-                    />
-                  </mat-form-field>
-                </div>
-                <div fxFlex="25" class="mr-1 align-self-center">
-                  <mat-label class="form-label">{{'DROPS' | translate}}</mat-label>
-                </div>
-              </div>
-
-              <div fxFlex="20" class="mr-1">
-                <div fxFlex="20" class="mr-1 align-self-center">
-                  <mat-label class="form-label">{{'EVERY' | translate}}</mat-label>
-                </div>
-                <div fxFlex="50" class="mr-1">
-                  <mat-form-field appearance="outline" class="mat-form-filled select-number">
-                    <input matInput
-                      formControlName="adults_dosification_frequency_measure"
-                      name="adults_dosification_frequency_measure"
-                      id="adults-dosification-frequency-measure-input"
-                      min="0"
-                      type="number"
-                    />
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div fxFlex="25" class="align-self-center">
-                <div class="radio-buttons-container">
-                  <mat-radio-group
-                  name="adults_dosification_frequency"
-                  formControlName="adults_dosification_frequency">
-                    <mat-radio-button value="hours" class="mr-1">{{'HOURS' | translate}}</mat-radio-button>
-                    <mat-radio-button value="days">{{'DAYS' | translate}}</mat-radio-button>
-                  </mat-radio-group>
-                </div>
-              </div>
-            </div>
-
-            <div fxFlex="100" class="form-group average-dosage">
-              <div fxFlex="10" class="mr-1 align-self-center">
-                <mat-label class="form-label">{{'CHILDREN_LABEL' | translate}}</mat-label>
-              </div>
-
-              <div fxFlex="30" class="mr-1">
-                <div fxFlex="25" class="mr-1 align-self-center">
-                  <mat-label class="form-label">{{'QUANTITY' | translate}}</mat-label>
-                </div>
-                <div fxFlex="40" class="mr-1">
-                  <mat-form-field appearance="outline" class="mat-form-filled select-number">
-                    <input matInput
-                      formControlName="children_dosification_amount"
-                      name="children_dosification_amount"
-                      id="adults-dosification-amount-input"
-                      min="0"
-                      type="number"
-                    />
-                  </mat-form-field>
-                </div>
-                <div fxFlex="25" class="mr-1 align-self-center">
-                  <mat-label class="form-label">{{'DROPS' | translate}}</mat-label>
-                </div>
-              </div>
-
-              <div fxFlex="20" fxLayout="row wrap" class="mr-1 align-self-center">
-                <div fxFlex="20" class="mr-1 align-self-center">
-                  <mat-label class="form-label">{{'EVERY' | translate}}</mat-label>
-                </div>
-                <div fxFlex="50" class="mr-1">
-                  <mat-form-field appearance="outline" class="mat-form-filled select-number">
-                    <input matInput
-                      formControlName="children_dosification_frequency_measure"
-                      name="children_dosification_frequency_measure"
-                      id="adults-dosification-frequency-measure-input"
-                      min="0"
-                      type="number"
-                    />
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div fxFlex="25" class="align-self-center">
-                <div class="radio-buttons-container">
-                  <mat-radio-group
-                  name="children_dosification_frequency"
-                  formControlName="children_dosification_frequency">
-                    <mat-radio-button value="hours" class="mr-1">{{'HOURS' | translate}}</mat-radio-button>
-                    <mat-radio-button value="days">{{'DAYS' | translate}}</mat-radio-button>
-                  </mat-radio-group>
-                </div>
-              </div>
-            </div>
-
-            <div fxFlex="100" class="form-group">
-              <mat-label class="form-label">{{'DESCRIPTION' | translate}} *</mat-label>
-              <mat-form-field appearance="outline" class="mat-form-filled full-width">
-                <input matInput
-                  formControlName="description"
-                  name="description"
-                  id="description-input"
-                />
-              </mat-form-field>
-            </div>
-
-            <div fxFlex="46" class="form-group">
-              <mat-label class="form-label">{{'MEDICATION_IMAGE_UPLOAD' | translate}} *</mat-label>
-              <app-upload-file
-                name="logo_url"
-                [control]="form.controls.logo_url"
-                [inputId]="'logo-url-input'"
-                [fileName]="''"
-                validateDimensions200X200Enabled="true"
-                hint="{{'MEDICATION_IMAGE_HINT' | translate}}"
-                placeholder="Seleccione un archivo"
-              >
-              </app-upload-file>
-            </div>
-            <div fxFlex="54"></div>
-
+    </div>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="row-detail">
+        <div fxLayout="row nowrap" fxLayoutGap="22px" fxLayout.lt-sm="column">
+          <div fxFlex="50">
+            <mat-label>{{'PHARMACEUTICAL' | translate}} *</mat-label>
+            <mat-form-field appearance="outline" class="mat-form-filled full-width">
+              <mat-select formControlName="pharmaceutical_company_id" name="pharmaceutical_company_id">
+                <mat-option *ngFor="let pharmaceuticalCompany of pharmaceuticalCompanies" [value]="pharmaceuticalCompany.id">
+                  {{ pharmaceuticalCompany.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
 
-          <mat-label class="form-label">{{'AVAILABLE_IN' | translate}}</mat-label>
-          <table class="medication-prices-table table-with-input">
-            <thead class="border-bt-solid-4">
-              <tr>
-                <th class="form-label">{{ 'COUNTRY' | translate }}</th>
+          <div fxFlex="50">
+            <mat-label class="disabled-label form-label">{{'PHARMACEUTICAL_ID' | translate}} *</mat-label>
+            <mat-form-field appearance="outline" class="mat-form-filled full-width">
+              <input matInput
+                formControlName="pharmaceutical_company_id_disabled"
+                name="pharmaceutical_company_id_disabled"
+                id="pharmaceutical-company-id-input"
+              />
+              <mat-icon class="text-grey-B000" matSuffix>lock</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row nowrap" fxLayoutGap="22px" fxLayout.lt-sm="column">
+          <div fxFlex="50" class="form-group">
+            <mat-label>{{'PRODUCT_ID' | translate}} *</mat-label>
+            <mat-form-field appearance="outline" class="mat-form-filled full-width">
+              <input matInput
+                formControlName="code"
+                name="code"
+                id="code-input"
+              />
+            </mat-form-field>
+          </div>
 
-                <th class="form-label">{{ 'CURRENCY' | translate }}</th>
-
-                <th class="form-label">{{ 'SUGGESTED_PRICE' | translate }}</th>
-
-                <th class="form-label">{{ 'IVA' | translate }}</th>
-
-                <th class="form-label">{{ 'IVA_PRICE' | translate }}</th>
-              </tr>
-            </thead>
-
-            <tbody formArrayName="medication_prices_attributes" *ngIf="!isAddingCountries">
-              <tr class="border-style" *ngFor="let medication_price of form.controls.medication_prices_attributes['controls']; let i = index">
-
-                <td formArrayName="{{i}}" *ngIf="!medication_price['controls']['_destroy']['value']">
-                  {{medication_price['controls']['country_name']['value']}}
-                </td>
-
-                <td formArrayName="{{i}}" *ngIf="!medication_price['controls']['_destroy']['value']">
-                  {{medication_price['controls']['country_code']['value']}}
-                </td>
-
-                <td formArrayName="{{i}}" *ngIf="!medication_price['controls']['_destroy']['value']">
-                  <mat-form-field appearance="outline" class="mat-form-filled full-width">
-                    <input matInput
-                      formControlName="price"
-                      name="price"
-                      id="price-input-{{i}}"
-                    />
-                  </mat-form-field>
-                </td>
-
-                <td formArrayName="{{i}}" *ngIf="!medication_price['controls']['_destroy']['value']">
-                  <mat-form-field appearance="outline" class="mat-form-filled full-width">
-                    <input matInput
-                      formControlName="iva_tax_percentage"
-                      name="iva_tax_percentage"
-                      id="iva-tax-percentage-input-{{i}}"
-                    />
-                  </mat-form-field>
-                </td>
-
-                <td formArrayName="{{i}}" *ngIf="!medication_price['controls']['_destroy']['value']">
-                  {{ priceWithIVA(medication_price['controls']) }}
-                </td>
-
-                <td formArrayName="{{i}}" *ngIf="!medication_price['controls']['_destroy']['value']"></td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="add-countries checkbox-selecting" *ngIf="isAddingCountries">
-            <div fxLayout="row wrap" fxLayout.lt-sm="column">
-              <div class="border-bt-normal form-group" fxFlex="100">
-                {{ 'SELECT_COUNTRIES' | translate }}
+          <div fxFlex="50" class="form-group">
+            <mat-label>{{'CATEGORY' | translate}} *</mat-label>
+            <mat-form-field appearance="outline" class="mat-form-filled full-width">
+              <mat-select formControlName="medication_category_id" name="medication_category_id">
+                <mat-option *ngFor="let medicationCategory of medicationCategories" [value]="medicationCategory.id">
+                  {{ medicationCategory.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div formArrayName="medication_presentations_attributes">
+          <div *ngFor="let medication_presentation of form.controls.medication_presentations_attributes['controls']; let i = index">
+            <div fxLayout="row nowrap" fxLayoutGap="22px" fxLayout.lt-sm="column" formArrayName="{{i}}">
+              <div fxFlex="50" class="form-group">
+                <mat-label>{{'PRESENTATION' | translate}} *</mat-label>
+                <mat-form-field appearance="outline" class="mat-form-filled full-width">
+                  <mat-select name="presentation_type" formControlName="presentation_type">
+                    <mat-option *ngFor="let type of medicationPresentationTypes" [value]="type.value">
+                      {{ type.label }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
-            </div>
-
-            <div class="checkbox-form-box" *ngIf="form.controls.medication_prices_attributes.value.length > 0">
-              <mat-checkbox (change)="toggleCheckedAllCountries($event)" [checked]="isSelectedAllCountries">
-                {{ 'TOTAL' | translate }}
-              </mat-checkbox>
-            </div>
-
-            <div class="border-bt-normal" fxLayout="row wrap" fxLayout.lt-sm="column">
-              <div fxFlex="50">
-                <div *ngFor="let medication_price of form.controls.medication_prices_attributes['controls']; let i = index">
-                  <div class="checkbox-form-box">
-                    <mat-checkbox (change)="toggleMedicationPrice($event, medication_price, i)" [checked]="!medication_price['controls']['_destroy']['value']">
-                      {{medication_price['controls']['country_name']['value']}}
-                    </mat-checkbox>
-                  </div>
-                </div>
-              </div>
-
-              <div fxFlex="50"></div>
 
               <div fxFlex="50" class="form-group">
-                <button mat-raised-button color="primary" id="submit-btn" (click)="setMedicationPricesOnCountries()"
-                class="tot-default-submit-btn">
-                  {{ 'ADD' | translate }}
-                </button>
+                <mat-label>{{'AMOUNT_FOR_PRECRIPCION' | translate}} *</mat-label>
+                <mat-form-field appearance="outline" class="mat-form-filled full-width">
+                  <input matInput
+                    formControlName="presentation_content"
+                    name="presentation_content"
+                    id="presentation-content-input"
+                  />
+                </mat-form-field>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="row-detail">
+        <div ngClass.xs="mb-22">
+          <mat-label>{{'AVERAGE_DOSAGE' | translate}} *</mat-label>
+        </div>
+        <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign.gt-xs="start center" fxLayoutGap.gt-xs="52px" ngClass.xs="mb-32">
+          <div fxFlex.gt-xs="55px">
+            <mat-label>{{'ADULT_LABEL' | translate}}</mat-label>
           </div>
 
-          <div class="form-group border-bt-normal" *ngIf="!isAddingCountries">
-            <p class="mb-0">
-              <a class="btn-add-first-item" (click)="addCountries()">
-                <img src="assets/images/add.png" class="icon-add-item"/>
-                <span class="text-add-item">
-                  {{ 'ADD_COUNTRY' | translate }}
-                </span>
-              </a>
-            </p>
+          <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="14px">
+            <div fxFlex="60px">
+              <mat-label>{{'QUANTITY' | translate}}</mat-label>
+            </div>
+            <div fxFlex="65px">
+              <mat-form-field appearance="outline" class="mat-form-filled select-number full-width form-field-sm aling-middle">
+                <input matInput
+                  formControlName="adults_dosification_amount"
+                  name="adults_dosification_amount"
+                  min="0"
+                  id="adults-dosification-amount-input"
+                  type="number"
+                />
+              </mat-form-field>
+            </div>
+            <div>
+              <div>
+                <mat-label>{{'DROPS' | translate}}</mat-label>
+              </div>
+            </div>
           </div>
 
-          <div class="text-center btn-actions" fxLayout="row wrap">
-            <button mat-button type="button" class="outline-btn btn-no-border-radius mr-1 btn-no-bg tot-default-submit-btn"
-            routerLink="/dashboard/medications">
-              {{ 'CANCEL' | translate }}
-            </button>
+          <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="14px">
+            <div fxFlex="60px">
+              <mat-label>{{'EVERY' | translate}}</mat-label>
+            </div>
+            <div fxFlex="65px">
+              <mat-form-field appearance="outline" class="mat-form-filled select-number full-width form-field-sm aling-middle">
+                <input matInput
+                  formControlName="adults_dosification_frequency_measure"
+                  name="adults_dosification_frequency_measure"
+                  id="adults-dosification-frequency-measure-input"
+                  min="0"
+                  type="number"
+                />
+              </mat-form-field>
+            </div>
+          </div>
 
-            <button mat-raised-button color="primary"
-            [disabled]="form.invalid" id="submit-btn"
-            class="btn-no-border-radius tot-default-submit-btn">
-              {{ 'FINISH' | translate }}
-            </button>
+          <div>
+            <mat-radio-group
+            name="adults_dosification_frequency"
+            formControlName="adults_dosification_frequency">
+              <mat-radio-button value="hours">{{'HOURS' | translate}}</mat-radio-button>
+              <mat-radio-button value="days">{{'DAYS' | translate}}</mat-radio-button>
+            </mat-radio-group>
           </div>
         </div>
 
-      </form>
-    </div>
+        <div class="split" fxHide.gt-xs>
+        </div>
+
+        <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign.gt-xs="start center" fxLayoutGap.gt-xs="52px">
+          <div fxFlex.gt-xs="55px">
+            <mat-label>{{'CHILDREN_LABEL' | translate}}</mat-label>
+          </div>
+
+          <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="14px">
+            <div fxFlex="60px">
+              <mat-label>{{'QUANTITY' | translate}}</mat-label>
+            </div>
+            <div fxFlex="65px">
+              <mat-form-field appearance="outline" class="mat-form-filled select-number full-width form-field-sm aling-middle">
+                <input matInput
+                  formControlName="children_dosification_amount"
+                  name="children_dosification_amount"
+                  id="adults-dosification-amount-input"
+                  min="0"
+                  type="number"
+                />
+              </mat-form-field>
+            </div>
+            <div>
+              <div>
+                <mat-label>{{'DROPS' | translate}}</mat-label>
+              </div>
+            </div>
+          </div>
+
+          <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="14px">
+            <div fxFlex="60px">
+              <mat-label>{{'EVERY' | translate}}</mat-label>
+            </div>
+            <div fxFlex="65px">
+              <mat-form-field appearance="outline" class="mat-form-filled select-number full-width form-field-sm aling-middle">
+                <input matInput
+                  formControlName="children_dosification_frequency_measure"
+                  name="children_dosification_frequency_measure"
+                  id="adults-dosification-frequency-measure-input"
+                  min="0"
+                  type="number"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div>
+            <mat-radio-group
+            name="children_dosification_frequency"
+            formControlName="children_dosification_frequency">
+              <mat-radio-button value="hours" class="mr-1">{{'HOURS' | translate}}</mat-radio-button>
+              <mat-radio-button value="days">{{'DAYS' | translate}}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row-detail">
+        <div>
+          <mat-label>{{'DESCRIPTION' | translate}} *</mat-label>
+          <mat-form-field appearance="outline" class="mat-form-filled full-width">
+            <input matInput
+              formControlName="description"
+              name="description"
+              id="description-input"
+            />
+          </mat-form-field>
+        </div>
+
+        <div>
+          <div fxFlex="50">
+            <mat-label>{{'MEDICATION_IMAGE_UPLOAD' | translate}} *</mat-label>
+            <app-upload-file
+              name="logo_url"
+              [control]="form.controls.logo_url"
+              [inputId]="'logo-url-input'"
+              [fileName]="''"
+              validateDimensions200X200Enabled="true"
+              hint="{{'MEDICATION_IMAGE_HINT' | translate}}"
+              placeholder="Seleccione un archivo"
+            >
+            </app-upload-file>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-detail">
+        <mat-label>{{'AVAILABLE_IN' | translate}}</mat-label>
+        <table class="medication-prices-table table-with-input">
+          <thead class="border-bt-solid-4">
+            <tr>
+              <th>{{ 'COUNTRY' | translate }}</th>
+
+              <th>{{ 'CURRENCY' | translate }}</th>
+
+              <th>{{ 'SUGGESTED_PRICE' | translate }}</th>
+
+              <th>{{ 'IVA' | translate }}</th>
+
+              <th>{{ 'IVA_PRICE' | translate }}</th>
+            </tr>
+          </thead>
+
+          <tbody formArrayName="medication_prices_attributes" *ngIf="!isAddingCountries">
+            <tr class="border-style" *ngFor="let medication_price of form.controls.medication_prices_attributes['controls']; let i = index">
+
+              <td formArrayName="{{i}}" *ngIf="!medication_price['controls']['_destroy']['value']">
+                {{medication_price['controls']['country_name']['value']}}
+              </td>
+
+              <td formArrayName="{{i}}" *ngIf="!medication_price['controls']['_destroy']['value']">
+                {{medication_price['controls']['country_code']['value']}}
+              </td>
+
+              <td formArrayName="{{i}}" *ngIf="!medication_price['controls']['_destroy']['value']">
+                <mat-form-field appearance="outline" class="mat-form-filled full-width">
+                  <input matInput
+                    formControlName="price"
+                    name="price"
+                    id="price-input-{{i}}"
+                  />
+                </mat-form-field>
+              </td>
+
+              <td formArrayName="{{i}}" *ngIf="!medication_price['controls']['_destroy']['value']">
+                <mat-form-field appearance="outline" class="mat-form-filled full-width">
+                  <input matInput
+                    formControlName="iva_tax_percentage"
+                    name="iva_tax_percentage"
+                    id="iva-tax-percentage-input-{{i}}"
+                  />
+                </mat-form-field>
+              </td>
+
+              <td formArrayName="{{i}}" *ngIf="!medication_price['controls']['_destroy']['value']">
+                {{ priceWithIVA(medication_price['controls']) }}
+              </td>
+
+              <td formArrayName="{{i}}" *ngIf="!medication_price['controls']['_destroy']['value']"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="add-countries checkbox-selecting" *ngIf="isAddingCountries">
+          <div fxLayout="row wrap" fxLayout.lt-sm="column">
+            <div class="border-bt-normal form-group" fxFlex="100">
+              {{ 'SELECT_COUNTRIES' | translate }}
+            </div>
+          </div>
+
+          <div class="checkbox-form-box" *ngIf="form.controls.medication_prices_attributes.value.length > 0">
+            <mat-checkbox (change)="toggleCheckedAllCountries($event)" [checked]="isSelectedAllCountries">
+              {{ 'TOTAL' | translate }}
+            </mat-checkbox>
+          </div>
+
+          <div class="border-bt-normal" fxLayout="row wrap" fxLayout.lt-sm="column">
+            <div fxFlex="50">
+              <div *ngFor="let medication_price of form.controls.medication_prices_attributes['controls']; let i = index">
+                <div class="checkbox-form-box">
+                  <mat-checkbox (change)="toggleMedicationPrice($event, medication_price, i)" [checked]="!medication_price['controls']['_destroy']['value']">
+                    {{medication_price['controls']['country_name']['value']}}
+                  </mat-checkbox>
+                </div>
+              </div>
+            </div>
+
+            <div fxFlex="50"></div>
+
+            <div fxFlex="50" class="form-group">
+              <button mat-raised-button color="primary" id="submit-btn" (click)="setMedicationPricesOnCountries()"
+              class="tot-default-submit-btn">
+                {{ 'ADD' | translate }}
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group border-bt-normal" *ngIf="!isAddingCountries">
+          <p class="mb-0">
+            <a class="btn-add-first-item" (click)="addCountries()">
+              <img src="assets/images/add.png" class="icon-add-item"/>
+              <span class="text-add-item">
+                {{ 'ADD_COUNTRY' | translate }}
+              </span>
+            </a>
+          </p>
+        </div>
+
+        <div class="text-center btn-actions" fxLayout="row wrap">
+          <button mat-button type="button" class="outline-btn btn-no-border-radius mr-1 btn-no-bg tot-default-submit-btn"
+          routerLink="/dashboard/medications">
+            {{ 'CANCEL' | translate }}
+          </button>
+
+          <button mat-raised-button color="primary"
+          [disabled]="form.invalid" id="submit-btn"
+          class="btn-no-border-radius tot-default-submit-btn">
+            {{ 'FINISH' | translate }}
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
