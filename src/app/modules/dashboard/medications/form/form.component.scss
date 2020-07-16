@@ -1,3 +1,4 @@
+@import '../../../../shared/assets/styles/scss/_variables';
 :host {
   ::ng-deep {
     .mat-form-field-disabled {
@@ -167,4 +168,9 @@
     line-height: 17px;
     color: #4B4F5A;
   }
+}
+
+
+.base-container > .header-container .headline{
+  font-size: $font-size-xl !important;
 }

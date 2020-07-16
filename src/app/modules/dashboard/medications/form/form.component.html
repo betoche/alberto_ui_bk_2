@@ -204,7 +204,7 @@
             <mat-radio-group
             name="children_dosification_frequency"
             formControlName="children_dosification_frequency">
-              <mat-radio-button value="hours" class="mr-1">{{'HOURS' | translate}}</mat-radio-button>
+              <mat-radio-button value="hours">{{'HOURS' | translate}}</mat-radio-button>
               <mat-radio-button value="days">{{'DAYS' | translate}}</mat-radio-button>
             </mat-radio-group>
           </div>
@@ -241,7 +241,7 @@
         </div>
       </div>
 
-      <div class="row-detail">
+      <div class="row-detail mt-50">
         <mat-label>{{'AVAILABLE_IN' | translate}}</mat-label>
         <table class="medication-prices-table table-with-input">
           <thead class="border-bt-solid-4">
@@ -298,35 +298,31 @@
           </tbody>
         </table>
 
-        <div class="add-countries checkbox-selecting" *ngIf="isAddingCountries">
-          <div fxLayout="row wrap" fxLayout.lt-sm="column">
-            <div class="border-bt-normal form-group" fxFlex="100">
+        <div *ngIf="isAddingCountries">
+          <div class="py-22 border-b-primary" fxLayout="row wrap" fxLayout.lt-sm="column">
+            <mat-label>
               {{ 'SELECT_COUNTRIES' | translate }}
-            </div>
+            </mat-label>
           </div>
 
-          <div class="checkbox-form-box" *ngIf="form.controls.medication_prices_attributes.value.length > 0">
+          <div class="py-22" *ngIf="form.controls.medication_prices_attributes.value.length > 0">
             <mat-checkbox (change)="toggleCheckedAllCountries($event)" [checked]="isSelectedAllCountries">
               {{ 'TOTAL' | translate }}
             </mat-checkbox>
           </div>
 
-          <div class="border-bt-normal" fxLayout="row wrap" fxLayout.lt-sm="column">
+          <div class="py-22 border-b-primary" fxLayout="row wrap" fxLayout.lt-sm="column">
             <div fxFlex="50">
               <div *ngFor="let medication_price of form.controls.medication_prices_attributes['controls']; let i = index">
-                <div class="checkbox-form-box">
-                  <mat-checkbox (change)="toggleMedicationPrice($event, medication_price, i)" [checked]="!medication_price['controls']['_destroy']['value']">
-                    {{medication_price['controls']['country_name']['value']}}
-                  </mat-checkbox>
-                </div>
+                <mat-checkbox (change)="toggleMedicationPrice($event, medication_price, i)" [checked]="!medication_price['controls']['_destroy']['value']">
+                  {{medication_price['controls']['country_name']['value']}}
+                </mat-checkbox>
               </div>
             </div>
 
-            <div fxFlex="50"></div>
-
-            <div fxFlex="50" class="form-group">
+            <div fxFlex="50">
               <button mat-raised-button color="primary" id="submit-btn" (click)="setMedicationPricesOnCountries()"
-              class="tot-default-submit-btn">
+              class="green-button">
                 {{ 'ADD' | translate }}
               </button>
             </div>
@@ -334,26 +330,24 @@
 
         </div>
 
-        <div class="form-group border-bt-normal" *ngIf="!isAddingCountries">
-          <p class="mb-0">
-            <a class="btn-add-first-item" (click)="addCountries()">
-              <img src="assets/images/add.png" class="icon-add-item"/>
-              <span class="text-add-item">
-                {{ 'ADD_COUNTRY' | translate }}
-              </span>
-            </a>
-          </p>
+        <div class="py-22 border-b-primary" *ngIf="!isAddingCountries">
+          <a class="btn-add-first-item" (click)="addCountries()">
+            <img src="assets/images/add.png" class="icon-add-item"/>
+            <span class="text-add-item">
+              {{ 'ADD_COUNTRY' | translate }}
+            </span>
+          </a>
         </div>
 
-        <div class="text-center btn-actions" fxLayout="row wrap">
-          <button mat-button type="button" class="outline-btn btn-no-border-radius mr-1 btn-no-bg tot-default-submit-btn"
+        <div class="mt-50" fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="22px">
+          <button mat-button type="button" class="outline-btn"
           routerLink="/dashboard/medications">
             {{ 'CANCEL' | translate }}
           </button>
 
           <button mat-raised-button color="primary"
           [disabled]="form.invalid" id="submit-btn"
-          class="btn-no-border-radius tot-default-submit-btn">
+          class="green-button">
             {{ 'FINISH' | translate }}
           </button>
         </div>

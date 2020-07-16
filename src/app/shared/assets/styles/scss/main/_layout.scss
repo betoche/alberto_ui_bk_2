@@ -428,6 +428,10 @@
   margin-bottom: 32px;
 }
 
+// border split
+.border-b-primary{
+  border-bottom: 1px solid $primary-color;
+}
 
 // split
 .split-primary,
