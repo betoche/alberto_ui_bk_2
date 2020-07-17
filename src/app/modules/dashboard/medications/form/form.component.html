@@ -21,74 +21,86 @@
       <div class="row-detail">
         <div fxLayout="row nowrap" fxLayoutGap="22px" fxLayout.lt-sm="column">
           <div fxFlex="50">
-            <mat-label>{{'PHARMACEUTICAL' | translate}} *</mat-label>
-            <mat-form-field appearance="outline" class="mat-form-filled full-width">
-              <mat-select formControlName="pharmaceutical_company_id" name="pharmaceutical_company_id">
-                <mat-option *ngFor="let pharmaceuticalCompany of pharmaceuticalCompanies" [value]="pharmaceuticalCompany.id">
-                  {{ pharmaceuticalCompany.name }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+            <div fxFlex="100" fxFlex.gt-md="350px">
+              <mat-label>{{'PHARMACEUTICAL' | translate}} *</mat-label>
+              <mat-form-field appearance="outline" class="mat-form-filled full-width">
+                <mat-select formControlName="pharmaceutical_company_id" name="pharmaceutical_company_id">
+                  <mat-option *ngFor="let pharmaceuticalCompany of pharmaceuticalCompanies" [value]="pharmaceuticalCompany.id">
+                    {{ pharmaceuticalCompany.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
           </div>
 
           <div fxFlex="50">
-            <mat-label class="disabled-label form-label">{{'PHARMACEUTICAL_ID' | translate}} *</mat-label>
-            <mat-form-field appearance="outline" class="mat-form-filled full-width">
-              <input matInput
-                formControlName="pharmaceutical_company_id_disabled"
-                name="pharmaceutical_company_id_disabled"
-                id="pharmaceutical-company-id-input"
-              />
-              <mat-icon class="text-grey-B000" matSuffix>lock</mat-icon>
-            </mat-form-field>
+            <div fxFlex="100" fxFlex.gt-md="350px">
+              <mat-label class="disabled-label form-label">{{'PHARMACEUTICAL_ID' | translate}} *</mat-label>
+              <mat-form-field appearance="outline" class="mat-form-filled full-width">
+                <input matInput
+                  formControlName="pharmaceutical_company_id_disabled"
+                  name="pharmaceutical_company_id_disabled"
+                  id="pharmaceutical-company-id-input"
+                />
+                <mat-icon class="text-grey-B000" matSuffix>lock</mat-icon>
+              </mat-form-field>
+            </div>
           </div>
         </div>
         <div fxLayout="row nowrap" fxLayoutGap="22px" fxLayout.lt-sm="column">
           <div fxFlex="50" class="form-group">
-            <mat-label>{{'PRODUCT_ID' | translate}} *</mat-label>
-            <mat-form-field appearance="outline" class="mat-form-filled full-width">
-              <input matInput
-                formControlName="code"
-                name="code"
-                id="code-input"
-              />
-            </mat-form-field>
+            <div fxFlex="100" fxFlex.gt-md="350px">
+              <mat-label>{{'PRODUCT_ID' | translate}} *</mat-label>
+              <mat-form-field appearance="outline" class="mat-form-filled full-width">
+                <input matInput
+                  formControlName="code"
+                  name="code"
+                  id="code-input"
+                />
+              </mat-form-field>
+            </div>
           </div>
 
           <div fxFlex="50" class="form-group">
-            <mat-label>{{'CATEGORY' | translate}} *</mat-label>
-            <mat-form-field appearance="outline" class="mat-form-filled full-width">
-              <mat-select formControlName="medication_category_id" name="medication_category_id">
-                <mat-option *ngFor="let medicationCategory of medicationCategories" [value]="medicationCategory.id">
-                  {{ medicationCategory.name }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+            <div fxFlex="100" fxFlex.gt-md="350px">
+              <mat-label>{{'CATEGORY' | translate}} *</mat-label>
+              <mat-form-field appearance="outline" class="mat-form-filled full-width">
+                <mat-select formControlName="medication_category_id" name="medication_category_id">
+                  <mat-option *ngFor="let medicationCategory of medicationCategories" [value]="medicationCategory.id">
+                    {{ medicationCategory.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
           </div>
         </div>
         <div formArrayName="medication_presentations_attributes">
           <div *ngFor="let medication_presentation of form.controls.medication_presentations_attributes['controls']; let i = index">
             <div fxLayout="row nowrap" fxLayoutGap="22px" fxLayout.lt-sm="column" formArrayName="{{i}}">
               <div fxFlex="50" class="form-group">
-                <mat-label>{{'PRESENTATION' | translate}} *</mat-label>
-                <mat-form-field appearance="outline" class="mat-form-filled full-width">
-                  <mat-select name="presentation_type" formControlName="presentation_type">
-                    <mat-option *ngFor="let type of medicationPresentationTypes" [value]="type.value">
-                      {{ type.label }}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
+                <div fxFlex="100" fxFlex.gt-md="350px">
+                  <mat-label>{{'PRESENTATION' | translate}} *</mat-label>
+                  <mat-form-field appearance="outline" class="mat-form-filled full-width">
+                    <mat-select name="presentation_type" formControlName="presentation_type">
+                      <mat-option *ngFor="let type of medicationPresentationTypes" [value]="type.value">
+                        {{ type.label }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
               </div>
 
               <div fxFlex="50" class="form-group">
-                <mat-label>{{'AMOUNT_FOR_PRECRIPCION' | translate}} *</mat-label>
-                <mat-form-field appearance="outline" class="mat-form-filled full-width">
-                  <input matInput
-                    formControlName="presentation_content"
-                    name="presentation_content"
-                    id="presentation-content-input"
-                  />
-                </mat-form-field>
+                <div fxFlex="100" fxFlex.gt-md="350px">
+                  <mat-label>{{'AMOUNT_FOR_PRECRIPCION' | translate}} *</mat-label>
+                  <mat-form-field appearance="outline" class="mat-form-filled full-width">
+                    <input matInput
+                      formControlName="presentation_content"
+                      name="presentation_content"
+                      id="presentation-content-input"
+                    />
+                  </mat-form-field>
+                </div>
               </div>
             </div>
           </div>

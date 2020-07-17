@@ -417,6 +417,18 @@
   }
 }
 
+// various box-detail
+.box-detail-container{
+  .box-detail{
+    background: white;
+    margin-bottom: 0;
+    &:last-child{
+      margin-bottom: 32px;
+    }
+  }
+  
+}
+
 // wrap
 .section-info{
   border-top: 3px solid $primary-color;
@@ -456,6 +468,12 @@
 }
 
 // border split
+.border-t-primary{
+  border-top: 1px solid $primary-color;
+}
+.border-t-gray{
+  border-top: 1px solid $split-gray;
+}
 .border-b-primary{
   border-bottom: 1px solid $primary-color;
 }

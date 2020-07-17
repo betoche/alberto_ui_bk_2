@@ -1,3 +1,6 @@
+@import '../../../../shared/assets/styles/tot/definitions';
+@import '../../../../shared/assets/styles/scss/_variables';
+
 .medication-details {
   background: #FFFFFF;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
@@ -34,4 +37,50 @@
 
 .action-row {
   padding-bottom: 30px;
+}
+
+
+// headline
+.header-container .headline{
+  font-size: 40px !important;
+}
+.header-container{
+  position: relative;
+  border-bottom: 1px solid $primary-color;
+  padding-bottom: 22px;
+  margin-bottom: 24px;
+}
+
+// action button header
+.action-button-detail{
+  position: absolute;
+  right: 0;
+  top: calc(100% + 18px);
+  a{
+    color: $body-text-color;
+  }
+}
+
+// label title
+.label-info{
+  color: $primary;
+  font-size: $font-size-lg;
+  font-weight: bold;
+}
+
+// box detail
+.box-detail-container{
+  .box-detail{
+    z-index: 1;
+    position: relative;
+    &.pb-32{
+      padding-bottom: 32px!important ;
+    }
+    + .box-detail{
+      z-index: 2;
+    }
+  }
+  .label-field{
+    color: $body-text-color;
+  }
 }

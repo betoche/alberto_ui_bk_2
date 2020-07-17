@@ -3,20 +3,24 @@
 }
 
 mat-dialog-container.mat-dialog-container {
-  padding: 0;
+  // padding: 0;
   height: auto;
   width: 100%;
   max-height: calc(100vh - 40px);
 
   // wrap
   .box-detail{
+    margin: -24px;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
     padding: 32px !important;
-    margin-bottom: 0;
     &:last-child:before{
-      content: none
+      content: none;
+      margin-bottom: -24px;
+    }
+    + .box-detail{
+      margin-top: 0;
     }
   }
   // close
