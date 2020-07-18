@@ -16,121 +16,123 @@
 </div>
 
 <div class="box-detail">
-  <div fxLayout="row wrap">
-    <form class="pharmaceutical-company-form full-width"
-          [formGroup]="form"
-          (ngSubmit)="submit()">
+  <div class="row-detail">
+    <div fxLayout="row wrap">
+      <form class="pharmaceutical-company-form full-width"
+            [formGroup]="form"
+            (ngSubmit)="submit()">
 
-      <!-- **************** STEP 1 **************** -->
-      <div *ngIf="step == 1">
-        <!-- Left Side content -->
-        <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="45">
-          <app-data-importing importType="companies">
-            <div class="page-description mt-24 mb-24">
-              {{ 'IMPORT_COMPANY_FROM_CSV' | translate }}
-            </div>
-            <div fxFlex="grow">
-              <a class="text-underline" translate>EXAMPLE_CSV_FILE</a>
-            </div>
-          </app-data-importing>
+        <!-- **************** STEP 1 **************** -->
+        <div *ngIf="step == 1">
+          <!-- Left Side content -->
+          <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="45">
+            <app-data-importing importType="companies">
+              <div class="page-description mt-24 mb-24">
+                {{ 'IMPORT_COMPANY_FROM_CSV' | translate }}
+              </div>
+              <div fxFlex="grow">
+                <a class="text-underline" translate>EXAMPLE_CSV_FILE</a>
+              </div>
+            </app-data-importing>
 
-        </div>
-
-        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10"><div class="column-gap"></div></div>
-        <!-- Right side content -->
-        <div fxFlex="45" fxLayout="row wrap" fxLayoutAlign="start center">
-          <div class="mt-48">
-            <div class="page-description mt-24 mb-24">
-              {{ 'ADD_NEW_COMPANY_USER' | translate }}
-            </div>
           </div>
 
-          <div class="full-width">
-            <mat-label>{{'USER_TYPE' | translate}} *</mat-label>
-            <mat-form-field appearance="outline" class="mat-form-filled full-width mb-24">
-              <mat-select formControlName="type" name="type" (selectionChange)="changeCompanyType()">
-                <mat-option *ngFor="let type of typeOfcompaniesCollection" [value]="type.value">
-                  {{ type.label }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <mat-label translate>ROLE</mat-label>
-              <input-disabled-with-icon controlName="role"></input-disabled-with-icon>
-            <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-20 mb-50">
-              <button mat-flat-button color="primary" (click)="continue()">
-                {{ 'CONTINUE' | translate }}
-              </button>
+          <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10"><div class="column-gap"></div></div>
+          <!-- Right side content -->
+          <div fxFlex="45" fxLayout="row wrap" fxLayoutAlign="start center">
+            <div class="mt-48">
+              <div class="page-description mt-24 mb-24">
+                {{ 'ADD_NEW_COMPANY_USER' | translate }}
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <!-- **************** END STEP 1 **************** -->
 
-      <!-- **************** STEP 2 **************** -->
-      <div [perfectScrollbar]="{}" fxLayout="row wrap" class="height-100vh-280px" *ngIf="step == 2">
-        <a
-            fxFlex="grow"
-            class="mat-color-primary text-underline mt-32 pl-4"
-            *ngIf="isNew"
-            (click)="back()">{{ 'BACK' | translate }}</a>
-
-        <app-flash-messsage
-          *ngIf="errorsMessages"
-          class="full-width"
-          type="danger"
-          [message]="errorsMessages"
-        ></app-flash-messsage>
-
-        <div fxLayout="row wrap" fxLayout.lt-sm="column" class="full-width">
-          <div class="pharmaceutical-company-form full-width">
-            <div fxFlex="15" class="pr-1 mb-24"></div>
-            <div fxFlex="35" class="pr-1 mb-24">
-              <mat-label disabled>{{ 'USER_TYPE' | translate }} *</mat-label>
-              <mat-form-field class="full-width mat-form-filled" appearance="outline">
-                <mat-select
-                    formControlName="type"
-                    name="type"
-                    [disabled]="!this.isNew"
-                    (selectionChange)="changeCompanyType()">
+            <div class="full-width">
+              <mat-label>{{'USER_TYPE' | translate}} *</mat-label>
+              <mat-form-field appearance="outline" class="mat-form-filled full-width mb-24">
+                <mat-select formControlName="type" name="type" (selectionChange)="changeCompanyType()">
                   <mat-option *ngFor="let type of typeOfcompaniesCollection" [value]="type.value">
                     {{ type.label }}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-            </div>
 
-            <div fxFlex="35" class="pr-1 mb-24">
-              <mat-label disabled>{{'ROLE' | translate}} *</mat-label>
-              <input-disabled-with-icon controlName="role"></input-disabled-with-icon>
+              <mat-label translate>ROLE</mat-label>
+                <input-disabled-with-icon controlName="role"></input-disabled-with-icon>
+              <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-20 mb-50">
+                <button mat-flat-button color="primary" (click)="continue()">
+                  {{ 'CONTINUE' | translate }}
+                </button>
+              </div>
             </div>
-            <div fxFlex="15" class="pr-1 mb-24"></div>
+          </div>
+        </div>
+        <!-- **************** END STEP 1 **************** -->
+
+        <!-- **************** STEP 2 **************** -->
+        <div [perfectScrollbar]="{}" fxLayout="row wrap" class="height-100vh-280px" *ngIf="step == 2">
+          <a
+              fxFlex="grow"
+              class="mat-color-primary text-underline mt-32 pl-4"
+              *ngIf="isNew"
+              (click)="back()">{{ 'BACK' | translate }}</a>
+
+          <app-flash-messsage
+            *ngIf="errorsMessages"
+            class="full-width"
+            type="danger"
+            [message]="errorsMessages"
+          ></app-flash-messsage>
+
+          <div fxLayout="row wrap" fxLayout.lt-sm="column" class="full-width">
+            <div class="pharmaceutical-company-form full-width">
+              <div fxFlex="15" class="pr-1 mb-24"></div>
+              <div fxFlex="35" class="pr-1 mb-24">
+                <mat-label disabled>{{ 'USER_TYPE' | translate }} *</mat-label>
+                <mat-form-field class="full-width mat-form-filled" appearance="outline">
+                  <mat-select
+                      formControlName="type"
+                      name="type"
+                      [disabled]="!this.isNew"
+                      (selectionChange)="changeCompanyType()">
+                    <mat-option *ngFor="let type of typeOfcompaniesCollection" [value]="type.value">
+                      {{ type.label }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="35" class="pr-1 mb-24">
+                <mat-label disabled>{{'ROLE' | translate}} *</mat-label>
+                <input-disabled-with-icon controlName="role"></input-disabled-with-icon>
+              </div>
+              <div fxFlex="15" class="pr-1 mb-24"></div>
+            </div>
+          </div>
+
+          <hr class="width-80 mb-12 mt-12 division" />
+
+          <app-user-info-fields [form]="form"></app-user-info-fields>
+
+          <company-fields [form]="form" [type]="form.value['type']"></company-fields>
+
+          <!-- ############################## -->
+          <div fxFlex="100" class="mt-1 mr-1" style="text-align: center;">
+            <button
+                mat-flat-button
+                color="secondary"
+                class="mr-1"
+                type="button"
+
+                (click)="createAndAddAnotherCompany()">
+              {{ 'ADD_ANOTHER_COMPANY' | translate }}
+            </button>
+            <button mat-stroked-button color="primary" id="submit-btn" [disabled]="form.invalid">
+              {{ 'FINISH' | translate }}
+            </button>
           </div>
         </div>
 
-        <hr class="width-80 mb-12 mt-12 division" />
-
-        <app-user-info-fields [form]="form"></app-user-info-fields>
-
-        <company-fields [form]="form" [type]="form.value['type']"></company-fields>
-
-        <!-- ############################## -->
-        <div fxFlex="100" class="mt-1 mr-1" style="text-align: center;">
-          <button
-              mat-flat-button
-              color="secondary"
-              class="mr-1"
-              type="button"
-
-              (click)="createAndAddAnotherCompany()">
-            {{ 'ADD_ANOTHER_COMPANY' | translate }}
-          </button>
-          <button mat-stroked-button color="primary" id="submit-btn" [disabled]="form.invalid">
-            {{ 'FINISH' | translate }}
-          </button>
-        </div>
-      </div>
-
-    </form>
+      </form>
+    </div>
   </div>
 </div>

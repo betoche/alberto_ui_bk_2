@@ -20,7 +20,7 @@ mat-dialog-container.mat-dialog-container {
       margin-bottom: -24px;
     }
     + .box-detail{
-      margin-top: 0;
+      margin-top: 24px;
     }
   }
   // close
@@ -79,6 +79,34 @@ mat-dialog-container.mat-dialog-container {
       margin-bottom: 10px;
       &:last-child{
         margin-bottom: 50px;
+      }
+    }
+  }
+  // confirmation
+  .modal-confirmation{
+    .close-modal{
+      position: relative;
+      top: auto;
+      right: auto;
+    }
+    .header-container{
+      padding-right: 0;
+      margin: 22px 0 44px;;
+      .headline,
+      .header-nav{
+        margin-bottom: 0;
+      }
+      .headline{
+        font-size: $font-size-modal-lg !important;
+        font-weight: normal !important;
+      }
+    }
+    .mat-dialog-content{
+      padding: 0;
+      margin: 0 0 82px;
+      ul{
+        padding: 0;
+        margin: 0;
       }
     }
   }
