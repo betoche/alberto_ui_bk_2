@@ -23,4 +23,9 @@ export class CompanyFieldsComponent implements OnInit {
     this.position = parseInt(this.position);
   }
 
+  public isBillingFunctionShown(){
+    return this.form.get('is_billing_function_shown').value &&
+           this.form.get('company').get('has_billing_information').value;
+  }
+
 }
