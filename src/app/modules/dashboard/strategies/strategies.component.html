@@ -37,38 +37,6 @@
       </div>
 
       <div class="row-detail">
-        <div fxLayout="row" fxLayoutWrap fxLayoutGap="22px">
-          <div fxFlex fxFlex.gt-xs="33" fxLayout="column">
-            <mat-label>{{ 'PHARMACEUTICAL' | translate }}</mat-label>
-            <mat-form-field appearance="outline" class="mat-select-tot-style">
-                <mat-select [(value)]="pharmaceuticalCompany"
-                (selectionChange)="searchAndFilter({ pharmaceuticalCompany: $event.value, medicationCategory: medicationCategory })"
-                name="pharmaceuticalCompany">
-                <mat-option value="ALL">{{ 'ALL' | translate }}</mat-option>
-                <mat-option *ngFor="let company of pharmaceuticalCompanies" [value]="company.id">
-                    {{ company.name }}
-                </mat-option>
-                </mat-select>
-            </mat-form-field>
-          </div>
-          <div fxFlex fxFlex.gt-xs="33" fxLayout="column">
-            <mat-label>{{ 'CATEGORY' | translate }}</mat-label>
-            <mat-form-field appearance="outline" class="mat-select-tot-style">
-                <mat-select
-                [(value)]="medicationCategory"
-                (selectionChange)="searchAndFilter({ medicationCategory: $event.value })"
-                name="medicationCategory">
-                <mat-option value="ALL">{{ 'ALL' | translate }}</mat-option>
-                <mat-option *ngFor="let category of medicationCategories" [value]="category.id">
-                    {{ category.name }}
-                </mat-option>
-                </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-      </div>
-
-      <div class="row-detail">
         <div class="row pagelimit-container">
           <datatable-page-limit [(limit)]="pageLimit"></datatable-page-limit>
         </div>

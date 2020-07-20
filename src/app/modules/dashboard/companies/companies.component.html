@@ -218,10 +218,17 @@
                         (click)="activateMultipleStatuses([row], false)"
                         *ngIf="row.status == 'suspended' || row.status == 'pending'"
                         class="reactivate">REACTIVATE</span>
+
+                    <span
+                      *ngIf="!row.status"
+                      class="reactivate"></span>
                   </a>
-                  <a color="warn" class="mr-1 text-underline send-password-btn" (click)="sendResetPassword(row)">
+
+                  <a color="warn" class="mr-1 text-underline send-password-btn" (click)="sendResetPassword(row)" *ngIf="!!row.administrator_user && !!row.administrator_user.email">
                     <span translate>RESTORE_PASSWORD</span>
                   </a>
+                  <a class="mr-1 send-password-btn" *ngIf="!row.administrator_user || !row.administrator_user.email"><span></span></a>
+
                   <a color="warn" class="mr-1 text-underline delete-btn" (click)="deleteItems([row])">
                     <span translate>DELETE</span>
                   </a>
