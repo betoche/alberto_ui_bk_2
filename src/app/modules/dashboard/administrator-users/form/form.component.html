@@ -1,85 +1,81 @@
-<div fxLayout="row wrap" fxLayoutAlign="end flex-end" class="mt-12">
-  <a class="mat-color-primary text-underline pl-4" (click)="dialogRef.close(false)">{{ 'CLOSE' | translate }}</a>
-</div>
-
-<h1 class="header-section margin-bottom-15">
-  {{ (data.isNew ? 'ADD' : 'MODIFY') | translate }} {{ 'USER' | translate | lowercase }}
-</h1>
-<div class="page-description mb-24">
-  {{ 'SUCCESS_ADD_NEW_DESC' | translate }}
-</div>
-<div>
-  <div class="alert alert-danger" *ngIf="!!errorsMessages">
-    {{ errorsMessages }}
+<div class="box-detail">
+  <div fxLayout="row wrap" fxLayoutAlign="end flex-end" class="close-modal" (click)="dialogRef.close(false)">
+    <mat-icon class="close-icon" matSuffix>highlight_off</mat-icon>
+    <a class="text-underline pl-4">{{ 'CLOSE' | translate }}</a>
   </div>
+  <div class="header-container">
+    <div class="header-nav">
+      <h1 class="headline" translate>{{ (data.isNew ? 'ADD' : 'MODIFY') | translate }} {{ 'USER' | translate | lowercase }}</h1>
+      <p>
+        {{ 'SUCCESS_ADD_NEW_DESC' | translate }}
+      </p>
+    </div>
+  </div>
+</div>
 
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <div fxLayout="row wrap" fxLayout.lt-sm="column">
-      <div fxFlex="50" class="pr-4">
-        <mat-label translate>NAME</mat-label>
-        <mat-form-field class="full-width" appearance="outline">
-          <input matInput formControlName="name" type="text" name="name" placeholder="{{ 'NAME' | translate }}" />
-        </mat-form-field>
+<div class="box-detail">
+  <div class="row-detail" *ngIf="!!errorsMessages">
+    <div class="alert alert-danger">
+      {{ errorsMessages }}
+    </div>
+  </div>
+  <div class="row-detail">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div fxLayout="row nowrap" fxLayout.lt-sm="column" fxLayoutGap="22px">
+        <div fxFlex="50">
+          <mat-label translate>NAME</mat-label>
+          <mat-form-field class="full-width" appearance="outline">
+            <input matInput formControlName="name" type="text" name="name" placeholder="{{ 'NAME' | translate }}" />
+          </mat-form-field>
+        </div>
+
+        <div fxFlex="50">
+          <mat-label translate>GOVERNMENT_ID</mat-label>
+          <mat-form-field class="full-width" appearance="outline">
+            <input
+              matInput
+              formControlName="government_id"
+              type="text"
+              name="government_id"
+              placeholder="{{ 'GOVERNMENT_ID' | translate }}"
+            />
+          </mat-form-field>
+        </div>
       </div>
+      <div fxLayout="row nowrap" fxLayout.lt-sm="column" fxLayoutGap="22px">
+        <div fxFlex="50">
+          <mat-label translate>EMAIL</mat-label>
+          <mat-form-field class="full-width mb-24" appearance="outline">
+            <input matInput formControlName="email" type="email" name="email" placeholder="{{ 'EMAIL' | translate }}" />
+          </mat-form-field>
+        </div>
 
-      <div fxFlex="50" class="pl-4">
-        <mat-label translate>GOVERNMENT_ID</mat-label>
-        <mat-form-field class="full-width" appearance="outline">
-          <input
-            matInput
-            formControlName="government_id"
-            type="text"
-            name="government_id"
-            placeholder="{{ 'GOVERNMENT_ID' | translate }}"
-          />
-        </mat-form-field>
+        <div fxFlex="50">
+          <mat-label>{{ 'ROLE' | translate }}</mat-label>
+          <mat-form-field class="full-width mb-24" appearance="outline">
+            <mat-select name="role" formControlName="role">
+              <mat-option *ngFor="let type of administratorRoleList" [value]="type.value">
+                {{ type.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
-
-      <div fxFlex="50" class="mt-1 pr-4">
-        <mat-label translate>EMAIL</mat-label>
-        <mat-form-field class="full-width mb-24" appearance="outline">
-          <input matInput formControlName="email" type="email" name="email" placeholder="{{ 'EMAIL' | translate }}" />
-        </mat-form-field>
-      </div>
-
-      <div fxFlex="50" class="mt-1 pl-4">
-        <mat-label>{{ 'ROLE' | translate }}</mat-label>
-        <mat-form-field class="full-width mb-24" appearance="outline">
-          <mat-select name="role" formControlName="role">
-            <mat-option *ngFor="let type of administratorRoleList" [value]="type.value">
-              {{ type.label }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <!-- ############################## -->
-      <div fxFlex="100" fxLayoutAlign="center center" class="mt-48">
-        <button
-          *ngIf="data.isNew"
-          mat-flat-button
-          color="secondary"
-          class="mr-4"
-          type="button"
-          (click)="buildItemForm({})"
-          fxFlex="40">
-          {{ 'CONTINUE_ADD' | translate }}
-        </button>
-
-        <button
-          mat-flat-button
-          color="primary"
-          class="ml-4"
-          [disabled]="form.invalid"
-          id="submit-btn"
-          fxFlex="40">
-          {{ 'SAVE' | translate }}
-        </button>
-      </div>
-
-      <div *ngIf="data.isNew" class="mt-1 mb-48" fxLayoutAlign="center center" fxFlex="100">
+      <div *ngIf="data.isNew" class="mb-50">
         {{ 'NEW_USER_DESC' | translate }}
       </div>
-    </div>
-  </form>
+      <div fxLayout="row nowrap" fxLayout.lt-sm="column" fxLayoutGap="22px">
+          <div fxFlex="auto">
+            <button mat-flat-button class="tot-default-submit-btn outline-btn " *ngIf="data.isNew" (click)="buildItemForm({})">
+              {{ 'CONTINUE_ADD' | translate }}
+            </button>
+          </div>
+          <div fxFlex="auto">
+            <button mat-flat-button class="tot-default-submit-btn" color="primary" id="submit-btn" [disabled]="form.invalid">
+              {{ 'SAVE' | translate }}
+            </button>
+          </div>
+      </div>
+    </form>
+  </div>
 </div>
