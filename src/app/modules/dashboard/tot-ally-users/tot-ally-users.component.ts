@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { egretAnimations } from 'app/shared/animations/egret-animations';
 import { DatatableBaseComponent } from 'app/shared/components/datatable.base.component';
-import { UserModel } from 'app/shared/models/user.model';
+import { UserModel } from 'app/shared/models/users/user.model';
 import { DialogService } from 'app/shared/services/dialog.service';
 import { UserEntityService } from 'app/services/user-entity/user-entity.service';
 import { ExportCSVService } from 'app/shared/services/export-csv/export-csv.service';

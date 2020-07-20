@@ -20,7 +20,6 @@
   "CANTON": "Cantón",
   "DISTRICT": "Distrito",
   "QUARTER": "Barrio",
-  "SUBURB": "Barrio",
   "ADDRESS": "Dirección exacta",
   "LINE_1": "Línea 1",
   "LINE_2": "Línea 2 (Opcional)",
@@ -208,8 +207,6 @@
   "TELEPHONE_1": "Teléfono principal",
   "TELEPHONE_2": "Teléfono (opcional)",
   "MAX_FILE_DIMENSION": "Máximo 100 x 100 píxeles",
-  "BUSINESS_NAME": "Razón social",
-  "LEGAL_NOTE": "Cédula jurídica",
   "ADD_ANOTHER_COMPANY": "Agregar otro aliado",
   "PHARMACEUTICAL_NAME": "Nombre de la farmacéutica",
 
@@ -241,13 +238,14 @@
   "ML": "Ml",
   "TABLETS": "Paastillas",
   "PRODUCTS": "Productos",
+  "ADD_NEW_PRODUCTS": "Agregar nuevos productos",
   "ADD_COUNTRY": "Agregar países",
   "TOTAL": "Todos",
   "SELECT_COUNTRIES": "Seleccione los países disponibles",
   "COUNTRY": "País",
   "CURRENCY": "Moneda",
   "SUGGESTED_PRICE": "Precio sugerido ",
-  "IVA": "IVA",
+  "IVA": "IVA %",
   "IVA_PRICE": "Precio IVA",
   "PHARMACEUTICAL": "Farmacéutica",
   "HOURS": "Horas",
@@ -282,7 +280,6 @@
   "CHOOSE_PROCESS_ADD_COMPANY": "Escoja el proceso mediante el cual agregar aliado.",
   "SELECT_FILE": "Seleccione un archivo",
   "LOGO_COMPANY": "Logo del aliado",
-  "ADDRESS_NOTE": "Otras señas",
   "SEARCH_NAME_OR_SPONSOR": "Buscar por nombre de estrategia o patrocinador",
   "SEARCH_BY_GEOPOLITICAL_REFERENCE": "Buscar por referencia geopolítica",
   "MARKET_SIZE_DEFINED": "Tamaño del mercado definido",
@@ -307,18 +304,5 @@
   "STRATEGY_VALID_IN": "Esta promoción es válida en",
   "PROFILE_CREATED": "El perfil se ha guardado exitosamente",
   "LOCATIONS_DESCRIPTION": "La estrategia se aplicará a aquellos clientes que estén suscritos a los planes salud que se seleccionen.",
-  "DELIMIT_BY_LOCATION": "Delimitar el mercado meta por sucursales del patrocinador",
-
-  "COMPANY_TYPE_TRANSLATIONS": {
-    "Drugstore": "farmacia",
-    "PharmaceuticalCompany": "farmacéutica",
-    "BenefitsProviderCommerce": "patrocinador"
-  },
-
-  "PAGES": {
-    "COMPANIES": {
-      "NAME_OF": "Nombre de la",
-      "COMPANY_CODE": "Id de"
-    }
-  }
+  "DELIMIT_BY_LOCATION": "Delimitar el mercado meta por sucursales del patrocinador"
 }

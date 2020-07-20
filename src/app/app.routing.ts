@@ -28,7 +28,7 @@ export const rootRouterConfig: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
-        data: { title: 'DASHBOARD1', breadcrumb: 'DASHBOARD' }
+        data: { title: 'DASHBOARD', breadcrumb: 'DASHBOARD' }
       }
     ]
   },

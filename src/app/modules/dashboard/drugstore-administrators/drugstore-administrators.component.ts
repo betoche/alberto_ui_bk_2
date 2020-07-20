@@ -4,7 +4,7 @@ import { egretAnimations } from 'app/shared/animations/egret-animations';
 import { DatatableBaseComponent } from 'app/shared/components/datatable.base.component';
 import * as _ from 'lodash';
 
-import { UserModel } from 'app/shared/models/user.model';
+import { UserModel } from 'app/shared/models/users/user.model';
 import { DialogService } from 'app/shared/services/dialog.service';
 import { ExportCSVService } from 'app/shared/services/export-csv/export-csv.service';
 import { AppLoaderService } from 'app/shared/services/app-loader/app-loader.service';

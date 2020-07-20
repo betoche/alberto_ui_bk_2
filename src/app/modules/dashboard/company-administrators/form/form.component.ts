@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormBaseComponent } from 'app/shared/components/form.base.component';
 import { ApplicationBaseComponent } from 'app/shared/components/application.base.component';
 import { FormControlsHelper } from 'app/shared/helpers/form_controls.helper';
-import { UserModel } from 'app/shared/models/user.model';
+import { UserModel } from 'app/shared/models/users/user.model';
 import { AdministratorService } from 'app/services/administrator/administrator.service';
 import { AppLoaderService } from 'app/shared/services/app-loader/app-loader.service';
 import { FormCollectionHelper } from 'app/helpers/form_collection.helper';
@@ -53,8 +53,7 @@ export class CompanyAdministratorsFormComponent extends Many(ApplicationBaseComp
 
     this.form = this.fb.group({
       email: FormControlsHelper.emailField(item.email),
-      first_name: FormControlsHelper.requireFieldOnly(item.name),
-      last_name: FormControlsHelper.requireFieldOnly(item.last_name),
+      name: FormControlsHelper.requireFieldOnly(item.name),
       role: FormControlsHelper.requireFieldOnly(item.role)
     });
   }

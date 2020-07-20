@@ -8,7 +8,7 @@ import * as _ from 'lodash';
 
 import { injectorsGlobal } from 'app/shared/services/injectors_global.service';
 
-import { UserModel } from 'app/shared/models/user.model';
+import { UserModel } from 'app/shared/models/users/user.model';
 import { DialogService } from 'app/shared/services/dialog.service';
 import { ExportCSVService } from 'app/shared/services/export-csv/export-csv.service';
 import { AppLoaderService } from 'app/shared/services/app-loader/app-loader.service';

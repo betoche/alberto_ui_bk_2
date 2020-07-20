@@ -64,6 +64,7 @@ import { ProfilePopupFormComponent } from './strategies/create-profile/form.comp
 
 import { DashboardIndexComponent } from './app-index/app-index.component';
 import { EditProfileComponent } from './../../shared/modules/dashboard/edit-profile/edit-profile.component';
+import { ProfileComponent } from './../../shared/modules/dashboard/profile/profile.component';
 
 import { DialogService } from 'app/shared/services/dialog.service';
 
@@ -124,6 +125,7 @@ import { CompanyAdministratorsFormComponent } from './company-administrators/for
     TotAllyUserFormComponent,
     DashboardIndexComponent,
     EditProfileComponent,
+    ProfileComponent,
     SupportAgentsComponent,
     SupportAgentsFormComponent,
     StrategiesComponent,

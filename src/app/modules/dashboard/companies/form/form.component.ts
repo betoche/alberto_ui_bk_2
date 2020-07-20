@@ -10,6 +10,9 @@ import { AppLoaderService } from 'app/shared/services/app-loader/app-loader.serv
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { FormCollectionHelper } from 'app/helpers/form_collection.helper';
 import { FormHelper } from 'app/shared/helpers/form.helper';
+import { UserWithCompanyFormHepler } from 'app/shared/helpers/user_with_company_form.helper';
+import { UserEntityModel } from 'app/shared/models/users/user.entity.model';
+import { UserModel } from 'app/shared/models/users/user.model';
 import * as _ from 'lodash';
 
 @Component({
@@ -31,6 +34,8 @@ export class CompaniesFormComponent
   public isNew: boolean = true;
   public currentCompany: CompanyModel;
 
+  public user: UserModel = new UserModel({});
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<CompaniesFormComponent>,
@@ -44,45 +49,57 @@ export class CompaniesFormComponent
   ngOnInit() {
     this.isNew = this.data.isNew;
     if(this.isNew){
-      this.currentCompany = new CompanyModel();
+      this.user.company = new CompanyModel();
     }else{
       this.step = 2;
-      this.currentCompany = this.data.company;
+      if(this.data.company.administrator_user){
+        this.user = UserEntityModel.getUserInstance(this.data.company.administrator_user);
+      }
+
+      this.user.company = new CompanyModel(
+        Object.assign(this.data.company, { without_user_relation: true })
+      );
     }
 
     this.typeOfcompaniesCollection = this.formCollectionHelper.getTypeOfCompaniesCollection();
+
     this.buildForm();
   }
 
   public buildForm() {
-    let user = this.currentCompany.administrator_user;
+    let companyFields = UserWithCompanyFormHepler.companyFields(
+      this.user.company,
+      { isBillingShownToUI: this.user.isBillingShownToUI() }
+    );
 
     this.form = this.fb.group({
-      type: new FormControl(this.currentCompany.type, [Validators.required]),
+      is_billing_function_shown: new FormControl(this.user['isBillingFunctionShown'], []),
+      type: new FormControl(this.user.company.type, [Validators.required]),
       role: new FormControl({ value: 'Administrator', disabled: true }),
       user: new FormGroup({
-        id: new FormControl(user.id, []),
-        name: new FormControl(user.name, [Validators.required]),
-        email: new FormControl(user.email, [Validators.required]),
-        phone_number: new FormControl(user.phone_number, [Validators.required]),
-        phone_country: new FormControl(user.phone_country || 'CR', [Validators.required]),
-        secondary_phone_number: new FormControl(user.secondary_phone_number),
-        secondary_phone_country: new FormControl(user.secondary_phone_country || 'CR'),
+        id: new FormControl(this.user.id, []),
+        name: new FormControl(this.user.name, [Validators.required]),
+        email: new FormControl(this.user.email, [Validators.required]),
+        phone_number: new FormControl(this.user.phone_number, [Validators.required]),
+        phone_country: new FormControl(this.user.phone_country || 'CR', [Validators.required]),
+        secondary_phone_number: new FormControl(this.user.secondary_phone_number),
+        secondary_phone_country: new FormControl(this.user.secondary_phone_country || 'CR'),
       }),
-      company: new FormGroup( FormHelper.companyFields(this.currentCompany) )
+      company: new FormGroup(companyFields)
     });
   }
 
   public changeCompanyType(){
-    let disableBillingControls = this.form.get('type').value == 'Drugstore';
-    let billingControls = this.form.get('company').get('billing_information_attributes')['controls'];
-    _.each(billingControls, (control,) => {
-      if(disableBillingControls){
-        control.disable();
-      }else{
-        control.enable();
+    this.user = UserEntityModel.getUserInstance(
+      {
+        role: this.user.administratorRoleFromTypeOfCompany(this.form.get('type').value),
+        company: Object.assign(
+          { type: this.form.get('type').value }, { without_user_relation: true }
+        )
       }
-    });
+    );
+
+    this.buildForm();
   }
 
   public submit() {
@@ -98,8 +115,9 @@ export class CompaniesFormComponent
   private updateCompanyInformation() {
     this.loader.open();
 
-    let params = this.form.value;
-    this.companyService.update(this.currentCompany.id, params).subscribe(
+    let params = UserWithCompanyFormHepler.getFormValueForUserAndCompanyForm(this.form);
+
+    this.companyService.update(this.user.company.id, params).subscribe(
       (response) => {
         this.loader.close();
         this.dialogRef.close(true);
@@ -113,7 +131,8 @@ export class CompaniesFormComponent
 
   private createCompany() {
     this.loader.open();
-    let params = this.form.value;
+    let params = UserWithCompanyFormHepler.getFormValueForUserAndCompanyForm(this.form);
+
     Object.assign(
       params['company'],
       // this field is disabled, so it won't able get by form.value, do it manual

@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormBaseComponent } from 'app/shared/components/form.base.component';
 import { ApplicationBaseComponent } from 'app/shared/components/application.base.component';
 import { FormControlsHelper } from 'app/shared/helpers/form_controls.helper';
-import { UserModel } from 'app/shared/models/user.model';
+import { UserModel } from 'app/shared/models/users/user.model';
 import { AdministratorService } from 'app/services/administrator/administrator.service';
 import { AppLoaderService } from 'app/shared/services/app-loader/app-loader.service';
 import { FormCollectionHelper } from 'app/helpers/form_collection.helper';

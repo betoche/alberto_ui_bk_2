@@ -9,6 +9,7 @@ import { CompanyService } from 'app/services/company/company.service';
 import { AppLoaderService } from 'app/shared/services/app-loader/app-loader.service';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { FormHelper } from 'app/shared/helpers/form.helper';
+import { UserWithCompanyFormHepler } from 'app/shared/helpers/user_with_company_form.helper';
 
 @Component({
   selector: 'edit-company-form',
@@ -37,7 +38,7 @@ export class EditCompanyComponent extends Many(ApplicationBaseComponent, FormBas
 
   public buildForm() {
     this.form = this.fb.group({
-      company: new FormGroup(FormHelper.companyFields(this.company)),
+      company: new FormGroup(UserWithCompanyFormHepler.companyFields(this.company)),
       type: new FormControl(this.company.type)
     });
   }

@@ -38,7 +38,6 @@ import { BenefitsProvidersComponent } from './benefits-providers/benefits-provid
 import { BenefitsProviderFormComponent } from './benefits-providers/form/form.component';
 
 import { CompanyAdministratorsComponent } from './company-administrators/company-administrators.component';
-import { CompanyAdministratorsFormComponent } from './company-administrators/form/form.component';
 
 import { TermsAndConditionsComponent } from 'app/shared/features/terms-and-conditions/terms-and-conditions.component';
 
