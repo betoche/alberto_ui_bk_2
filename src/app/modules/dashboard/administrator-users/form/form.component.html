@@ -19,62 +19,72 @@
       {{ errorsMessages }}
     </div>
   </div>
-  <div class="row-detail">
+  <div class="row-detail p-10">
     <form [formGroup]="form" (ngSubmit)="submit()">
       <div fxLayout="row nowrap" fxLayout.lt-sm="column" fxLayoutGap="22px">
-        <div fxFlex="50">
-          <mat-label translate>NAME</mat-label>
-          <mat-form-field class="full-width" appearance="outline">
-            <input matInput formControlName="name" type="text" name="name" placeholder="{{ 'NAME' | translate }}" />
-          </mat-form-field>
+        <div fxFlex="50" fxLayout="row wrap">
+          <div fxFlex="100" fxFlex.gt-md="380px">
+            <mat-label translate>NAME</mat-label>
+            <mat-form-field class="full-width" appearance="outline">
+                <input matInput formControlName="name" type="text" name="name" placeholder="{{ 'NAME' | translate }}" />
+            </mat-form-field>
+          </div>
         </div>
 
-        <div fxFlex="50">
-          <mat-label translate>GOVERNMENT_ID</mat-label>
-          <mat-form-field class="full-width" appearance="outline">
-            <input
-              matInput
-              formControlName="government_id"
-              type="text"
-              name="government_id"
-              placeholder="{{ 'GOVERNMENT_ID' | translate }}"
-            />
-          </mat-form-field>
+        <div fxFlex="50" fxLayout="row wrap">
+          <div fxFlex="100" fxFlex.gt-md="380px">
+            <mat-label translate>GOVERNMENT_ID</mat-label>
+            <mat-form-field class="full-width" appearance="outline">
+                <input
+                matInput
+                formControlName="government_id"
+                type="text"
+                name="government_id"
+                placeholder="{{ 'GOVERNMENT_ID' | translate }}"
+                />
+            </mat-form-field>
+          </div>
         </div>
       </div>
       <div fxLayout="row nowrap" fxLayout.lt-sm="column" fxLayoutGap="22px">
-        <div fxFlex="50">
-          <mat-label translate>EMAIL</mat-label>
-          <mat-form-field class="full-width mb-24" appearance="outline">
-            <input matInput formControlName="email" type="email" name="email" placeholder="{{ 'EMAIL' | translate }}" />
-          </mat-form-field>
+        <div fxFlex="50" fxLayout="row wrap">
+          <div fxFlex="100" fxFlex.gt-md="380px">
+            <mat-label translate>EMAIL</mat-label>
+            <mat-form-field class="full-width mb-24" appearance="outline">
+                <input matInput formControlName="email" type="email" name="email" placeholder="{{ 'EMAIL' | translate }}" />
+            </mat-form-field>
+          </div>
         </div>
 
-        <div fxFlex="50">
-          <mat-label>{{ 'ROLE' | translate }}</mat-label>
-          <mat-form-field class="full-width mb-24" appearance="outline">
-            <mat-select name="role" formControlName="role">
-              <mat-option *ngFor="let type of administratorRoleList" [value]="type.value">
-                {{ type.label }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+        <div fxFlex="50" fxLayout="row wrap">
+          <div fxFlex="100" fxFlex.gt-md="380px">
+            <mat-label>{{ 'ROLE' | translate }}</mat-label>
+            <mat-form-field class="full-width mb-24" appearance="outline">
+                <mat-select name="role" formControlName="role">
+                <mat-option *ngFor="let type of administratorRoleList" [value]="type.value">
+                    {{ type.label }}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
         </div>
       </div>
       <div *ngIf="data.isNew" class="mb-50">
         {{ 'NEW_USER_DESC' | translate }}
       </div>
-      <div fxLayout="row nowrap" fxLayout.lt-sm="column" fxLayoutGap="22px">
-          <div fxFlex="auto">
-            <button mat-flat-button class="tot-default-submit-btn outline-btn " *ngIf="data.isNew" (click)="buildItemForm({})">
+      <div class="mt-70">
+        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center" fxLayoutGap="22px">
+          <div fxFlex.lt-sm="100">
+            <button mat-flat-button class="tot-default-submit-btn dark-btn " *ngIf="data.isNew" (click)="buildItemForm({})">
               {{ 'CONTINUE_ADD' | translate }}
             </button>
           </div>
-          <div fxFlex="auto">
+          <div fxFlex.lt-sm="100">
             <button mat-flat-button class="tot-default-submit-btn" color="primary" id="submit-btn" [disabled]="form.invalid">
               {{ 'SAVE' | translate }}
             </button>
           </div>
+        </div>
       </div>
     </form>
   </div>
