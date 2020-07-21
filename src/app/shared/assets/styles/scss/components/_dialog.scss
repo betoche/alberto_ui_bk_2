@@ -2,6 +2,10 @@
   max-width: 1219px !important;
   width: calc(100% - 40px) !important;
 }
+.cdk-overlay-connected-position-bounding-box{
+    max-width: 100% !important;
+    width: auto !important
+}
 
 mat-dialog-container.mat-dialog-container {
   // padding: 0;

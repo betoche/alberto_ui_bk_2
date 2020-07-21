@@ -1,3 +1,6 @@
+@import '../../../../shared/assets/styles/tot/definitions';
+@import '../../../../shared/assets/styles/scss/_variables';
+
 ul, #multiline_checkbox {
   list-style-type: none;
 }
@@ -109,4 +112,66 @@ ul, #multiline_checkbox {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25) !important;
   min-width: 170px !important;
   padding: 18px 35px !important;
+}
+
+
+
+
+
+// header container
+.header-container{
+    position: relative;
+    border-bottom: 1px solid $primary-color;
+    padding-bottom: 22px;
+    margin-bottom: 24px;
+}
+// box detail
+.box-detail{
+    margin-bottom: 0;
+    background-color: white;
+    z-index: 2;
+    position: relative;
+    font-size: $font-size-sm;
+    &:last-child{
+        z-index: 1;
+    }
+    .row-detail{
+        width: 100%;
+    }
+}
+
+// checkmark list
+.checkmark-list{
+    padding: 0;
+    .child-list li,
+    li{
+        padding-left: 30px;
+        position: relative;
+        margin-bottom: 24px;
+
+    }
+    // child
+    .child-list{
+        margin: 0;
+        padding: 24px 0 0;
+        .checkmark-icon{
+            font-size: $font-size-xs;
+            top: 3px;
+        }
+    }
+    .checkmark-icon{
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: $default-font-size;
+        color: $primary-color;
+    }
+    .incompleted-step{
+        color: $disabled-color !important;
+    }
+}
+
+.label-info{
+    color: $body-text-color;
+    font-size: $font-size-lg;
 }
