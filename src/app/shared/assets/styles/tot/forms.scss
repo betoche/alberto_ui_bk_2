@@ -47,7 +47,7 @@ mat-form-field.phone-number{
           }
         }
         .mat-form-field-flex .mat-form-field-infix {
-          padding:  20px 0;
+          padding:  14px 0;
           border-top: 0;
           padding-left: 35px;
         }
@@ -63,7 +63,7 @@ mat-form-field.phone-number{
     }
     .mat-form-field-flex .mat-form-field-infix{
       border: 0;
-      padding: 20px 0;
+      padding: 14px 0;
     }
     input{
       @include font-lato;
@@ -74,6 +74,10 @@ mat-form-field.phone-number{
       .mat-form-field-flex .mat-form-field-infix{
         padding: 11px 0;
       }
+    }
+
+    .mat-form-field-suffix{
+      top: 0.45em;
     }
   }
   // aling middle
@@ -151,7 +155,7 @@ mat-form-field.phone-number{
   .mat-select-arrow {
     color: $primary-color;
     border: 0;
-    height: 24px;
+    height: 16px;
     width: 24px;
     position: relative;
     margin: 0 -5px 0 0;

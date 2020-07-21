@@ -152,7 +152,9 @@ export class CompaniesFormComponent
   }
 
   public continue() {
-    this.step = this.step + 1;
+    if (this.form.get('type').valid) {
+      this.step = this.step + 1;
+    }
   }
 
   public back() {

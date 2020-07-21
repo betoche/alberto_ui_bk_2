@@ -5,7 +5,7 @@
 
   <div fxLayout="row wrap" fxLayout.lt-sm="column">
     <ng-container formGroupName="user">
-      <div fxFlex="50" class="pr-1 mb-24">
+      <div fxFlex="50" class="pr-1">
         <mat-label>{{'NAME' | translate}} *</mat-label>
         <input-disabled-with-icon
             controlName="name"
@@ -13,7 +13,7 @@
             [form]="form.get('user')"></input-disabled-with-icon>
       </div>
 
-      <div fxFlex="50" class="pr-1 mb-24">
+      <div fxFlex="50" class="pr-1">
         <mat-label>{{'EMAIL' | translate}} *</mat-label>
         <input-disabled-with-icon
             controlName="email"
