@@ -91,7 +91,7 @@
 
           <div fxFlex="100" fxFlex.gt-sm="grow" class="py-10">
             <!-- Form Step 1 -->
-            <div fxLayout.lt-sm="column" *ngIf="doesShowStepForm(1)">
+            <div fxLayout="column"  *ngIf="doesShowStepForm(1)">
                 <div class="row-detail">
                     <h2 class="label-info">Perfilado del mercado</h2>
                 </div>
@@ -118,8 +118,8 @@
                     </mat-form-field>
                 </div>
                 <div class="row-detail">
-                    <mat-label class="label-field">{{ 'DELIMIT_BY_CLIENT_STATUS' | translate }}</mat-label>
-                    <div>
+                    <mat-label>{{ 'DELIMIT_BY_CLIENT_STATUS' | translate }}</mat-label>
+                    <div class="mt-10">
                     <mat-radio-group name="client_status" formControlName="client_status">
                         <mat-radio-button value="active" class="mr-1">
                         <label class="label-field">{{ 'ACTIVE' | translate }}</label>
@@ -131,12 +131,12 @@
                     </div>
                 </div>
                 <div class="row-detail">
-                    <mat-label class="label-field">Delimitar por edad el mercado meta</mat-label>
+                    <mat-label>Delimitar por edad el mercado meta</mat-label>
                 </div>
-                <div class="row-detail">
-                    <div fxFlex="35" class="form-group">
-                        <mat-label class="form-label">{{'Mayores de'}}</mat-label>
-                        <mat-form-field appearance="outline" class="mat-form-filled full-width input-60-percent-width">
+                <div class="row-detail full-width" fxLayout="row nowrap" fxLayoutGap="22px">
+                    <div fxFlex="grow">
+                        <mat-label>{{'Mayores de'}}</mat-label>
+                        <mat-form-field appearance="outline" class="mat-form-filled full-width">
                             <input matInput
                             type="number"
                             formControlName="age_min_limit"
@@ -148,25 +148,21 @@
                         </mat-form-field>
                     </div>
 
-                    <div fxFlex="5"></div>
-
-                    <div fxFlex="35" class="form-group">
-                    <mat-label class="form-label">{{'Menores de'}}</mat-label>
-                    <mat-form-field appearance="outline" class="mat-form-filled full-width input-60-percent-width">
-                        <input matInput
-                        type="number"
-                        formControlName="age_max_limit"
-                        name="age_max_limit"
-                        id="age-max-limit-input"
-                        placeholder="{{ 'YEARS_OLD' | translate }}"
-                        (change)="setAgeRange()"
-                        />
-                    </mat-form-field>
+                    <div fxFlex="grow">
+                        <mat-label class="form-label">{{'Menores de'}}</mat-label>
+                        <mat-form-field appearance="outline" class="mat-form-filled full-width input-60-percent-width">
+                            <input matInput
+                            type="number"
+                            formControlName="age_max_limit"
+                            name="age_max_limit"
+                            id="age-max-limit-input"
+                            placeholder="{{ 'YEARS_OLD' | translate }}"
+                            (change)="setAgeRange()"
+                            />
+                        </mat-form-field>
                     </div>
 
-                    <div fxFlex="5"></div>
-
-                    <div fxFlex="20" class="checkbox-form-box select-all-ages-input">
+                    <div  fxFlex="200px" class="checkbox-form-box select-all-ages-input">
                     <mat-checkbox
                     (change)="selectAllAges($event)"
                     formControlName="all_ages_selected"
@@ -219,7 +215,7 @@
                 </div>
 
                 <div fxFlex="100" class="align-self-center">
-                    <div fxFlex="60" class="form-group">
+                    <div fxFlex="60">
                     <mat-label class="disabled-label form-label">{{'Delimitar geográficamente el mercado meta'}}</mat-label>
                     <mat-form-field appearance="outline" class="mat-form-filled full-width">
                         <input matInput id="search-geographically-target-market-input"
@@ -254,7 +250,7 @@
                 </div>
 
                 <div fxFlex="100" class="align-self-center">
-                    <div fxFlex="70" class="form-group">
+                    <div fxFlex="70">
                     <mat-label class="disabled-label form-label">{{'SPONSOR' | translate}} *</mat-label>
                     <mat-form-field appearance="outline" class="mat-form-filled full-width mb-24">
                         <mat-select formControlName="benefits_provider_commerce_id"
@@ -298,7 +294,7 @@
                 Los espacios con (*) son requeridos para poder añadir la estrategia
             </div>
             <div fxFlex="100" class="align-self-center">
-                <div fxFlex="70" class="form-group">
+                <div fxFlex="70">
                 <mat-label class="form-label">Nombre de la estrategia *</mat-label>
                 <mat-form-field appearance="outline" class="mat-form-filled full-width">
                     <input matInput formControlName="name" name="name" id="name-input" />
@@ -307,7 +303,7 @@
             </div>
 
             <div fxFlex="100" class="align-self-center">
-                <div fxFlex="70" class="form-group">
+                <div fxFlex="70">
                 <mat-label class="form-label">Descripción</mat-label>
                 <mat-form-field appearance="outline" class="mat-form-filled full-width">
                     <input matInput formControlName="description" name="description" id="description-input" />
@@ -316,7 +312,7 @@
             </div>
 
             <div fxFlex="100" class="align-self-center">
-                <div fxFlex="70" class="form-group">
+                <div fxFlex="70">
                 <mat-label class="form-label">Tipo de estrategia *</mat-label>
                 <mat-form-field appearance="outline" class="mat-form-filled full-width mb-24">
                     <mat-select formControlName="strategy_type_id" name="strategy_type_id">
@@ -364,7 +360,7 @@
                 </div>
             </div>
 
-            <div fxFlex="60" class="form-group">
+            <div fxFlex="60">
                 <mat-form-field
                 appearance="outline"
                 class="mat-form-filled full-width"
@@ -388,7 +384,7 @@
                 Los espacios con (*) son requeridos para poder añadir la estrategia
             </div>
 
-            <div fxFlex="60" class="form-group">
+            <div fxFlex="60">
                 <mat-label class="form-label">Seleccione la imagen publicitaria para esta estrategia *</mat-label>
                 <app-upload-file
                 name="logo_url"
@@ -400,7 +396,7 @@
             </div>
 
             <div fxFlex="100" class="align-self-center">
-                <div fxFlex="50" class="form-group">
+                <div fxFlex="50">
                 <mat-label class="form-label">Seleccione la fecha de inicio para la estrategia *</mat-label>
                 <mat-form-field appearance="outline" class="mat-form-filled full-width">
                     <input matInput
@@ -427,7 +423,7 @@
                     <div fxLayout="row wrap"
                     fxLayout.lt-sm="column"
                     *ngIf="endDateInputEnabled || strategy.expiration_option == 'defined'">
-                    <div fxFlex="50" class="form-group">
+                    <div fxFlex="50">
                         <mat-form-field appearance="outline" class="mat-form-filled full-width">
                         <input matInput
                             formControlName="end_date"
