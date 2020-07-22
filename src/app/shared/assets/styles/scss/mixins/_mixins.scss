@@ -156,3 +156,10 @@ $screen-xl: 1200px;
 }
 
 @mixin placeholder-md{}
+
+@mixin text-underline{
+  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
+}

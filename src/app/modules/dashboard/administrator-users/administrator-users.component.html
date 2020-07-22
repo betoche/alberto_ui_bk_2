@@ -62,42 +62,42 @@
               [rowHeight]="50"
               [messages]="datatableMessages"
             >
-              <ngx-datatable-column sort-active name="{{ 'USER' | translate | titlecase }}" [flexGrow]="1" width="150">
+              <ngx-datatable-column sort-active name="{{ 'USER' | translate | titlecase }}" [flexGrow]="1" width="218">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   {{ row?.name }}
                 </ng-template>
               </ngx-datatable-column>
 
-              <ngx-datatable-column name="{{ 'EMAIL' | translate }}" [flexGrow]="1" width="350">
+              <ngx-datatable-column name="{{ 'EMAIL' | translate }}" [flexGrow]="1" width="218">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   {{ row?.email }}
                 </ng-template>
               </ngx-datatable-column>
 
-              <ngx-datatable-column name="{{ 'LAST_SESSION' | translate }}" [flexGrow]="1" width="150">
+              <ngx-datatable-column name="{{ 'LAST_SESSION' | translate }}" [flexGrow]="1" width="115">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   {{ row?.current_sign_in_at | date: 'dd/MM/yyyy' }}
                 </ng-template>
               </ngx-datatable-column>
 
-              <ngx-datatable-column sort-active name="{{ 'ROLE' | translate }}" [flexGrow]="1" width="150">
+              <ngx-datatable-column sort-active name="{{ 'ROLE' | translate }}" [flexGrow]="1" width="140">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <span translate>{{ row?.role | uppercase }}</span>
                 </ng-template>
               </ngx-datatable-column>
 
-              <ngx-datatable-column name="{{ 'ACTIONS' | translate }}" [flexGrow]="1" width="600">
+              <ngx-datatable-column name="{{ 'ACTIONS' | translate }}" [flexGrow]="1" width="393">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <a color="primary" class="mr-1 text-underline edit-btn" (click)="openPopUp(row)">
+                  <a color="primary" class="mr-1 text-underline actions-btn" (click)="openPopUp(row)">
                     <span translate>EDIT</span>
                   </a>
-                  <a color="warn" class="mr-1 text-underline">
+                  <a color="warn" class="mr-1 text-underline actions-btn">
                     <span translate>RESTORE_PASSWORD</span>
                   </a>
-                  <a color="warn" class="mr-1 text-underline">
+                  <a color="warn" class="mr-1 text-underline actions-btn">
                     <span translate>MODIFY_PERMISSION</span>
                   </a>
-                  <a color="warn" class="mr-1 text-underline delete-btn" (click)="deleteItem(row)">
+                  <a color="warn" class="mr-1 text-underline actions-btn" (click)="deleteItem(row)">
                     <span translate>DELETE</span>
                   </a>
                 </ng-template>
