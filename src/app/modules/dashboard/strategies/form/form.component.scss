@@ -175,3 +175,12 @@ ul, #multiline_checkbox {
     color: $body-text-color;
     font-size: $font-size-lg;
 }
+
+
+// expiration option
+.expiration_option{
+    mat-form-field{
+        margin-left: 24px;
+        margin-top: 10px
+    }
+}

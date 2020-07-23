@@ -1,10 +1,15 @@
-.cdk-overlay-pane{
-  max-width: 1219px !important;
-  width: calc(100% - 40px) !important;
+.cdk-global-overlay-wrapper{
+    padding: 20px;
 }
-.cdk-overlay-connected-position-bounding-box .cdk-overlay-pane{
-    max-width: 100% !important;
-    width: auto !important
+.cdk-overlay-pane{
+  max-width: 100% !important;
+  width: auto !important
+}
+// confirmations
+.modal-confirmation{
+    @include md{
+        width: 688px;
+    }
 }
 
 mat-dialog-container.mat-dialog-container {
@@ -26,6 +31,20 @@ mat-dialog-container.mat-dialog-container {
     }
     + .box-detail{
       margin-top: 24px;
+    }
+    @include lg{
+        width: 950px;
+    }
+    @include xl{
+        width: 1000px;
+    }
+    @include lg-angular{
+        width: 1220px;
+    }
+    &.modal-confirmation{
+        @include md{
+            width: 688px;
+        }
     }
   }
   // close
