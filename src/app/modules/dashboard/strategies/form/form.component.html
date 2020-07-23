@@ -89,7 +89,7 @@
               </div>
           </div>
 
-          <div fxFlex="100" fxFlex.gt-sm="grow" class="py-10">
+          <div fxFlex="100" fxFlex.gt-sm class="py-10">
             <!-- Form Step 1 -->
             <div *ngIf="doesShowStepForm(1)">
                 <div class="row-detail">
@@ -480,64 +480,64 @@
           </div>
 
           <div fxFlex="100" fxFlex.gt-sm="200px" fxFlex.gt-md="240px" class="py-10">
-
-            <div fxLayout="row wrap" fxLayout.lt-sm="column">
-            <div class="page-description mb-20" fxFlex="100">
-                <h2 class="bold-text">{{ 'SUMMARY' | translate }}</h2>
-            </div>
-            </div>
-            <br>
-
-            <div fxLayout="row wrap" fxLayout.lt-sm="column">
-            <div class="page-description mb-24" fxFlex="100">
+            <div class="row-detail">
+                <p>
+                    {{ 'SUMMARY' | translate }}
+                </p>
+                <p>
                 {{ 'MARKET_SIZE_DEFINED' | translate }}
+                </p>
             </div>
 
-            <div fxFlex="80">
-                <mat-progress-bar mode="determinate"
-                [value]="percentageOfCustomersTargeted"
-                class="market-percentage" color="black">
-                </mat-progress-bar>
+            <div class="row-detail">
+                <div fxLayout="row wrap" fxLayout.lt-sm="column">
+                    <div fxFlex>
+                        <mat-progress-bar mode="determinate"
+                        [value]="percentageOfCustomersTargeted"
+                        class="market-percentage" color="black">
+                        </mat-progress-bar>
+                    </div>
+
+                    <div class="pl-10 mb-5 market-percentage-number" fxFlex="50px">
+                        {{ percentageOfCustomersTargeted }}%
+                    </div>
+                </div>
+                <div>
+                    <mat-label class="note-description">{{ 'NUMBER_OF_USERS' | translate }}</mat-label>
+                </div>
             </div>
 
-            <div class="completed-step" fxFlex="20">
-                {{ percentageOfCustomersTargeted }}%
-            </div>
+            <div class="row-detail">
+                <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
+                    <div class="page-description mb-24" fxFlex="100">
+                        {{ 'PROFILING' | translate }}
+                    </div>
 
-            <mat-label class="form-label">{{ 'NUMBER_OF_USERS' | translate }}</mat-label>
-            </div>
-            <br>
+                    <div class="input-label mb-20" fxFlex="70">
+                        {{ 'STATUS' | translate }}:
+                    </div>
 
-            <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
-            <div class="page-description mb-24" fxFlex="100">
-                {{ 'PROFILING' | translate }}
-            </div>
+                    <div class="input-info mb-20" fxFlex="30">
+                        {{ this.form.controls.client_status.value | uppercase | translate }}
+                    </div>
 
-            <div class="input-label mb-20" fxFlex="70">
-                {{ 'STATUS' | translate }}:
-            </div>
+                    <div class="input-label mb-20" fxFlex="70">
+                        {{ 'AGE_RANGE' | translate }}:
+                    </div>
 
-            <div class="input-info mb-20" fxFlex="30">
-                {{ this.form.controls.client_status.value | uppercase | translate }}
-            </div>
+                    <div class="input-info mb-20" fxFlex="30">
+                        {{ ageRangeLabel }}
+                    </div>
 
-            <div class="input-label mb-20" fxFlex="70">
-                {{ 'AGE_RANGE' | translate }}:
-            </div>
+                    <div class="input-label mb-20" fxFlex="70">
+                        {{ 'SELECTED_GENRE' | translate }}:
+                    </div>
 
-            <div class="input-info mb-20" fxFlex="30">
-                {{ ageRangeLabel }}
+                    <div class="input-info mb-20" fxFlex="30">
+                        {{ this.form.controls.gender_of_target_market.value | translate }}
+                    </div>
+                </div>
             </div>
-
-            <div class="input-label mb-20" fxFlex="70">
-                {{ 'SELECTED_GENRE' | translate }}:
-            </div>
-
-            <div class="input-info mb-20" fxFlex="30">
-                {{ this.form.controls.gender_of_target_market.value | translate }}
-            </div>
-            </div>
-            <br>
 
             <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
             <div class="page-description mb-24" fxFlex="100">

@@ -242,7 +242,11 @@
     }
   }
 }
-
+// notes
+.note-description{
+    color: $disabled-color;
+    font-size: $font-size-xs
+}
 // box detail
 .box-detail,
 .box-detail.profile-section{
@@ -425,7 +429,6 @@
       margin-bottom: 32px;
     }
   }
-  
 }
 
 // wrap
