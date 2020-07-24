@@ -28,10 +28,6 @@ describe('CompanyFieldsComponent', () => {
     expect(fixture.debugElement.nativeElement.textContent).toContain('DISTRICT *')
     expect(fixture.debugElement.nativeElement.textContent).toContain('SUBURB *')
     expect(fixture.debugElement.nativeElement.textContent).toContain('ADDRESS_NOTE *')
-    expect(fixture.debugElement.nativeElement.textContent).toContain('GOVERNMENT_ID_TYPE *')
-    expect(fixture.debugElement.nativeElement.textContent).toContain('LEGAL_NOTE')
-    expect(fixture.debugElement.nativeElement.textContent).toContain('TELEPHONE_1 *')
-    expect(fixture.debugElement.nativeElement.textContent).toContain('EMAIL *')
   });
 
 

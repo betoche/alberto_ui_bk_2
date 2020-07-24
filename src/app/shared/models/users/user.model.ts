@@ -81,7 +81,7 @@ export class UserModel extends BaseModel {
   }
 
   public phoneCountryCode(){
-    if(!this.phone_country){
+    if(!this.phone_country || COUNTRIES[this.phone_country] == null){
       return '';
     }
 
@@ -89,7 +89,7 @@ export class UserModel extends BaseModel {
   }
 
   public secondaryPhoneCode(){
-    if(!this.secondary_phone_country){
+    if(!this.secondary_phone_country || COUNTRIES[this.secondary_phone_country] == null){
       return '';
     }
 
