@@ -305,5 +305,7 @@
   "STRATEGY_VALID_IN": "Esta promoción es válida en",
   "PROFILE_CREATED": "El perfil se ha guardado exitosamente",
   "LOCATIONS_DESCRIPTION": "La estrategia se aplicará a aquellos clientes que estén suscritos a los planes salud que se seleccionen.",
-  "DELIMIT_BY_LOCATION": "Delimitar el mercado meta por sucursales del patrocinador"
+  "DELIMIT_BY_LOCATION": "Delimitar el mercado meta por sucursales del patrocinador",
+  "DESIGN_&_DEVELOP_BY": "Diseñado y Desarrollado por"
+
 }
