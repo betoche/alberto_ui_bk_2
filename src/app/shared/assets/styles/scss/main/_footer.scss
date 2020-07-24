@@ -5,4 +5,7 @@
   flex-direction: row;
   align-items: center;
   display: none;
+  &.pragmatic-footer{
+    display: block;
+  }
 }

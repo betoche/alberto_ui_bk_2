@@ -1,4 +1,3 @@
-
 <div class="base-container">
   <div class="box-detail">
     <div class="header-container">
@@ -82,7 +81,7 @@
           </div>
 
           <!-- split -->
-          <div fxFlex>
+          <div fxFlex fxFlex.gt-sm="69px">
               <div class="split" fxHide.gt-sm>
               </div>
               <div class="vertical-split" fxHide.lt-sm>
@@ -163,14 +162,14 @@
                     </div>
 
                     <div fxFlex="auto" class="">
-                    <mat-checkbox
-                    (change)="selectAllAges($event)"
-                    formControlName="all_ages_selected"
-                    name="all_ages_selected"
-                    id="all-ages-selected-input"
-                    >
-                        {{ 'ALL' | translate }}
-                    </mat-checkbox>
+                      <mat-checkbox
+                      (change)="selectAllAges($event)"
+                      formControlName="all_ages_selected"
+                      name="all_ages_selected"
+                      id="all-ages-selected-input"
+                      >
+                          {{ 'ALL' | translate }}
+                      </mat-checkbox>
                     </div>
                 </div>
                 <div class="row-detail">
@@ -472,14 +471,14 @@
           </div>
 
           <!-- split -->
-          <div fxFlex>
+          <div fxFlex fxFlex.gt-sm="69px">
               <div class="split" fxHide.gt-sm>
               </div>
               <div class="vertical-split" fxHide.lt-sm>
               </div>
           </div>
 
-          <div fxFlex="100" fxFlex.gt-sm="200px" fxFlex.gt-md="240px" class="py-10">
+          <div fxFlex="100" fxFlex.gt-sm="200px" fxFlex.gt-md="240px" class="py-10" class="right-panel-summary">
             <div class="row-detail">
                 <p>
                     {{ 'SUMMARY' | translate }}
@@ -507,88 +506,103 @@
                 </div>
             </div>
 
-            <div class="row-detail">
-                <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
-                    <div class="page-description mb-24" fxFlex="100">
+            <div class="mb-22">
+                <div>
+                    <mat-label class="mb-24">
                         {{ 'PROFILING' | translate }}
-                    </div>
+                    </mat-label>
+                    <div fxLayout="row wrap" >
+                        <div fxFlex="70">
+                            <mat-label>
+                                {{ 'STATUS' | translate }}:
+                            </mat-label>
+                        </div>
 
-                    <div class="input-label mb-20" fxFlex="70">
-                        {{ 'STATUS' | translate }}:
+                        <div fxFlex="30">
+                            {{ this.form.controls.client_status.value | uppercase | translate }}
+                        </div>
                     </div>
+                    <div fxLayout="row wrap" >
+                        <div fxFlex="70">
+                            <mat-label>
+                                {{ 'AGE_RANGE' | translate }}:
+                            </mat-label>
+                        </div>
 
-                    <div class="input-info mb-20" fxFlex="30">
-                        {{ this.form.controls.client_status.value | uppercase | translate }}
+                        <div fxFlex="30">
+                            {{ ageRangeLabel }}
+                        </div>
                     </div>
+                    <div fxLayout="row wrap">
+                        <div fxFlex="70">
+                            <mat-label>
+                                {{ 'SELECTED_GENRE' | translate }}:
+                            </mat-label>
+                        </div>
 
-                    <div class="input-label mb-20" fxFlex="70">
-                        {{ 'AGE_RANGE' | translate }}:
-                    </div>
-
-                    <div class="input-info mb-20" fxFlex="30">
-                        {{ ageRangeLabel }}
-                    </div>
-
-                    <div class="input-label mb-20" fxFlex="70">
-                        {{ 'SELECTED_GENRE' | translate }}:
-                    </div>
-
-                    <div class="input-info mb-20" fxFlex="30">
-                        {{ this.form.controls.gender_of_target_market.value | translate }}
+                        <div fxFlex="30">
+                            {{ this.form.controls.gender_of_target_market.value | translate }}
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
-            <div class="page-description mb-24" fxFlex="100">
-                {{ 'GEOGRAPHICAL_SCOPE' | translate }}
+            <div class="mb-22">
+                <div fxLayout="row wrap" fxLayout.lt-sm="column">
+                    <mat-label>
+                        {{ 'GEOGRAPHICAL_SCOPE' | translate }}
+                    </mat-label>
+
+                    <div class="max-container-summary">
+                        <div *ngFor="let item of selectedGeographicalLocations">
+                            {{ item.name }}
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="input-info mb-20" fxFlex="100" *ngFor="let item of selectedGeographicalLocations">
-                {{ item.name }}
-            </div>
-            </div>
-            <br>
-
-            <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
-            <a class="text-underline completed-step" (click)="openProfilePopUp()">
-                {{ 'SAVE_PROFILE' | translate }}
-            </a>
+            <div class="mb-22">
+                <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="end center">
+                    <a class="text-underline primary-color" (click)="openProfilePopUp()">
+                        {{ 'SAVE_PROFILE' | translate }}
+                    </a>
+                </div>
             </div>
 
-            <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
-            <div class="page-description mb-24" fxFlex="100">
-                {{ 'SPONSOR' | translate }}
-            </div>
+            <div class="mb-22">
+                <mat-label>
+                    {{ 'SPONSOR' | translate }}
+                </mat-label>
 
-            <div class="input-info mb-20" fxFlex="100">
-                {{ sponsorName }}
+                <div>
+                    {{ sponsorName }}
+                </div>
             </div>
-            </div>
-            <br>
+            <div class="mb-22">
+                <mat-label>
+                    {{ 'STRATEGY' | translate }}
+                </mat-label>
 
-            <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
-            <div class="page-description mb-24" fxFlex="100">
-                {{ 'STRATEGY' | translate }}
-            </div>
+                <div>
+                    {{ this.form.controls.name.value }}
+                </div>
 
-            <div class="input-info mb-20" fxFlex="100">
-                {{ this.form.controls.name.value }}
+                <div>
+                    {{ this.form.controls.description.value }}
+                </div>
             </div>
+            <div>
+                <div fxLayout="row wrap">
+                    <div fxFlex="70">
+                        <mat-label>
+                            {{ 'CONDITIONS' | translate }}
+                        </mat-label>
+                    </div>
 
-            <div class="input-info mb-20" fxFlex="30">
-                {{ this.form.controls.description.value }}
-            </div>
-            </div>
-
-            <div fxLayout="row wrap" fxLayout.lt-sm="column" class="input-fields-summary">
-            <div class="page-description mb-24" fxFlex="100">
-                {{ 'CONDITIONS' | translate }}
-            </div>
-
-            <div class="input-info mb-20" fxFlex="100">
-                {{ this.form.controls.can_be_exchanged.value | uppercase | translate }}
-            </div>
+                    <div class="input-info" fxFlex="30">
+                        {{ this.form.controls.can_be_exchanged.value | uppercase | translate }}
+                    </div>
+                </div>
             </div>
           </div>
         </div>

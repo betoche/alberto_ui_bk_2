@@ -1,41 +1,54 @@
-<div fxLayout="row wrap" fxLayoutAlign="end flex-end" class="mt-12">
-  <mat-icon class="text-grey-B000 close-icon" matSuffix>highlight_off</mat-icon>
-  <a class="mat-color-primary text-underline pl-4" (click)="dialogRef.close(false)">{{ 'CLOSE' | translate }}</a>
-</div>
-
-<div fxLayout="row wrap" class="clearfix">
-  <div fxFlex="grow" class="page-description pd-bt-40 border-bt-solid-4">
-    <h1 class="header-section">Guardar Perfilado</h1>
-    <h2 class="sub-header-section" translate="">Al guardar estos datos podrá utilizarlos en la creación de nuevas estrategias.</h2>
-  </div>
-
-  <div class="pd-tp-40">
-    <div fxFlex="100" fxLayoutAlign="start center">
-      <form class="profile-form" [formGroup]="form">
-
-        <mat-label>{{'PROFILE_NAME' | translate}} *</mat-label>
-        <mat-form-field appearance="outline" class="mat-form-filled full-width mb-24">
-          <input
-            matInput
-            formControlName="name"
-            name="name"
-            placeholder="{{ 'SET_PROFILE_NAME' | translate }}"
-          />
-        </mat-form-field>
-
-        <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-20 mb-50">
-          <button mat-flat-button
-            class="tot-default-submit-btn"
-            color="primary"
-            id="submit-btn"
-            (click)="submit()"
-          >
-            {{ 'SAVE' | translate }}
-          </button>
+<div class="box-detail-container">
+    <div class="box-detail">
+        <div fxLayout="row wrap" fxLayoutAlign="end flex-end" class="close-modal" (click)="dialogRef.close(false)">
+            <mat-icon class="close-icon" matSuffix>highlight_off</mat-icon>
+            <a class="text-underline pl-4">{{ 'CLOSE' | translate }}</a>
         </div>
-
-      </form>
+        <div class="header-container">
+            <div class="header-nav">
+                <h1 class="headline">
+                    Guardar Perfilado
+                </h1>
+                <p translate>
+                    Al guardar estos datos podrá utilizarlos en la creación de nuevas estrategias.
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
-
+    <div class="box-detail">
+        <form class="profile-form" [formGroup]="form"  fxLayout="row wrap" fxLayoutAlign="center center">
+            <div fxFlex="100" fxFlex.gt-sm="350px">
+                <div class="row-detail mb-70 mt-44 full-width">
+                    <mat-label class="mb-10">{{'PROFILE_NAME' | translate}} *</mat-label>
+                    <mat-form-field appearance="outline" class="full-width">
+                        <input
+                        matInput
+                        formControlName="name"
+                        name="name"
+                        placeholder="{{ 'SET_PROFILE_NAME' | translate }}"
+                        />
+                    </mat-form-field>
+                </div>
+                
+                <div fxLayout="row nowrap" fxLayout.lt-sm="columnn" fxLayoutAlign="center center" fxLayoutGap="22px">
+                    <button fxFlex class="outline-btn"
+                        (click)="dialogRef.close(false)"
+                        mat-raised-button
+                        color="secondary"
+                        type="button">
+                        Cancelar
+                    </button>
+                    <button
+                        mat-flat-button
+                        class="tot-default-submit-btn"
+                        color="primary"
+                        id="submit-btn"
+                        (click)="submit()"
+                    >
+                    {{ 'SAVE' | translate }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

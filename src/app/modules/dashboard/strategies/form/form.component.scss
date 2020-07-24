@@ -176,7 +176,13 @@ ul, #multiline_checkbox {
     font-size: $font-size-lg;
 }
 
-
+// right panel
+.right-panel-summary{
+    mat-label{
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+}
 // expiration option
 .expiration_option{
     mat-form-field{
@@ -188,4 +194,9 @@ ul, #multiline_checkbox {
 .market-percentage-number{
     color: $primary-color;
     font-weight: bold;
+}
+// max container summary
+.max-container-summary{
+    max-height: 200px;
+    overflow: auto;
 }
