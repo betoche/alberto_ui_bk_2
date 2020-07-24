@@ -7,5 +7,16 @@
   display: none;
   &.pragmatic-footer{
     display: block;
+    min-height: 0;
+    padding: 30px 10px;
+    font-size: $font-size-sm;
+    text-align: center;
+    border-top: 1px solid $split-gray;
+    color: $primary !important;
+    background-color: transparent !important;
+    a,span{
+      color: $primary-color !important;
+      font-weight: bold;
+    }
   }
 }

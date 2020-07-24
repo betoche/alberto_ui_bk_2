@@ -512,35 +512,32 @@
                         {{ 'PROFILING' | translate }}
                     </mat-label>
                     <div fxLayout="row wrap" >
-                        <div fxFlex="70">
+                        <div fxFlex="150px">
                             <mat-label>
                                 {{ 'STATUS' | translate }}:
                             </mat-label>
                         </div>
-
-                        <div fxFlex="30">
+                        <div fxFlex>
                             {{ this.form.controls.client_status.value | uppercase | translate }}
                         </div>
                     </div>
                     <div fxLayout="row wrap" >
-                        <div fxFlex="70">
+                        <div fxFlex="150px">
                             <mat-label>
                                 {{ 'AGE_RANGE' | translate }}:
                             </mat-label>
                         </div>
-
-                        <div fxFlex="30">
+                        <div fxFlex>
                             {{ ageRangeLabel }}
                         </div>
                     </div>
                     <div fxLayout="row wrap">
-                        <div fxFlex="70">
+                        <div fxFlex="150px">
                             <mat-label>
                                 {{ 'SELECTED_GENRE' | translate }}:
                             </mat-label>
                         </div>
-
-                        <div fxFlex="30">
+                        <div fxFlex>
                             {{ this.form.controls.gender_of_target_market.value | translate }}
                         </div>
                     </div>
@@ -548,15 +545,13 @@
             </div>
 
             <div class="mb-22">
-                <div fxLayout="row wrap" fxLayout.lt-sm="column">
-                    <mat-label>
-                        {{ 'GEOGRAPHICAL_SCOPE' | translate }}
-                    </mat-label>
+                <mat-label>
+                    {{ 'GEOGRAPHICAL_SCOPE' | translate }}
+                </mat-label>
 
-                    <div class="max-container-summary">
-                        <div *ngFor="let item of selectedGeographicalLocations">
-                            {{ item.name }}
-                        </div>
+                <div class="max-container-summary">
+                    <div *ngFor="let item of selectedGeographicalLocations">
+                        {{ item.name }}
                     </div>
                 </div>
             </div>
@@ -593,13 +588,13 @@
             </div>
             <div>
                 <div fxLayout="row wrap">
-                    <div fxFlex="70">
+                    <div fxFlex="150px">
                         <mat-label>
                             {{ 'CONDITIONS' | translate }}
                         </mat-label>
                     </div>
 
-                    <div class="input-info" fxFlex="30">
+                    <div class="input-info" fxFlex>
                         {{ this.form.controls.can_be_exchanged.value | uppercase | translate }}
                     </div>
                 </div>
