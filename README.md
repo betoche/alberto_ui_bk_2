@@ -72,3 +72,10 @@ Run specify 1 scenario, use syntax `fdescribe` and `fit` for scenarios you want
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+
+
+## *TODO:*
+- Reparar modal 
+- Reparar edit Usuario
