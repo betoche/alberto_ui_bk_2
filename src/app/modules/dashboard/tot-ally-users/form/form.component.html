@@ -1,13 +1,19 @@
-<div fxLayout="row wrap" fxLayoutAlign="end flex-end" class="mt-12">
-  <a class="mat-color-primary text-underline pl-4" (click)="dialogRef.close(false)">{{ 'CLOSE' | translate }}</a>
+<div class="box-detail">
+  <div fxLayout="row wrap" fxLayoutAlign="end flex-end" class="close-modal" (click)="dialogRef.close(false)">
+    <mat-icon class="close-icon" matSuffix>highlight_off</mat-icon>
+    <a class="text-underline pl-4">{{ 'CLOSE' | translate }}</a>
+  </div>
+  <div class="header-container">
+    <div class="header-nav">
+      <h1 class="headline" translate>
+        ADD_NEW_COMPANY
+      </h1>
+    </div>
+  </div>
 </div>
 
-<div fxLayout="row wrap" class="clearfix">
-  <div fxFlex="grow" class="page-description mt-40">
-    <h1 class="header-section" translate>ADD_NEW_COMPANY</h1>
-  </div>
-
-  <div *ngIf="step == 1">
+<div class="box-detail">
+    <div *ngIf="step == 1">
     <!-- Left Side content -->
     <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="45">
       <div class="page-description mt-24 mb-24">

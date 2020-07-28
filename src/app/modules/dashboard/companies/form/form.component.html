@@ -78,66 +78,78 @@
       </div>
 
       <!-- **************** STEP 2 **************** -->
-      <div [perfectScrollbar]="{}" fxLayout="row wrap" *ngIf="step == 2">
-        <a
-            fxFlex="grow"
-            class="mat-color-primary text-underline mt-32 pl-4"
-            *ngIf="isNew"
-            (click)="back()">{{ 'BACK' | translate }}</a>
+      <div [perfectScrollbar]="{}" *ngIf="step == 2">
+        <div>
+          <a
+              class="text-underline"
+              *ngIf="isNew"
+              (click)="back()">{{ 'BACK' | translate }}</a>
+        </div>
 
-        <app-flash-messsage
-          *ngIf="errorsMessages"
-          class="full-width"
-          type="danger"
-          [message]="errorsMessages"
-        ></app-flash-messsage>
+        <div>
+          <app-flash-messsage
+            *ngIf="errorsMessages"
+            class="full-width mb-24"
+            type="danger"
+            [message]="errorsMessages"
+          ></app-flash-messsage>
+        </div>
 
-        <div fxLayout="row wrap" fxLayout.lt-sm="column" class="full-width">
-          <div class="pharmaceutical-company-form full-width">
-            <div fxFlex="15" class="pr-1 mb-24"></div>
-            <div fxFlex="35" class="pr-1 mb-24">
-              <mat-label disabled>{{ 'USER_TYPE' | translate }} *</mat-label>
-              <mat-form-field class="full-width mat-form-filled" appearance="outline">
-                <mat-select
-                    formControlName="type"
-                    name="type"
-                    [disabled]="!this.isNew"
-                    (selectionChange)="changeCompanyType()">
-                  <mat-option *ngFor="let type of typeOfcompaniesCollection" [value]="type.value">
-                    {{ type.label }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+        <div>
+          <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+            <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+              <div fxFlex="100" fxFlex.gt-sm="350px">
+                <mat-label disabled>{{ 'USER_TYPE' | translate }} *</mat-label>
+                <mat-form-field class="full-width mat-form-filled" appearance="outline">
+                  <mat-select
+                      formControlName="type"
+                      name="type"
+                      [disabled]="!this.isNew"
+                      (selectionChange)="changeCompanyType()">
+                    <mat-option *ngFor="let type of typeOfcompaniesCollection" [value]="type.value">
+                      {{ type.label }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
             </div>
 
-            <div fxFlex="35" class="pr-1 mb-24">
-              <mat-label disabled>{{'ROLE' | translate}} *</mat-label>
-              <input-disabled-with-icon controlName="role"></input-disabled-with-icon>
+            <div fxFlex="50"fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row">
+              <div fxFlex="100" fxFlex.gt-sm="350px">
+                <mat-label disabled>{{'ROLE' | translate}} *</mat-label>
+                <input-disabled-with-icon controlName="role"></input-disabled-with-icon>
+              </div>
             </div>
-            <div fxFlex="15" class="pr-1 mb-24"></div>
           </div>
         </div>
 
-        <hr class="width-80 mb-12 mt-12 division" />
+        <div class="split m-0"></div>
 
-        <app-user-info-fields [form]="form"></app-user-info-fields>
+        <div>
+          <app-user-info-fields [form]="form"></app-user-info-fields>
+        </div>
 
-        <company-fields [form]="form" [type]="form.value['type']"></company-fields>
+        <div class="split m-0"></div>
 
-        <!-- ############################## -->
-        <div fxFlex="100" class="mt-1 mr-1" style="text-align: center;">
-          <button
-              mat-flat-button
-              color="secondary"
-              class="mr-1"
-              type="button"
+        <div>
+          <company-fields [form]="form" [type]="form.value['type']"></company-fields>
+        </div>
 
-              (click)="createAndAddAnotherCompany()">
-            {{ 'ADD_ANOTHER_COMPANY' | translate }}
-          </button>
-          <button mat-stroked-button color="primary" id="submit-btn" [disabled]="form.invalid">
-            {{ 'FINISH' | translate }}
-          </button>
+        <div class="split"></div>
+
+        <div>
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center" fxLayoutGap="22px">
+            <div fxFlex.lt-sm="100">
+              <button mat-flat-button class="tot-default-submit-btn dark-btn" (click)="createAndAddAnotherCompany()">
+                {{ 'ADD_ANOTHER_COMPANY' | translate }}
+              </button>
+            </div>
+            <div fxFlex.lt-sm="100">
+              <button mat-flat-button class="tot-default-submit-btn" color="primary" id="submit-btn" [disabled]="form.invalid">
+                {{ 'FINISH' | translate }}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
   </form>

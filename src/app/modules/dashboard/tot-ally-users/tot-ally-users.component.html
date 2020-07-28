@@ -77,7 +77,7 @@
         <div fxLayout="row" fxLayoutWrap fxLayoutGap="22px">
           <div fxFlex fxLayout="column">
             <mat-label>{{ 'COMPANY_TYPE' | translate }}</mat-label>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="mat-select-tot-style">
               <mat-select
                 [(value)]="entityType"
                 (selectionChange)="searchAndFilter({ entityType: $event.value })"
@@ -92,7 +92,7 @@
           </div>
           <div fxFlex fxLayout="column">
             <mat-label>{{ 'COUNTRY' | translate }}</mat-label>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="mat-select-tot-style">
               <mat-select
                 (selectionChange)="searchAndFilter({ countryCode: $event.value })"
                 [(value)]="countryCode"
@@ -107,7 +107,7 @@
           </div>
           <div fxFlex fxLayout="column">
             <mat-label>{{ 'STATUS' | translate }}</mat-label>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="mat-select-tot-style">
               <mat-select (selectionChange)="searchAndFilter({ status: $event.value })" [(value)]="status" name="status">
                 <mat-option value="ALL">{{ 'ALL' | translate }}</mat-option>
                 <mat-option *ngFor="let type of statusList" [value]="type.value">
