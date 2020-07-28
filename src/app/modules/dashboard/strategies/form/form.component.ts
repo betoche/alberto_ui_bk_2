@@ -11,6 +11,7 @@ import { DatatableBaseComponent } from 'app/shared/components/datatable.base.com
 import { MasterDataCountry } from 'app/shared/models/master-data/country.model';
 import { DialogService } from 'app/shared/services/dialog.service';
 import { ProfilePopupFormComponent } from '../create-profile/form.component';
+import { StrategyConfirmationPopupComponent } from '../confirmation-popup/form.component';
 import { LOCATIONS } from 'app/shared/master-data/sample_locations.master-data'
 
 import { StrategyModel } from 'app/shared/models/strategy/strategy.model';
@@ -58,6 +59,7 @@ export class StrategyFormComponent extends Many(ApplicationBaseComponent, FormBa
   public addressAttributes = [];
   public masterDataCountry = [];
   public sponsorName = '';
+  public selectedConditions = '';
 
   constructor(
     private fb: FormBuilder,
@@ -244,6 +246,7 @@ export class StrategyFormComponent extends Many(ApplicationBaseComponent, FormBa
 
   public showAmountOfTimesInput($event) {
     this.amountOfTimesInputEnabled = ($event.value == 'amount_defined');
+    this.setConditions($event.value);
   }
 
   public showEndDateInput($event) {
@@ -271,14 +274,13 @@ export class StrategyFormComponent extends Many(ApplicationBaseComponent, FormBa
   public doesEnableContinueButton(step) {
     const fields_to_be_completed_on_each_step = {
       1 : [
-        'age_min_limit', 'age_max_limit',
         'client_status', 'gender_of_target_market'
       ],
       2 : ['addresses_attributes'],
       3 : ['benefits_provider_commerce_id'],
       4 : ['name', 'description', 'strategy_type_id'],
-      5 : ['can_be_exchanged'],
-      6 : ['initial_date', 'expiration_option']
+      5 : ['can_be_exchanged', 'terms_and_conditions_url'],
+      6 : ['initial_date', 'expiration_option', 'logo_url']
     };
 
     for (let item of fields_to_be_completed_on_each_step[step]) {
@@ -309,6 +311,20 @@ export class StrategyFormComponent extends Many(ApplicationBaseComponent, FormBa
     this.sponsorName = selectedSponsor.name;
   }
 
+  public setConditions(value: string) {
+    let canBeExchanged = value || this.form.controls.can_be_exchanged.value;
+    let amount = this.form.controls.amount_of_times_can_be_exchanged.value || '';
+
+    if (canBeExchanged == null || canBeExchanged == '') {
+      return
+    } else if (canBeExchanged == 'amount_defined') {
+      this.selectedConditions = this.translate.instant('AMOUNT_DEFINED') + ': ' + amount
+    } else {
+      this.selectedConditions = this.translate.instant('DOES_NOT_APPLY')
+    }
+
+  }
+
   public setProfileAttributes(event) {
     if (event.value == null || event.value == '') {
       return
@@ -322,6 +338,7 @@ export class StrategyFormComponent extends Many(ApplicationBaseComponent, FormBa
     this.strategy.strategy_profile_id = this.form.controls.strategy_profile_id.value;
     this.buildForm(this.strategy);
     this.setAgeRange();
+    this.setConditions(null);
   }
 
   public locationNodeChecked(event) {
@@ -371,6 +388,13 @@ export class StrategyFormComponent extends Many(ApplicationBaseComponent, FormBa
     }
   }
 
+  public openConfirmationPopup() {
+    this.dialogService.openPopUp(this, StrategyConfirmationPopupComponent, {
+      data: { strategy_attributes: this.form.value },
+      width: '1150px'
+    });
+  }
+
   public submit() {
     if (this.form.valid) {
       if (this.isNew) {
@@ -410,8 +434,11 @@ export class StrategyFormComponent extends Many(ApplicationBaseComponent, FormBa
       },
       (response) => {
         this.loader.close();
+        window.scrollTo(0, 0);
         this.errorsMessages = response.error.errors.join('<br/>');
-        this.scrollToTop();
+        document.querySelector('#rightside-content-hold').scroll(
+          { top: 0, left: 0, behavior: 'smooth' }
+        );
       }
     );
   }

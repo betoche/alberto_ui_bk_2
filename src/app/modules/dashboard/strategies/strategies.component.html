@@ -9,11 +9,19 @@
 
       <div class="row-detail" animationDuration="0ms">
         <div class="filter-group">
-          <a class="filter-item active">
-            Activas
+          <a class="filter-item active"
+            routerLink="/dashboard/strategies"
+            [ngClass]="{'tab-item': true, 'active': strategiesStatus == 'active'}"
+            (click)="getStrategies('active')"
+            translate>
+            {{ 'ACTIVE' | translate }}
           </a>
-          <a class="filter-item">
-            Historial
+          <a class="filter-item"
+            routerLink="/dashboard/strategies"
+            [ngClass]="{'tab-item': true, 'active': strategiesStatus == 'expired'}"
+            (click)="getStrategies('expired')"
+            translate>
+            {{ 'HISTORICAL' | translate }}
           </a>
         </div>
       </div>
@@ -114,7 +122,7 @@
                 </ng-template>
               </ngx-datatable-column>
 
-              <ngx-datatable-column name="{{ 'ACTIONS' | translate }}" [flexGrow]="1" width="400">
+              <ngx-datatable-column name="{{ 'ACTIONS' | translate }}" [flexGrow]="1" width="400" *ngIf="strategiesStatus == 'active'">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <a color="primary" class="mr-1 text-underline edit-btn" (click)="editStrategy(row)">
                     <span translate>EDIT</span>

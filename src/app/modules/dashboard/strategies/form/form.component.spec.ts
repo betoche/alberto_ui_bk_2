@@ -77,6 +77,24 @@ describe('StrategyFormComponent', () => {
       expect(service.create).toHaveBeenCalledWith(component.form.value);
       expect(router.navigate).toHaveBeenCalledWith(['/dashboard/strategies']);
     });
+
+    it('returns selected conditions', () => {
+      initializeComponent();
+      stubFetchProfiles();
+      stubFetchStrategyTypes();
+
+      let service = stubRequestCreate();
+      let router = TestBed.get(Router);
+      spyOn(router, 'navigate').and.callFake(() => {});
+
+      component.form.get('can_be_exchanged').setValue('');
+      component.form.get('amount_of_times_can_be_exchanged').setValue('10');
+
+      expect(component.selectedConditions).toEqual('No aplica');
+
+      component.form.get('can_be_exchanged').setValue('amount_defined');
+      expect(component.selectedConditions).toEqual('Establecer cantidad: 10');
+    });
   });
 
   // ##########################

@@ -5,6 +5,9 @@
             <a class="text-underline pl-4">{{ 'CLOSE' | translate }}</a>
         </div>
         <div class="header-container">
+          <div class="alert alert-danger" *ngIf="!!errorsMessages">
+            {{ errorsMessages }}
+          </div>
             <div class="header-nav">
                 <h1 class="headline">
                     Guardar Perfilado
