@@ -1,0 +1,111 @@
+<div fxLayout="row wrap" fxLayoutAlign="end flex-end" class="mt-12">
+  <mat-icon class="text-grey-B000 close-icon" matSuffix>highlight_off</mat-icon>
+  <a class="mat-color-primary text-underline pl-4" (click)="dialogRef.close(false)">{{ 'CLOSE' | translate }}</a>
+</div>
+<br>
+<div fxLayout="row wrap" fxLayout.lt-sm="column">
+
+  <div fxFlex="40" class="form-summary">
+    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+      <div class="page-description mb-20" fxFlex="100">
+        <h2 class="bold-text">{{ 'CANCEL_STRATEGY_HEADER' | translate }}</h2>
+      </div>
+    </div>
+    <br>
+
+    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+      <div class="page-description mb-24" fxFlex="100">
+        {{ 'CANCEL_STRATEGY_SUB_HEADER' | translate }}
+      </div>
+
+      <br>
+
+      <div fxFlex="80">
+        <mat-progress-bar mode="determinate"
+          [value]="percentageOfCustomersTargeted"
+          class="market-percentage" color="black">
+        </mat-progress-bar>
+      </div>
+
+      <div class="completed-step" fxFlex="20">
+        {{ percentageOfCustomersTargeted }}%
+      </div>
+
+      <mat-label class="form-label">{{ 'NUMBER_OF_USERS' | translate }}</mat-label>
+    </div>
+
+    <br>
+
+    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+      <div class="page-description mb-24" fxFlex="100">
+        {{ 'SURE_TO_CANCEL' | translate }}
+      </div>
+    </div>
+
+    <div class="text-center btn-actions" fxLayout="row wrap">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-20 mb-50">
+        <button mat-flat-button type="button"
+          class="outline-btn btn-no-border-radius mr-1 btn-no-bg tot-default-submit-btn cancel-btn"
+          (click)="dialogRef.close(false)">
+          {{ 'CLOSE' | translate }}
+        </button>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-20 mb-50">
+        <button mat-flat-button color="primary" class="btn-no-border-radius tot-default-submit-btn" id="submit-btn"
+          (click)="dialogRef.close(false)"
+          routerLink="/dashboard/strategies">
+          {{ 'CANCEL_STRATEGY' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div fxFlex="10" class="form-summary">
+  </div>
+
+  <div fxFlex="50" class="form-summary" class="strategy-details">
+    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+      <div class="image-content">
+        <img class="index-page" [src]="strategy.logo_url">
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayout.lt-sm="column" class="strategy-information">
+      <div class="page-description mb-24" fxFlex="100">
+        {{ 'SPONSOR' | translate }}
+      </div>
+
+      <div class="input-info mb-20" fxFlex="100">
+        {{ strategy.description }}
+      </div>
+
+      <div class="page-description mb-24" fxFlex="100">
+        {{ 'STRATEGY_VALID_IN' | translate }}
+      </div>
+
+      <div class="page-description mb-24" fxFlex="100">
+        {{ 'COUPON_VALID_UNTIL' | translate }}
+      </div>
+
+      <div class="input-info mb-20" fxFlex="100">
+        {{ strategy.end_date | date: 'fullDate' }}
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="center center">
+      <qr-code-scanner-for-browser></qr-code-scanner-for-browser>
+      <div class="page-description strategy-code mb-24" fxFlex="100">
+        {{ strategy.code }}
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+      <p class="regulation-url">
+        <a href="{{strategy.terms_and_conditions_url}}" target="_blank">
+          {{ 'SEE_TERMS_AND_CONDITIONS' | translate }}
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
