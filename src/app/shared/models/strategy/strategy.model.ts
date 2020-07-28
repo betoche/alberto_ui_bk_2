@@ -6,6 +6,7 @@ export class StrategyModel extends BaseModel {
   public code: string;
   public age_min_limit: number;
   public age_max_limit: number;
+  public sequential_id: number;
   public all_ages_selected: boolean;
   public gender_of_target_market: number;
   public expiration_option: string;
@@ -43,6 +44,7 @@ export class StrategyModel extends BaseModel {
       'code',
       'age_min_limit',
       'age_max_limit',
+      'sequential_id',
       'all_ages_selected',
       'gender_of_target_market',
       'expiration_option',

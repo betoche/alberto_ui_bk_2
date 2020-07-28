@@ -151,6 +151,7 @@ export class DataHelper {
         client_status: 'active',
         age_min_limit: '10',
         age_max_limit: '20',
+        sequential_id: '1',
         description: 'Test',
         strategy_type_id: '1',
         gender_of_target_market: 'female',
