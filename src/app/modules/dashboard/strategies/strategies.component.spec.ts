@@ -40,6 +40,7 @@ describe('StrategiesComponent', () => {
 
     it('shows a list of strategies', () => {
       expect($('datatable-row-wrapper').length).toEqual(2);
+      expect($('datatable-row-wrapper:first-child').text()).toContain('1');
       expect($('datatable-row-wrapper:first-child').text()).toContain('Strategy A');
     });
   });

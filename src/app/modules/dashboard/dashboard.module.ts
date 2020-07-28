@@ -60,6 +60,7 @@ import { StrategiesComponent } from './strategies/strategies.component';
 import { StrategyFormComponent } from './strategies/form/form.component';
 import { StrategyDetailComponent } from './strategies/detail/detail.component';
 import { ProfilePopupFormComponent } from './strategies/create-profile/form.component';
+import { StrategyConfirmationPopupComponent } from './strategies/confirmation-popup/form.component';
 
 
 import { DashboardIndexComponent } from './app-index/app-index.component';
@@ -132,6 +133,7 @@ import { CompanyAdministratorsFormComponent } from './company-administrators/for
     StrategyFormComponent,
     StrategyDetailComponent,
     ProfilePopupFormComponent,
+    StrategyConfirmationPopupComponent,
     BenefitsProvidersComponent,
     BenefitsProviderFormComponent,
     CompanyAdministratorsComponent,
@@ -144,6 +146,7 @@ import { CompanyAdministratorsFormComponent } from './company-administrators/for
     MedicationPopupFormComponent,
     MedicationDetailComponent,
     ProfilePopupFormComponent,
+    StrategyConfirmationPopupComponent,
     StrategyDetailComponent
   ],
   exports: [ReactiveFormsModule],

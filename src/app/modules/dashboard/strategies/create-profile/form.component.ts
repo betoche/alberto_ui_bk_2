@@ -54,7 +54,6 @@ export class ProfilePopupFormComponent extends Many(ApplicationBaseComponent, Fo
   public submit() {
     if (this.form.valid) {
       this.createNewProfile();
-      this.dialogRef.close();
     }
   }
 
@@ -66,6 +65,7 @@ export class ProfilePopupFormComponent extends Many(ApplicationBaseComponent, Fo
       () => {
         this.loader.close();
         this.showCreationMessageSuccessful(this.translate.instant('PROFILE_CREATED'));
+        this.dialogRef.close();
       },
       response => {
         this.errorsMessages = response.error.errors;

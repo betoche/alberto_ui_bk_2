@@ -10,8 +10,12 @@ import _ from "lodash";
 export class StrategyService {
   constructor(private http: HttpClient) {}
 
-  public fetchList() {
-    return this.http.get(environment.apiURL + '/administrators/strategies');
+  public fetchList(status) {
+    return this.http.get(environment.apiURL + '/administrators/strategies', {
+      params: Object.assign({
+        status: status
+      })
+    });
   }
 
   public fetchTypesList() {

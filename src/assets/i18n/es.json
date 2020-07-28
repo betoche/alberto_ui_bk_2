@@ -1,5 +1,6 @@
 {
   "ADD": "Agregar",
+  "ACTIVE": "Activas",
   "MODIFY": "Modificar",
   "CANCEL": "Cancelar",
   "SAVE": "Guardar",
@@ -7,6 +8,7 @@
   "OK": "Confirmar",
   "RESET": "Reiniciar",
   "HOME": "Hogar",
+  "HISTORICAL": "Historial",
   "NEXT": "Siguiente",
   "EDIT": "Editar",
   "RESTORE_PASSWORD": "Restablecer contraseña",
@@ -59,6 +61,8 @@
   "SUCCESS_ADD_NEW_DESC": "Ingrese el correo electrónico e indique los permisos asignados para el nuevo usuario.",
   "SEARCH_BY_NAME": "Buscar por nombre",
   "SEARCH_BY_NAME_AND_ROLE": "Buscar por aliado, nombre o correo electrónico",
+  "ACTIVE": "Activas",
+  "HISTORICAL": "Historial",
 
   "GOVERNMENT_IDENTIFICATION_CARD": "Cédula",
   "GOVERNMENT_IDENTIFICATION": "Identificación",
@@ -306,6 +310,22 @@
   "PROFILE_CREATED": "El perfil se ha guardado exitosamente",
   "LOCATIONS_DESCRIPTION": "La estrategia se aplicará a aquellos clientes que estén suscritos a los planes salud que se seleccionen.",
   "DELIMIT_BY_LOCATION": "Delimitar el mercado meta por sucursales del patrocinador",
-  "DESIGN_&_DEVELOP_BY": "Diseñado y Desarrollado por"
+  "INTERNATIONAL": "Internacional",
+  "CANCEL_STRATEGY_HEADER": "Cancelar el proceso de crear una nueva estrategia",
+  "CANCEL_STRATEGY_SUB_HEADER": "Al cancelar el proceso no se guardará la información ingresada.",
+  "CANCEL_STRATEGY": "Cancelar estrategia",
+  "SURE_TO_CANCEL": "¿Está seguro que desea cancelar?",
 
+  "COMPANY_TYPE_TRANSLATIONS": {
+    "Drugstore": "farmacia",
+    "PharmaceuticalCompany": "farmacéutica",
+    "BenefitsProviderCommerce": "patrocinador"
+  },
+
+  "PAGES": {
+    "COMPANIES": {
+      "NAME_OF": "Nombre de la",
+      "COMPANY_CODE": "Id de"
+    }
+  }
 }

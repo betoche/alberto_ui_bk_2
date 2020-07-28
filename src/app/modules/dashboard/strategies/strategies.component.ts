@@ -31,6 +31,8 @@ export class StrategiesComponent extends DatatableBaseComponent implements OnIni
   public selected: any = [];
   public successful: boolean = false;
   public keyword: string = '';
+  public strategiesStatus: string;
+  public pageLimit: 10;
 
   // filtering the data in table
   public filterOptions: any = {
@@ -50,11 +52,17 @@ export class StrategiesComponent extends DatatableBaseComponent implements OnIni
   }
 
   ngOnInit() {
-    this.getStrategies();
+    this.strategiesStatus = 'active';
   }
 
-  private getStrategies() {
-    this.strategyService.fetchList().subscribe(
+  ngAfterContentInit() {
+    this.getStrategies(this.strategiesStatus);
+  }
+
+  public getStrategies(status) {
+    this.strategiesStatus = status;
+
+    this.strategyService.fetchList(status).subscribe(
       (response) => {
         this.selected = [];
         const data = StrategyModel.buildFrom(_.map(response['data'], 'attributes'));
