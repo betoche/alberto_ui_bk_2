@@ -66,7 +66,7 @@
       <div class="clearfix table-container">
         <mat-card-content class="p-0">
             <ngx-datatable
-              class="material ml-0 mr-0"
+              class="material ml-0 mr-0 strategies"
               [rows]="rows | filerConditions:filterOptions.keyword:'name':{isContain: true}"
               [columnMode]="'force'"
               [headerHeight]="'auto'"
@@ -77,58 +77,49 @@
               [messages]="datatableMessages"
               [selectAllRowsOnPage]="false"
             >
-              <ngx-datatable-column
-                [width]="50"
-                [sortable]="false"
-                [canAutoResize]="false"
-                [draggable]="false"
-                [resizeable]="false"
-              >
-              </ngx-datatable-column>
-
-              <ngx-datatable-column name="{{ 'Id' }}" [flexGrow]="1">
+              <ngx-datatable-column name="{{ 'Id' }}" [flexGrow]="1"  width="156">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   {{ row?.id }}
                 </ng-template>
               </ngx-datatable-column>
 
-              <ngx-datatable-column name="{{ 'STRATEGY_NAME' | translate }}" [flexGrow]="1">
+              <ngx-datatable-column name="{{ 'STRATEGY_NAME' | translate }}" [flexGrow]="1" width="247">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <a class="text-underline" (click)="openDetail(row)">{{ row?.name }}</a>
                 </ng-template>
               </ngx-datatable-column>
 
-              <ngx-datatable-column name="{{ 'SPONSOR' | translate }}" [flexGrow]="1">
+              <ngx-datatable-column name="{{ 'SPONSOR' | translate }}" [flexGrow]="1" width="219">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   {{ row?.sponsor }}
                 </ng-template>
               </ngx-datatable-column>
 
-              <ngx-datatable-column name="{{ 'TYPE' | translate }}" [flexGrow]="1">
+              <ngx-datatable-column name="{{ 'TYPE' | translate }}" [flexGrow]="1" width="84">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   {{ row?.strategy_type_name }}
                 </ng-template>
               </ngx-datatable-column>
 
-              <ngx-datatable-column name="{{ 'LAUNCHING_DATE' | translate }}" [flexGrow]="1">
+              <ngx-datatable-column name="{{ 'LAUNCHING_DATE' | translate }}" [flexGrow]="1" width="130">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   {{ row?.initial_date | date: 'dd/MM/yyyy' }}
                 </ng-template>
               </ngx-datatable-column>
 
-              <ngx-datatable-column name="{{ 'EXPIRATION_DATE' | translate }}" [flexGrow]="1">
+              <ngx-datatable-column name="{{ 'EXPIRATION_DATE' | translate }}" [flexGrow]="1"  width="130">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   {{ row?.end_date | date: 'dd/MM/yyyy' }}
                 </ng-template>
               </ngx-datatable-column>
 
-              <ngx-datatable-column name="{{ 'ACTIONS' | translate }}" [flexGrow]="1" width="400" *ngIf="strategiesStatus == 'active'">
+              <ngx-datatable-column name="{{ 'ACTIONS' | translate }}" [flexGrow]="1" width="189" *ngIf="strategiesStatus == 'active'">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <a color="primary" class="mr-1 text-underline edit-btn" (click)="editStrategy(row)">
+                  <a color="primary" class="mr-1 text-underline edit-btn actions-btn" (click)="editStrategy(row)">
                     <span translate>EDIT</span>
                   </a>
-                  <a color="warn" class="mr-1 text-underline delete-btn" (click)="deleteItem(row)">
-                    <span translate>DELETE</span>
+                  <a color="warn" class="mr-1 text-underline delete-btn actions-btn" (click)="deleteItem(row)">
+                    <span translate>STOP</span>
                   </a>
                 </ng-template>
               </ngx-datatable-column>

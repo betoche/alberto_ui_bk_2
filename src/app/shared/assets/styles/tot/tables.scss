@@ -216,3 +216,17 @@
     color: $primary;
   }
 }
+.ngx-datatable.material.strategies .datatable-scroll {
+  .datatable-body-row {
+    .datatable-body-cell {
+      font-size: $font-size-xs;
+    }
+    .datatable-body-cell-label a{
+      &.actions-btn{
+          span{
+              width: 100%;
+          }
+      }
+    }
+  }
+}

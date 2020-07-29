@@ -108,7 +108,7 @@
             (select)="onSelect($event)"
             >
             <ngx-datatable-column
-                [width]="50"
+                [width]="38"
                 [sortable]="false"
                 [canAutoResize]="false"
                 [draggable]="false"
@@ -116,7 +116,7 @@
             >
             </ngx-datatable-column>
 
-            <ngx-datatable-column sort-active name="{{ 'MEDICATION' | translate }}" [flexGrow]="1">
+            <ngx-datatable-column sort-active name="{{ 'MEDICATION' | translate }}" [flexGrow]="1" [width]="243">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                 <a color="primary" class="mr-1 text-underline edit-btn" (click)="openDetail(row)">
                     {{ row?.name }}
@@ -124,25 +124,25 @@
                 </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column sort-active name="{{ 'CODE' | translate }}" [flexGrow]="1">
+            <ngx-datatable-column sort-active name="{{ 'CODE' | translate }}" [flexGrow]="1" [width]="117">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                 {{ row?.code }}
                 </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column sort-active name="{{ 'CATEGORY' | translate }}" [flexGrow]="1">
+            <ngx-datatable-column sort-active name="{{ 'CATEGORY' | translate }}" [flexGrow]="1" [width]="117">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                 {{ row?.medication_category_name }}
                 </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column sort-active name="{{ 'PHARMACEUTICAL' | translate }}" [flexGrow]="1">
+            <ngx-datatable-column sort-active name="{{ 'PHARMACEUTICAL' | translate }}" [flexGrow]="1" [width]="250">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                 {{ row?.pharmaceutical_company_name }}
                 </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column sort-active name="{{ 'ACTIONS' | translate }}" [flexGrow]="1" width="600">
+            <ngx-datatable-column sort-active name="{{ 'ACTIONS' | translate }}" [flexGrow]="1" width="390">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                 <a color="primary" class="mr-1 text-underline edit-btn" (click)="editMedication(row)">
                     <span translate>EDIT</span>
