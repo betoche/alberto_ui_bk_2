@@ -13,545 +13,761 @@
 </div>
 
 <div class="box-detail">
-    <div *ngIf="step == 1">
+  <!-- step 1 -->
+  <div *ngIf="step == 1" fxLayout="row nowrap" fxLayout.lt-sm="column">
     <!-- Left Side content -->
-    <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="45">
-      <div class="page-description mt-24 mb-24">
-        {{ 'IMPORT_COMPANY_FROM_CSV' | translate }}
-      </div>
-      <div fxFlex="grow">
-        <a class="text-underline" translate>EXAMPLE_CSV_FILE</a>
-      </div>
-      <form [formGroup]="form" class="pharmaceutical-company-form full-width">
-        <mat-form-field class="full-width mt-70 mb-24 mat-form-field-dashed" appearance="outline">
-          <input matInput name="name" disabled />
-          <mat-icon class="text-grey-B000" matSuffix>cloud_upload</mat-icon>
-        </mat-form-field>
-        <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-20 mb-50">
-          <button mat-flat-button color="primary" id="submit">
-            {{ 'VALIDATE' | translate }}
-          </button>
+    <div fxFlex="50" fxLayoutAlign="center" class="p-10">
+      <form [formGroup]="form" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+        <div fxLayout="column wrap" fxFlex="100" fxFlex.gt-sm="430px">
+          <p class="label-info">
+            {{ 'IMPORT_COMPANY_FROM_CSV' | translate }}
+            <br/>
+            <a class="text-underline" translate>EXAMPLE_CSV_FILE</a>
+          </p>
+          <div>
+            <mat-label class="mt-22">
+              {{ 'Cargar desde base de datos' | translate }}
+            </mat-label>
+            <mat-form-field class="full-width upload-file-wrapper mat-form-field-dashed" appearance="outline">
+              <input matInput name="name" disabled />
+              <mat-icon class="text-grey-B000" matSuffix>cloud_upload</mat-icon>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-auto mb-70">
+            <button  mat-flat-button class="tot-default-submit-btn" color="primary"  id="submit">
+              {{ 'VALIDATE' | translate }}
+            </button>
+          </div>
         </div>
       </form>
     </div>
 
-    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10"><div class="column-gap"></div></div>
-    <!-- Right side content -->
-    <div fxFlex="45" fxLayout="row wrap" fxLayoutAlign="start center">
-      <div class="mt-48">
-        <div class="page-description mt-24 mb-24">
-          {{ 'ADD_NEW_COMPANY_USER' | translate }}
-        </div>
+    <!-- split -->
+    <div fxFlex>
+      <div class="split-primary" fxHide.gt-xs>
       </div>
-      <form [formGroup]="form" class="pharmaceutical-company-form full-width">
-        <mat-label translate>USER_TYPE</mat-label>
-        <!-- <mat-form-field appearance="outline" class="mat-form-filled full-width mb-24">
-          <mat-select formControlName="company_type" name="type">
-            <mat-option *ngFor="let type of companyTypeList" [value]="type.value">
-              {{ type.label }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field> -->
-        <mat-label translate>ROLE</mat-label>
-        <mat-form-field class="full-width mb-24" appearance="outline">
-          <input matInput formControlName="role" name="name" />
-          <mat-icon class="text-grey-B000" matSuffix>lock</mat-icon>
-        </mat-form-field>
-        <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-20 mb-50">
-          <button mat-flat-button color="primary" id="submit" (click)="continue()">
-            {{ 'CONTINUE' | translate }}
-          </button>
+      <div class="vertical-split-primary" fxHide.lt-xs>
+      </div>
+    </div>
+
+    <!-- Right side content -->
+    <div fxFlex="50" fxLayoutAlign="center" class="p-10">
+      <form [formGroup]="form" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+        <div fxFlex="100" fxFlex.gt-sm="430px">
+          <p class="label-info">
+            {{ 'ADD_NEW_COMPANY_USER' | translate }}
+          </p>
+
+          <div class="modal-form-container mt-20">
+            <div>
+              <mat-label translate>USER_TYPE</mat-label>
+              <mat-label translate>ROLE</mat-label>
+              <mat-form-field class="full-width " appearance="outline">
+                <input matInput formControlName="role" name="name" />
+                <mat-icon class="text-grey-B000" matSuffix>lock</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-auto mb-70">
+            <button  mat-flat-button class="tot-default-submit-btn" color="primary" id="submit" (click)="continue()">
+              {{ 'CONTINUE' | translate }}
+            </button>
+          </div>
         </div>
       </form>
     </div>
   </div>
 
+  <!-- step 2 -->
   <div
-    [perfectScrollbar]="{}"
-    fxLayout="row wrap"
-    class="height-100vh-280px"
     *ngIf="step == 2 && form.value.company_type === 'pharmaceutical_company'"
   >
-    <a fxFlex="grow" class="mat-color-primary text-underline mt-32 pl-4" (click)="back()">{{ 'BACK' | translate }}</a>
-    <div fxLayout="row wrap" fxLayout.lt-sm="column" class="full-width">
-      <form [formGroup]="form" class="pharmaceutical-company-form full-width">
-        <div fxFlex="15" class="pr-1 mb-24"></div>
-        <div fxFlex="35" class="pr-1 mb-24">
-          <mat-label disabled translate>USER_TYPE</mat-label>
-          <mat-form-field class="full-width mat-form-filled" appearance="outline">
-            <mat-select formControlName="company_type" name="type">
-              <mat-option *ngFor="let type of companyTypeList" [value]="type.value">
-                {{ type.label }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div fxFlex="35" class="pr-1 mb-24">
-          <mat-label disabled translate>ROLE</mat-label>
-          <mat-form-field class="full-width" appearance="outline">
-            <input matInput type="text" formControlName="role" name="first_name" />
-            <mat-icon class="text-grey-B000" matSuffix>lock</mat-icon>
-          </mat-form-field>
-        </div>
-        <div fxFlex="15" class="pr-1 mb-24"></div>
-      </form>
+    <div>
+      <a class="text-underline back-modal-companies" (click)="back()">{{ 'BACK' | translate }}</a>
     </div>
 
-    <hr class="width-80 mb-12 mt-12" />
-
-    <div class="section-1 mt-32 mb-24"><span class="circle-number">1</span>{{ 'USER_INFORMATION' | translate }}</div>
-    <form [formGroup]="form" (ngSubmit)="submit()">
-      <div fxLayout="row wrap" fxLayout.lt-sm="column">
-        <div fxFlex="50" class="pr-1 mb-24">
-          <mat-label translate>NAME</mat-label>
-          <mat-form-field class="full-width" appearance="outline">
-            <input
-              matInput
-              formControlName="name"
-              type="text"
-              name="first_name"
-              placeholder="{{ 'NAME' | translate }}"
-            />
-          </mat-form-field>
+    <div class="row-detail mb-0">
+      <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+        <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+          <div fxFlex="100" fxFlex.gt-sm="350px">
+            <mat-label disabled translate>USER_TYPE</mat-label>
+            <mat-form-field class="full-width mat-form-filled" appearance="outline">
+              <mat-select formControlName="company_type" name="type">
+                <mat-option *ngFor="let type of companyTypeList" [value]="type.value">
+                  {{ type.label }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
         </div>
 
-        <div fxFlex="50" class="pr-1 mb-24">
-          <mat-label translate>EMAIL</mat-label>
-          <mat-form-field class="full-width" appearance="outline">
-            <input matInput formControlName="name" type="email" name="email" placeholder="{{ 'EMAIL' | translate }}" />
-          </mat-form-field>
-        </div>
-
-        <div fxFlex="50" class="pr-1 mb-24">
-          <mat-label class="d-block">{{ 'TELEPHONE_1' | translate }}</mat-label>
-          <mat-form-field style="width: 10%; margin-right: 2%;" appearance="outline">
-            <input matInput formControlName="phone_country" type="text" name="phone_country" />
-          </mat-form-field>
-          <mat-form-field style="width: 88%;" appearance="outline">
-            <input matInput type="text" name="phone_country" />
-          </mat-form-field>
-        </div>
-
-        <div fxFlex="50" class="pr-1 mb-24">
-          <mat-label class="d-block" translate>TELEPHONE_2</mat-label>
-          <mat-form-field style="width: 10%; margin-right: 2%;" appearance="outline">
-            <input
-              matInput
-              formControlName="alternative_phone_country"
-              type="text"
-              name="alternative_phone_country"
-            />
-          </mat-form-field>
-          <mat-form-field style="width: 88%;" appearance="outline">
-            <input matInput type="text" name="alternative_phone_country" />
-          </mat-form-field>
-        </div>
-      </div>
-      <hr class="width-80 mb-12 mt-12" />
-      <div class="section-1 mt-24 mb-24">
-        <span class="circle-number">2</span>{{ 'COMPANY_INFORMATION' | translate }}
-      </div>
-      <div fxLayout="row wrap" fxLayout.lt-sm="column">
-        <div fxFlex="50" class="pr-1">
-          <mat-label translate>PHARMACEUTICAL_NAME</mat-label>
-          <mat-form-field class="full-width mb-24" appearance="outline">
-            <input matInput formControlName="name" type="text" name="company" />
-          </mat-form-field>
-        </div>
-
-        <div fxFlex="50" class="pr-1">
-          <mat-label translate>PHARMACEUTICAL_ID</mat-label>
-          <mat-form-field class="full-width mb-24" appearance="outline">
-            <input matInput formControlName="name" type="text" name="role_in_company" />
-          </mat-form-field>
-        </div>
-
-        <div fxFlex="50" class="pr-1">
-          <mat-label>Logo</mat-label>
-          <mat-form-field class="full-width mb-24 mat-form-field-dashed" appearance="outline">
-            <input matInput name="name" />
-            <mat-icon class="text-grey-B000" matSuffix>cloud_upload</mat-icon>
-          </mat-form-field>
-        </div>
-
-        <div fxFlex="50" class="pr-1" fxLayoutAlign="start center">
-          <mat-label disabled translate>MAX_FILE_DIMENSION</mat-label>
-        </div>
-
-        <div fxFlex="50" class="pr-1">
-          <mat-label translate>COUNTRY</mat-label>
-          <mat-form-field appearance="outline" class="full-width mb-24">
-            <mat-select name="type">
-              <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
-                {{ type.label }}
-              </mat-option> -->
-            </mat-select>
-          </mat-form-field>
-        </div>
-
-        <div fxFlex="50" class="pr-1">
-          <mat-label translate>PROVINCE</mat-label>
-          <mat-form-field appearance="outline" class="full-width mb-24">
-            <mat-select name="type">
-              <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
-                {{ type.label }}
-              </mat-option> -->
-            </mat-select>
-          </mat-form-field>
-        </div>
-
-        <div fxFlex="32" class="pr-1">
-          <mat-label translate>CANTON</mat-label>
-          <mat-form-field appearance="outline" class="full-width mb-24">
-            <mat-select name="type">
-              <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
-                {{ type.label }}
-              </mat-option> -->
-            </mat-select>
-          </mat-form-field>
-        </div>
-
-        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="2"></div>
-
-        <div fxFlex="32" class="pr-1">
-          <mat-label translate>DISTRICT</mat-label>
-          <mat-form-field appearance="outline" class="full-width mb-24">
-            <mat-select name="type">
-              <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
-                {{ type.label }}
-              </mat-option> -->
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="2"></div>
-        <div fxFlex="32" class="pr-1">
-          <mat-label translate>QUARTER</mat-label>
-          <mat-form-field appearance="outline" class="full-width mb-24">
-            <mat-select name="type">
-              <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
-                {{ type.label }}
-              </mat-option> -->
-            </mat-select>
-          </mat-form-field>
-        </div>
-
-        <div fxFlex="50" class="pr-1">
-          <mat-label translate>ADDRESS</mat-label>
-          <mat-form-field class="full-width mb-24" appearance="outline">
-            <input
-              matInput
-              formControlName="name"
-              type="text"
-              name="company"
-              placeholder="{{ 'LINE_1' | translate }}"
-            />
-          </mat-form-field>
-        </div>
-
-        <div fxFlex="50" class="pr-1" fxLayoutAlign="center end">
-          <mat-form-field class="full-width mb-24" appearance="outline">
-            <input
-              matInput
-              formControlName="name"
-              type="text"
-              name="role_in_company"
-              placeholder="{{ 'LINE_2' | translate }}"
-            />
-          </mat-form-field>
-        </div>
-
-        <hr class="width-80 mb-12 mt-12" />
-        <div class="section-1 mt-24 mb-24">
-          <span class="circle-number">3</span>{{ 'BILLING_INFORMATION' | translate }}
-        </div>
-        <div fxLayout="row wrap" fxLayout.lt-sm="column">
-          <div fxFlex="50" class="pr-1 mb-24">
-            <mat-label translate>BUSINESS_NAME</mat-label>
+        <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+          <div fxFlex="100" fxFlex.gt-sm="350px">
+            <mat-label disabled translate>ROLE</mat-label>
             <mat-form-field class="full-width" appearance="outline">
-              <input matInput formControlName="name" type="text" name="first_name" />
+              <input matInput type="text" formControlName="role" name="first_name" />
+              <mat-icon class="text-grey-B000" matSuffix>lock</mat-icon>
             </mat-form-field>
           </div>
-          <div fxFlex="50" class="pr-1 mb-24"></div>
-
-          <div fxFlex="50" class="pr-1">
-            <mat-label translate>GOVERNMENT_ID_TYPE</mat-label>
-            <mat-form-field appearance="outline" class="full-width mb-24">
-              <mat-select name="type">
-                <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
-                  {{ type.label }}
-                </mat-option> -->
-              </mat-select>
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50" class="pr-1">
-            <mat-label translate>LEGAL_NOTE</mat-label>
-            <mat-form-field appearance="outline" class="full-width mb-24">
-              <input matInput formControlName="name" type="text" name="first_name" />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50" class="pr-1 mb-24">
-            <mat-label class="d-block" style="display: block;">TELEPHONE_1</mat-label>
-            <mat-form-field style="width: 10%; margin-right: 2%;" appearance="outline">
-              <input matInput formControlName="country_code" type="text" name="country_code" />
-            </mat-form-field>
-            <mat-form-field style="width: 88%;" appearance="outline">
-              <input matInput type="text" name="mobile_phone_number" />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50" class="pr-1">
-            <mat-label translate>EMAIL</mat-label>
-            <mat-form-field appearance="outline" class="full-width mb-24">
-              <input matInput formControlName="email" type="text" name="email" />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="25" class="pr-1">
-            <mat-label translate>COUNTRY</mat-label>
-            <mat-form-field appearance="outline" class="full-width mb-24">
-              <mat-select name="type">
-                <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
-                  {{ type.label }}
-                </mat-option> -->
-              </mat-select>
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="25" class="pr-1">
-            <mat-label translate>CANTON</mat-label>
-            <mat-form-field appearance="outline" class="full-width mb-24">
-              <mat-select name="type">
-                <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
-                  {{ type.label }}
-                </mat-option> -->
-              </mat-select>
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="25" class="pr-1">
-            <mat-label translate>DISTRICT</mat-label>
-            <mat-form-field appearance="outline" class="full-width mb-24">
-              <mat-select name="type">
-                <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
-                  {{ type.label }}
-                </mat-option> -->
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div fxFlex="25" class="pr-1">
-            <mat-label translate>QUARTER</mat-label>
-            <mat-form-field appearance="outline" class="full-width mb-24">
-              <mat-select name="type">
-                <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
-                  {{ type.label }}
-                </mat-option> -->
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-        <!-- ############################## -->
-
-        <div fxFlex="100" class="mt-1 mr-1" style="text-align: center;">
-          <button mat-flat-button color="secondary" class="mr-1" type="button">
-            {{ 'ADD_ANOTHER_COMPANY' | translate }}
-          </button>
-          <button mat-stroked-button color="primary" [disabled]="form.invalid" id="submit-btn">
-            {{ 'FINISH' | translate }}
-          </button>
         </div>
       </div>
-    </form>
+    </div>
+
+    <div class="split m-0"></div>
+    
+    <div>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div>
+          <p class="label-info font-weight-bold">
+            <span>1</span> {{ 'USER_INFORMATION' | translate }}
+          </p>
+
+          <div class="row-detail mb-0">
+            <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>NAME</mat-label>
+                  <mat-form-field class="full-width" appearance="outline">
+                    <input
+                      matInput
+                      formControlName="name"
+                      type="text"
+                      name="first_name"
+                      placeholder="{{ 'NAME' | translate }}"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>EMAIL</mat-label>
+                  <mat-form-field class="full-width" appearance="outline">
+                    <input matInput formControlName="name" type="email" name="email" placeholder="{{ 'EMAIL' | translate }}" />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-detail mb-0">
+            <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label class="d-block">{{ 'TELEPHONE_1' | translate }}</mat-label>
+                  <mat-form-field style="width: 10%; margin-right: 2%;" appearance="outline">
+                    <input matInput formControlName="phone_country" type="text" name="phone_country" />
+                  </mat-form-field>
+                  <mat-form-field style="width: 88%;" appearance="outline">
+                    <input matInput type="text" name="phone_country" />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label class="d-block" translate>TELEPHONE_2</mat-label>
+                  <mat-form-field style="width: 10%; margin-right: 2%;" appearance="outline">
+                    <input
+                      matInput
+                      formControlName="alternative_phone_country"
+                      type="text"
+                      name="alternative_phone_country"
+                    />
+                  </mat-form-field>
+                  <mat-form-field style="width: 88%;" appearance="outline">
+                    <input matInput type="text" name="alternative_phone_country" />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="split m-0"></div>
+
+          <p class="label-info font-weight-bold">
+            <span>2</span> {{ 'COMPANY_INFORMATION' | translate }}
+          </p>
+
+          <div class="row-detail mb-0">
+            <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>PHARMACEUTICAL_NAME</mat-label>
+                  <mat-form-field class="full-width " appearance="outline">
+                    <input matInput formControlName="name" type="text" name="company" />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>PHARMACEUTICAL_ID</mat-label>
+                  <mat-form-field class="full-width " appearance="outline">
+                    <input matInput formControlName="name" type="text" name="role_in_company" />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-detail mb-0">
+            <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label>Logo</mat-label>
+                  <mat-form-field class="full-width  mat-form-field-dashed" appearance="outline">
+                    <input matInput name="name" />
+                    <mat-icon class="text-grey-B000" matSuffix>cloud_upload</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label disabled translate>MAX_FILE_DIMENSION</mat-label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-detail mb-0">
+            <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>COUNTRY</mat-label>
+                  <mat-form-field appearance="outline" class="full-width ">
+                    <mat-select name="type">
+                      <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
+                        {{ type.label }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>PROVINCE</mat-label>
+                  <mat-form-field appearance="outline" class="full-width ">
+                    <mat-select name="type">
+                      <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
+                        {{ type.label }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-detail mb-0">
+            <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>CANTON</mat-label>
+                  <mat-form-field appearance="outline" class="full-width ">
+                    <mat-select name="type">
+                      <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
+                        {{ type.label }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="50"fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>DISTRICT</mat-label>
+                  <mat-form-field appearance="outline" class="full-width ">
+                    <mat-select name="type">
+                      <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
+                        {{ type.label }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-detail mb-0">
+            <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>QUARTER</mat-label>
+                  <mat-form-field appearance="outline" class="full-width ">
+                    <mat-select name="type">
+                      <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
+                        {{ type.label }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-detail mb-0">
+            <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>ADDRESS</mat-label>
+                  <mat-form-field class="full-width " appearance="outline">
+                    <input
+                      matInput
+                      formControlName="name"
+                      type="text"
+                      name="company"
+                      placeholder="{{ 'LINE_1' | translate }}"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-form-field class="full-width " appearance="outline">
+                  <input
+                    matInput
+                    formControlName="name"
+                    type="text"
+                    name="role_in_company"
+                    placeholder="{{ 'LINE_2' | translate }}"
+                  />
+                </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="split m-0"></div>
+
+          <p class="label-info font-weight-bold">
+            <span>3</span> {{ 'BILLING_INFORMATION' | translate }}
+          </p>
+
+          <div class="row-detail mb-0">
+            <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>BUSINESS_NAME</mat-label>
+                  <mat-form-field class="full-width" appearance="outline">
+                    <input matInput formControlName="name" type="text" name="first_name" />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>GOVERNMENT_ID_TYPE</mat-label>
+                  <mat-form-field appearance="outline" class="full-width ">
+                    <mat-select name="type">
+                      <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
+                        {{ type.label }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-detail mb-0">
+            <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>LEGAL_NOTE</mat-label>
+                  <mat-form-field appearance="outline" class="full-width ">
+                    <input matInput formControlName="name" type="text" name="first_name" />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label class="d-block" style="display: block;">TELEPHONE_1</mat-label>
+                  <mat-form-field style="width: 10%; margin-right: 2%;" appearance="outline">
+                    <input matInput formControlName="country_code" type="text" name="country_code" />
+                  </mat-form-field>
+                  <mat-form-field style="width: 88%;" appearance="outline">
+                    <input matInput type="text" name="mobile_phone_number" />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-detail mb-0">
+            <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>EMAIL</mat-label>
+                  <mat-form-field appearance="outline" class="full-width ">
+                    <input matInput formControlName="email" type="text" name="email" />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-detail mb-0">
+            <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+              <div fxFlex="33" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>COUNTRY</mat-label>
+                  <mat-form-field appearance="outline" class="full-width ">
+                    <mat-select name="type">
+                      <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
+                        {{ type.label }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="33"fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>CANTON</mat-label>
+                  <mat-form-field appearance="outline" class="full-width ">
+                    <mat-select name="type">
+                      <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
+                        {{ type.label }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="33"fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label translate>DISTRICT</mat-label>
+                  <mat-form-field appearance="outline" class="full-width ">
+                    <mat-select name="type">
+                      <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
+                        {{ type.label }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-detail mb-0">
+            <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                <mat-label translate>QUARTER</mat-label>
+                <mat-form-field appearance="outline" class="full-width ">
+                  <mat-select name="type">
+                    <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
+                      {{ type.label }}
+                    </mat-option> -->
+                  </mat-select>
+                </mat-form-field>
+                </div>
+              </div>
+
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-detail mb-0">
+            <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center" fxLayoutGap="22px" class="mb-50">
+              <div fxFlex.lt-sm="100">
+                <button mat-flat-button class="tot-default-submit-btn dark-btn">
+                  {{ 'ADD_ANOTHER_COMPANY' | translate }}
+                </button>
+              </div>
+              <div fxFlex.lt-sm="100">
+                <button mat-flat-button class="tot-default-submit-btn" color="primary" id="submit-btn" [disabled]="form.invalid">
+                  {{ 'FINISH' | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 
-  <div
-    [perfectScrollbar]="{}"
-    fxLayout="row wrap"
-    class="height-100vh-280px"
-    *ngIf="step == 2 && form.value.company_type !== 'pharmaceutical_company'"
-  >
-    <a fxFlex="grow" class="mat-color-primary text-underline mt-32 pl-4" (click)="back()">{{ 'BACK' | translate }}</a>
-    <div fxLayout="row wrap" fxLayout.lt-sm="column" class="full-width">
-      <form [formGroup]="form" class="pharmaceutical-company-form full-width">
-        <div fxFlex="15" class="pr-1 mb-24"></div>
-        <div fxFlex="35" class="pr-1 mb-24">
-          <mat-label disabled translate>USER_TYPE</mat-label>
-          <mat-form-field class="full-width mat-form-filled" appearance="outline">
-            <mat-select formControlName="company_type" name="type">
-              <mat-option *ngFor="let type of companyTypeList" [value]="type.value">
-                {{ type.label }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div fxFlex="35" class="pr-1 mb-24">
-          <mat-label disabled translate>ROLE</mat-label>
-          <mat-form-field class="full-width" appearance="outline">
-            <input matInput type="text" formControlName="role" name="first_name" />
-            <mat-icon class="text-grey-B000" matSuffix>lock</mat-icon>
-          </mat-form-field>
-        </div>
-        <div fxFlex="15" class="pr-1 mb-24"></div>
-      </form>
+  <!-- step 2 - condition -->
+  <div *ngIf="step == 2 && form.value.company_type !== 'pharmaceutical_company'">
+    
+    <div>
+      <a class="text-underline back-modal-companies" (click)="back()">{{ 'BACK' | translate }}</a>
     </div>
 
-    <hr class="width-80 mb-12 mt-12" />
+    <form [formGroup]="form">
+      <div>
+          <div class="row-detail mb-0">
+            <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label disabled translate>USER_TYPE</mat-label>
+                  <mat-form-field class="full-width mat-form-filled" appearance="outline">
+                    <mat-select formControlName="company_type" name="type">
+                      <mat-option *ngFor="let type of companyTypeList" [value]="type.value">
+                        {{ type.label }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
 
-    <div class="section-1 mt-32 mb-24"><span class="circle-number">1</span>{{ 'USER_INFORMATION' | translate }}</div>
+              <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+                <div fxFlex="100" fxFlex.gt-sm="350px">
+                  <mat-label disabled translate>ROLE</mat-label>
+                  <mat-form-field class="full-width" appearance="outline">
+                    <input matInput type="text" formControlName="role" name="first_name" />
+                    <mat-icon class="text-grey-B000" matSuffix>lock</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </form>
+
     <form [formGroup]="form" (ngSubmit)="submit()">
-      <div fxLayout="row wrap" fxLayout.lt-sm="column">
-        <div fxFlex="50" class="pr-1 mb-24">
-          <mat-label disabled translate>NAME</mat-label>
-          <mat-form-field class="full-width" appearance="outline">
-            <input
-              matInput
-              formControlName="name"
-              type="text"
-              name="first_name"
-              placeholder="{{ 'NAME' | translate }}"
-            />
-          </mat-form-field>
-        </div>
+      
+      <div class="split my-24"></div>
+      
+      <p class="label-info font-weight-bold">
+        <span>1</span> {{ 'USER_INFORMATION' | translate }}
+      </p>
 
-        <div fxFlex="50" class="pr-1 mb-24">
-          <mat-label translate>EMAIL</mat-label>
-          <mat-form-field class="full-width" appearance="outline">
-            <input matInput formControlName="name" type="email" name="email" placeholder="{{ 'EMAIL' | translate }}" />
-          </mat-form-field>
-        </div>
+      <div class="row-detail mb-0">
+        <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+          <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+            <div fxFlex="100" fxFlex.gt-sm="350px">
+              <mat-label disabled translate>NAME</mat-label>
+              <mat-form-field class="full-width" appearance="outline">
+                <input
+                  matInput
+                  formControlName="name"
+                  type="text"
+                  name="first_name"
+                  placeholder="{{ 'NAME' | translate }}"
+                />
+              </mat-form-field>
+            </div>
+          </div>
 
-        <div fxFlex="50" class="pr-1 mb-24">
-          <mat-label class="d-block">{{ 'TELEPHONE_1' | translate }}</mat-label>
-          <mat-form-field style="width: 10%; margin-right: 2%;" appearance="outline">
-            <input matInput formControlName="country_code" type="text" name="country_code" />
-          </mat-form-field>
-          <mat-form-field style="width: 88%;" appearance="outline">
-            <input matInput type="text" name="mobile_phone_number" />
-          </mat-form-field>
-        </div>
-
-        <div fxFlex="50" class="pr-1 mb-24">
-          <mat-label class="d-block">{{ 'TELEPHONE_2' | translate }}</mat-label>
-          <mat-form-field style="width: 10%; margin-right: 2%;" appearance="outline">
-            <input matInput formControlName="country_code" type="text" name="country_code" />
-          </mat-form-field>
-          <mat-form-field style="width: 88%;" appearance="outline">
-            <input matInput type="text" name="phone_number" />
-          </mat-form-field>
+          <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+            <div fxFlex="100" fxFlex.gt-sm="350px">
+              <mat-label translate>EMAIL</mat-label>
+              <mat-form-field class="full-width" appearance="outline">
+                <input matInput formControlName="name" type="email" name="email" placeholder="{{ 'EMAIL' | translate }}" />
+              </mat-form-field>
+            </div>
+          </div>
         </div>
       </div>
-      <hr class="width-80 mb-12 mt-12" />
-      <div class="section-1 mt-24 mb-24">
-        <span class="circle-number">2</span>{{ 'COMPANY_INFORMATION' | translate }}
+
+      <div class="row-detail mb-0">
+        <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+          <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+            <div fxFlex="100" fxFlex.gt-sm="350px">
+              <mat-label class="d-block">{{ 'TELEPHONE_1' | translate }}</mat-label>
+              <mat-form-field style="width: 10%; margin-right: 2%;" appearance="outline">
+                <input matInput formControlName="country_code" type="text" name="country_code" />
+              </mat-form-field>
+              <mat-form-field style="width: 88%;" appearance="outline">
+                <input matInput type="text" name="mobile_phone_number" />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+            <div fxFlex="100" fxFlex.gt-sm="350px">
+              <mat-label class="d-block">{{ 'TELEPHONE_2' | translate }}</mat-label>
+              <mat-form-field style="width: 10%; margin-right: 2%;" appearance="outline">
+                <input matInput formControlName="country_code" type="text" name="country_code" />
+              </mat-form-field>
+              <mat-form-field style="width: 88%;" appearance="outline">
+                <input matInput type="text" name="phone_number" />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
       </div>
-      <div fxLayout="row wrap" fxLayout.lt-sm="column">
-        <div fxFlex="50" class="pr-1">
-          <mat-label translate>PHARMACEUTICAL_NAME</mat-label>
-          <mat-form-field class="full-width mb-24" appearance="outline">
-            <input matInput formControlName="name" type="text" name="company" />
-          </mat-form-field>
+
+      <div class="split my-24"></div>
+
+      <p class="label-info font-weight-bold">
+        <span>2</span> {{ 'COMPANY_INFORMATION' | translate }}
+      </p>
+
+      <div class="row-detail mb-0">
+        <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+          <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+            <div fxFlex="100" fxFlex.gt-sm="350px">
+              <mat-label translate>PHARMACEUTICAL_NAME</mat-label>
+              <mat-form-field class="full-width" appearance="outline">
+                <input matInput formControlName="name" type="text" name="company" />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+            <div fxFlex="100" fxFlex.gt-sm="350px">
+              <mat-label translate>PHARMACEUTICAL_ID</mat-label>
+              <mat-form-field class="full-width" appearance="outline">
+                <input matInput formControlName="company_id" type="text" name="role_in_company" />
+                <mat-icon class="text-grey-B000" matSuffix>lock</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div fxFlex="50" class="pr-1">
-          <mat-label translate>PHARMACEUTICAL_ID</mat-label>
-          <mat-form-field class="full-width mb-24" appearance="outline">
-            <input matInput formControlName="company_id" type="text" name="role_in_company" />
-            <mat-icon class="text-grey-B000" matSuffix>lock</mat-icon>
-          </mat-form-field>
+      <div class="row-detail mb-0">
+        <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+          <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+            <div fxFlex="100" fxFlex.gt-sm="350px">
+              <mat-label translate>COUNTRY</mat-label>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-select name="type">
+                  <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
+                    {{ type.label }}
+                  </mat-option> -->
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+            <div fxFlex="100" fxFlex.gt-sm="350px">
+              <mat-label translate>PROVINCE</mat-label>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-select name="type">
+                  <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
+                    {{ type.label }}
+                  </mat-option> -->
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div fxFlex="50" class="pr-1">
-          <mat-label translate>COUNTRY</mat-label>
-          <mat-form-field appearance="outline" class="full-width mb-24">
-            <mat-select name="type">
-              <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
-                {{ type.label }}
-              </mat-option> -->
-            </mat-select>
-          </mat-form-field>
+      <div class="row-detail mb-0">
+        <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+          <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+            <div fxFlex="100" fxFlex.gt-sm="350px">
+              <mat-label translate>CANTON</mat-label>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-select name="type">
+                  <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
+                    {{ type.label }}
+                  </mat-option> -->
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+            <div fxFlex="100" fxFlex.gt-sm="350px">
+              <mat-label translate>DISTRICT</mat-label>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-select name="type">
+                  <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
+                    {{ type.label }}
+                  </mat-option> -->
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div fxFlex="50" class="pr-1">
-          <mat-label translate>PROVINCE</mat-label>
-          <mat-form-field appearance="outline" class="full-width mb-24">
-            <mat-select name="type">
-              <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
-                {{ type.label }}
-              </mat-option> -->
-            </mat-select>
-          </mat-form-field>
+      <div class="row-detail mb-0">
+        <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+          <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+            <div fxFlex="100" fxFlex.gt-sm="350px">
+              <mat-label translate>QUARTER</mat-label>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-select name="type">
+                  <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
+                    {{ type.label }}
+                  </mat-option> -->
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+            <div fxFlex="100" fxFlex.gt-sm="350px">
+              <mat-label translate>ADDRESS</mat-label>
+              <mat-form-field class="full-width" appearance="outline">
+                <input
+                  matInput
+                  formControlName="name"
+                  type="text"
+                  name="company"
+                  placeholder="{{ 'LINE_1' | translate }}"
+                />
+              </mat-form-field>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div fxFlex="32" class="pr-1">
-          <mat-label translate>CANTON</mat-label>
-          <mat-form-field appearance="outline" class="full-width mb-24">
-            <mat-select name="type">
-              <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
-                {{ type.label }}
-              </mat-option> -->
-            </mat-select>
-          </mat-form-field>
+      <div class="row-detail mb-0">
+        <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
+          <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+            <div fxFlex="100" fxFlex.gt-sm="350px">
+              <mat-label class="d-block">{{ 'TELEPHONE_2' | translate }}</mat-label>
+              <mat-form-field class="full-width " appearance="outline">
+                <input
+                  matInput
+                  formControlName="name"
+                  type="text"
+                  name="role_in_company"
+                  placeholder="{{ 'LINE_2' | translate }}"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
+            <div fxFlex="100" fxFlex.gt-sm="350px">
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="2"></div>
+      <div class="split my-24"></div>
 
-        <div fxFlex="32" class="pr-1">
-          <mat-label translate>DISTRICT</mat-label>
-          <mat-form-field appearance="outline" class="full-width mb-24">
-            <mat-select name="type">
-              <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
-                {{ type.label }}
-              </mat-option> -->
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="2"></div>
-        <div fxFlex="32" class="pr-1">
-          <mat-label translate>QUARTER</mat-label>
-          <mat-form-field appearance="outline" class="full-width mb-24">
-            <mat-select name="type">
-              <!-- <mat-option *ngFor="let type of countryList" [value]="type.value">
-                {{ type.label }}
-              </mat-option> -->
-            </mat-select>
-          </mat-form-field>
-        </div>
-
-        <div fxFlex="50" class="pr-1">
-          <mat-label translate>ADDRESS</mat-label>
-          <mat-form-field class="full-width mb-24" appearance="outline">
-            <input
-              matInput
-              formControlName="name"
-              type="text"
-              name="company"
-              placeholder="{{ 'LINE_1' | translate }}"
-            />
-          </mat-form-field>
-        </div>
-
-        <div fxFlex="50" class="pr-1" fxLayoutAlign="center end">
-          <mat-form-field class="full-width mb-24" appearance="outline">
-            <input
-              matInput
-              formControlName="name"
-              type="text"
-              name="role_in_company"
-              placeholder="{{ 'LINE_2' | translate }}"
-            />
-          </mat-form-field>
-        </div>
-
-        <!-- ############################## -->
-
-        <div fxFlex="100" class="mt-1 mr-1" style="text-align: center;">
-          <button mat-flat-button color="secondary" class="mr-1" type="button">
-            {{ 'ADD_ANOTHER_COMPANY' | translate }}
-          </button>
-          <button mat-stroked-button color="primary" [disabled]="form.invalid" id="submit-btn">
-            {{ 'FINISH' | translate }}
-          </button>
+      <div>
+        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center" fxLayoutGap="22px" class="mb-50">
+          <div fxFlex.lt-sm="100">
+            <button mat-flat-button class="tot-default-submit-btn dark-btn">
+              {{ 'ADD_ANOTHER_COMPANY' | translate }}
+            </button>
+          </div>
+          <div fxFlex.lt-sm="100">
+            <button mat-flat-button class="tot-default-submit-btn" color="primary" id="submit-btn" [disabled]="form.invalid">
+              {{ 'FINISH' | translate }}
+            </button>
+          </div>
         </div>
       </div>
     </form>
