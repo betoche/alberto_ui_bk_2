@@ -24,7 +24,7 @@
         <!-- Left Side content -->
         <div fxFlex="50" fxLayoutAlign="center" class="p-10">
           <div fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
-            <app-data-importing importType="companies" fxLayout="column wrap" fxFlex="100" fxFlex.gt-sm="380px" class="importing-companies">
+            <app-data-importing importType="companies" fxLayout="column wrap" fxFlex="100" fxFlex.gt-sm="430px">
               <p class="label-info">
                 {{ 'IMPORT_COMPANY_FROM_CSV' | translate }}
                 <br/>
@@ -45,7 +45,7 @@
         <!-- Right side content -->
         <div fxFlex="50" fxLayoutAlign="center" class="p-10">
           <form [formGroup]="form" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
-            <div fxFlex="100" fxFlex.gt-sm="380px">
+            <div fxFlex="100" fxFlex.gt-sm="430px">
               <p class="label-info">
                 {{ 'ADD_NEW_COMPANY_USER' | translate }}
               </p>
@@ -67,7 +67,7 @@
                 </div>
               </div>
 
-              <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-auto">
+              <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-auto mb-70">
                 <button  mat-flat-button class="tot-default-submit-btn" color="primary" (click)="continue()">
                   {{ 'CONTINUE' | translate }}
                 </button>
@@ -125,7 +125,7 @@
 
         <div class="split m-0"></div>
 
-        <div>
+        <div class="mt-24 mb-24">
           <app-user-info-fields [form]="form"></app-user-info-fields>
         </div>
 

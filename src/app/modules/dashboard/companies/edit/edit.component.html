@@ -1,15 +1,20 @@
-<div fxLayout="row wrap" fxLayoutAlign="end flex-end" class="mt-12">
-  <a class="mat-color-primary text-underline pl-4" (click)="dialogRef.close(false)">{{ 'CLOSE' | translate }}</a>
-</div>
-
-<div fxLayout="row wrap" class="clearfix">
-  <div fxFlex="grow" class="page-description mt-40">
-    <h1 class="header-section" translate>ADD_NEW_COMPANY</h1>
+<div class="box-detail">
+  <div fxLayout="row wrap" fxLayoutAlign="end flex-end" class="close-modal" (click)="dialogRef.close(false)">
+    <mat-icon class="close-icon" matSuffix>highlight_off</mat-icon>
+    <a class="text-underline pl-4">{{ 'CLOSE' | translate }}</a>
   </div>
-
-  <form class="pharmaceutical-company-form full-width"
-        [formGroup]="form"
-        (ngSubmit)="submit()">
+  <div class="header-container">
+    <div class="header-nav">
+      <h1 class="headline" translate>
+        ADD_NEW_COMPANY
+      </h1>
+    </div>
+  </div>
+</div>
+<div class="box-detail">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="submit()">
 
     <div [perfectScrollbar]="{}" fxLayout="row wrap" class="height-100vh-280px">
       <app-flash-messsage
@@ -21,7 +26,6 @@
 
       <company-fields position="1" [form]="form" [type]="form.get('type').value"></company-fields>
 
-      <!-- ############################## -->
       <div fxFlex="100" class="mt-1 mr-1" style="text-align: center;">
         <button mat-stroked-button color="primary" id="submit-btn" [disabled]="form.invalid">
           {{ 'FINISH' | translate }}

@@ -310,6 +310,7 @@
   "PROFILE_CREATED": "El perfil se ha guardado exitosamente",
   "LOCATIONS_DESCRIPTION": "La estrategia se aplicará a aquellos clientes que estén suscritos a los planes salud que se seleccionen.",
   "DELIMIT_BY_LOCATION": "Delimitar el mercado meta por sucursales del patrocinador",
+  "DESIGN_&_DEVELOP_BY": "Diseñado y Desarrollado por",
   "INTERNATIONAL": "Internacional",
   "CANCEL_STRATEGY_HEADER": "Cancelar el proceso de crear una nueva estrategia",
   "CANCEL_STRATEGY_SUB_HEADER": "Al cancelar el proceso no se guardará la información ingresada.",
