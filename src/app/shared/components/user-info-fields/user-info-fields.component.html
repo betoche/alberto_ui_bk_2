@@ -52,6 +52,7 @@
         </div>
       </div>
     </div>
+
     <div *ngIf="showRoleField">
       <div fxLayout="row nowrap" fxLayout.lt-sm="column" class="full-width" fxLayoutGap.gt-xs="22px">
         <div fxFlex="50" fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center">
@@ -60,6 +61,11 @@
             <input-disabled-with-icon
                 controlName="role"
                 [form]="form.get('user')"></input-disabled-with-icon>
+          </div>
+        </div>
+
+        <div fxFlex="50"fxFlex="100" fxLayout="column wrap" fxLayout.gt-sm="row">
+          <div fxFlex="100" fxFlex.gt-sm="350px">
           </div>
         </div>
       </div>

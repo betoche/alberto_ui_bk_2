@@ -1,5 +1,5 @@
-<div class="height-100 mb-70">
-  <div class="pl-1">
+<div class="base-container">
+  <div class="box-detail">
     <div class="alert alert-danger" *ngIf="!!errorsMessages">
       {{ errorsMessages }}
     </div>
@@ -9,22 +9,27 @@
     </div>
 
     <flash-messsage-auto-hide
-        [options]="messageOptions" class="margin-b-50"></flash-messsage-auto-hide>
+        [options]="messageOptions"></flash-messsage-auto-hide>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
-      <app-user-info-fields
-          [form]="form"
-          showRoleField="true"></app-user-info-fields>
+      <div class="mt-24">
+        <app-user-info-fields
+            [form]="form"
+            showRoleField="true"></app-user-info-fields>
+      </div>
+      
+      <div class="mt-24">
+        <ng-container *ngIf="this.user.isCompanyShown">
+          <company-fields [form]="form" type="{{ user.typeOfCompany() }}"></company-fields>
+        </ng-container>
+      </div>
 
-      <ng-container *ngIf="this.user.isCompanyShown">
-        <hr class="width-80 mb-12 mt-12" />
-        <company-fields [form]="form" type="{{ user.typeOfCompany() }}"></company-fields>
-      </ng-container>
+      <div class="split my-24"></div>
 
       <div fxLayout="row wrap" fxLayout.lt-sm="column">
 
         <div fxFlex="100" class="mt-1 mr-1" style="text-align: center;">
-          <button mat-stroked-button color="primary" [disabled]="form.invalid" type="submit" id="submit-btn">
+          <button  mat-flat-button class="tot-default-submit-btn" [disabled]="form.invalid" type="submit" id="submit-btn">
             {{ 'SAVE' | translate }}
           </button>
         </div>

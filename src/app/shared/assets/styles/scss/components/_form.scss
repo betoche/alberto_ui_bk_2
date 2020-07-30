@@ -89,8 +89,8 @@ mat-label {
     }
     &.mat-form-field-dashed {
       .mat-form-field-outline {
+        border: 1px dashed $primary-color;
         .mat-form-field-outline-end {
-          border: 1px dashed $primary;
           background: white;
           border-radius: 0 !important;
         }
